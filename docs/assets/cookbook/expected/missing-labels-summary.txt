@@ -1,6 +1,0 @@
-Overall score: 89.8/100 (Very Good)
-Status: Provisional | Measurement coverage: 65%
-First failing stage: none
-Not measured (null in the report) - to measure it:
-  - task success: add "task_success" per query (a person's yes/no)
-  - refusals: add a question with "answerable": false and "abstained"

@@ -1,5 +1,0 @@
-Overall score: 63.2/100 (Average)
-Status: Action Required | Measurement coverage: 97%
-First failing stage: retrieval
-Queries to look at:
-  - q1 (retrieval): no relevant chunk in the top K
