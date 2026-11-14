@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" role="img" aria-labelledby="title desc">
+  <title id="title">Swappable building blocks</title>
+  <desc id="desc">Settings from .env or code go to factory.py, which builds one class for each building block. Every block has a base class, ready-made classes, and planned ones.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; }
+      .title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .label { font: 600 14px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; text-anchor: middle; }
+      .head { font: 700 11px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: .06em; }
+      .part { font: 600 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .base { font: 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #6d28d9; }
+      .chip { font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; text-anchor: middle; }
+      .env { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
+      .key { fill: #0369a1; }
+      .ex { font: 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; text-anchor: middle; }
+      .note { font: 12.5px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+      .row { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .factory { fill: #f5f3ff; stroke: #8b5cf6; stroke-width: 1.5; }
+      .ready { fill: #dcfce7; stroke: #22c55e; }
+      .planned { fill: #ffffff; stroke: #94a3b8; stroke-dasharray: 4 3; }
+      .flow { fill: none; stroke: #8b5cf6; stroke-width: 1.6; stroke-dasharray: 6 5; animation: dash 0.9s linear infinite; }
+      .hl { fill: none; stroke: #f97316; stroke-width: 2.5; opacity: 0; animation: glow 8s infinite; }
+      @keyframes dash { to { stroke-dashoffset: -11; } }
+      @keyframes glow { 0% { opacity: 0; } 2% { opacity: 1; } 11% { opacity: 1; } 13% { opacity: 0; } 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .flow, .hl { animation: none; } }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="959" height="529" rx="16"/>
+  <text class="title" x="30" y="44">Every part is swappable</text>
+  <text class="sub" x="30" y="66">Settings pick a class for each building block. Write your own by inheriting the base class.</text>
+
+  <!-- settings -->
+  <rect class="card" x="30" y="106" width="230" height="344" rx="10"/>
+  <text class="head" x="46" y="130">.env  OR  settings={…}</text>
+  <text class="env" x="46" y="160"><tspan class="key">LLM_MODEL</tspan>=gemma3:4b</text>
+  <text class="env" x="46" y="184"><tspan class="key">EMBED_MODEL</tspan>=nomic-embed…</text>
+  <text class="env" x="46" y="208"><tspan class="key">CHUNKER</tspan>=word</text>
+  <text class="env" x="46" y="232"><tspan class="key">CHUNK_SIZE</tspan>=150</text>
+  <text class="env" x="46" y="256"><tspan class="key">CHUNK_OVERLAP</tspan>=30</text>
+  <text class="env" x="46" y="280"><tspan class="key">VECTOR_STORE</tspan>=memory</text>
+  <text class="env" x="46" y="304"><tspan class="key">RERANKER</tspan>=keyword</text>
+  <text class="env" x="46" y="328"><tspan class="key">GENERATOR</tspan>=grounded</text>
+  <text class="env" x="46" y="352"><tspan class="key">rag_type</tspan>="simple"</text>
+  <text class="note" x="46" y="392">every value has a default,</text>
+  <text class="note" x="46" y="410">so nothing is required</text>
+
+  <!-- factory -->
+  <path class="flow" d="M262 278 H296" marker-end="url(#arrow)"/>
+  <rect class="factory" x="300" y="228" width="150" height="100" rx="10"/>
+  <text class="label" x="375" y="258">factory.py</text>
+  <text class="ex" x="375" y="282">build_rag_parts()</text>
+  <text class="ex" x="375" y="302">build_rag()</text>
+
+  <!-- fan out to the parts -->
+  <path class="flow" d="M452 278 C470 278 466 124 486 124" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 168 486 168" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 212 486 212" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 256 486 256" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 300 486 300" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 344 486 344" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 388 486 388" marker-end="url(#arrow)"/>
+  <path class="flow" d="M452 278 C470 278 466 432 486 432" marker-end="url(#arrow)"/>
+
+  <!-- parts table -->
+  <text class="head" x="500" y="96">PART</text>
+  <text class="head" x="580" y="96">BASE CLASS</text>
+  <text class="head" x="700" y="96">READY</text>
+  <text class="head" x="836" y="96">PLANNED</text>
+
+  <g>
+    <rect class="row" x="490" y="106" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="129">LLM</text><text class="base" x="580" y="129">BaseLLM</text>
+    <rect class="ready" x="690" y="113" width="124" height="22" rx="11"/><text class="chip" x="752" y="128">OllamaLLM</text>
+    <rect class="planned" x="822" y="113" width="100" height="22" rx="11"/><text class="chip" x="872" y="128">OpenAI·Claude</text>
+
+    <rect class="row" x="490" y="150" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="173">Loader</text><text class="base" x="580" y="173">BaseLoader</text>
+    <rect class="ready" x="690" y="157" width="124" height="22" rx="11"/><text class="chip" x="752" y="172">PDF · DOCX</text>
+    <rect class="planned" x="822" y="157" width="100" height="22" rx="11"/><text class="chip" x="872" y="172">TXT · HTML</text>
+
+    <rect class="row" x="490" y="194" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="217">Chunker</text><text class="base" x="580" y="217">BaseChunker</text>
+    <rect class="ready" x="690" y="201" width="124" height="22" rx="11"/><text class="chip" x="752" y="216">WordChunker</text>
+    <rect class="planned" x="822" y="201" width="100" height="22" rx="11"/><text class="chip" x="872" y="216">semantic</text>
+
+    <rect class="row" x="490" y="238" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="261">Embedder</text><text class="base" x="580" y="261">BaseEmbedder</text>
+    <rect class="ready" x="690" y="245" width="124" height="22" rx="11"/><text class="chip" x="752" y="260">OllamaEmbedder</text>
+    <rect class="planned" x="822" y="245" width="100" height="22" rx="11"/><text class="chip" x="872" y="260">OpenAI · HF</text>
+
+    <rect class="row" x="490" y="282" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="305">Store</text><text class="base" x="580" y="305">BaseStore</text>
+    <rect class="ready" x="690" y="289" width="124" height="22" rx="11"/><text class="chip" x="752" y="304">MemoryStore</text>
+    <rect class="planned" x="822" y="289" width="100" height="22" rx="11"/><text class="chip" x="872" y="304">Chroma·Qdrant</text>
+
+    <rect class="row" x="490" y="326" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="349">Reranker</text><text class="base" x="580" y="349">BaseReranker</text>
+    <rect class="ready" x="690" y="333" width="124" height="22" rx="11"/><text class="chip" x="752" y="348">Keyword · None</text>
+    <rect class="planned" x="822" y="333" width="100" height="22" rx="11"/><text class="chip" x="872" y="348">cross-enc.</text>
+
+    <rect class="row" x="490" y="370" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="393">Generator</text><text class="base" x="580" y="393">BaseGenerator</text>
+    <rect class="ready" x="690" y="377" width="124" height="22" rx="11"/><text class="chip" x="752" y="392">Grounded</text>
+    <rect class="planned" x="822" y="377" width="100" height="22" rx="11"/><text class="chip" x="872" y="392">streaming</text>
+
+    <rect class="row" x="490" y="414" width="440" height="36" rx="8"/>
+    <text class="part" x="500" y="437">RAG type</text><text class="base" x="580" y="437">.answer()</text>
+    <rect class="ready" x="690" y="421" width="124" height="22" rx="11"/><text class="chip" x="752" y="436">Simple·Adaptive</text>
+    <rect class="planned" x="822" y="421" width="100" height="22" rx="11"/><text class="chip" x="872" y="436">CRAG·HyDE…</text>
+  </g>
+
+  <!-- highlight rows in order -->
+  <rect class="hl" x="490" y="106" width="440" height="36" rx="8" style="animation-delay:0s"/>
+  <rect class="hl" x="490" y="150" width="440" height="36" rx="8" style="animation-delay:1s"/>
+  <rect class="hl" x="490" y="194" width="440" height="36" rx="8" style="animation-delay:2s"/>
+  <rect class="hl" x="490" y="238" width="440" height="36" rx="8" style="animation-delay:3s"/>
+  <rect class="hl" x="490" y="282" width="440" height="36" rx="8" style="animation-delay:4s"/>
+  <rect class="hl" x="490" y="326" width="440" height="36" rx="8" style="animation-delay:5s"/>
+  <rect class="hl" x="490" y="370" width="440" height="36" rx="8" style="animation-delay:6s"/>
+  <rect class="hl" x="490" y="414" width="440" height="36" rx="8" style="animation-delay:7s"/>
+
+  <!-- how to add your own -->
+  <rect x="30" y="470" width="900" height="40" rx="10" fill="#f5f3ff"/>
+  <text class="note" x="48" y="495" style="white-space:pre">Add your own:  ① inherit the base class   ② write its methods   ③ add one <tspan class="base">if name == …</tspan> line in factory.py   ④ set it in .env</text>
+</svg>

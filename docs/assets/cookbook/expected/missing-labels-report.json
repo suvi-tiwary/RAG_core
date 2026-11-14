@@ -1,0 +1,831 @@
+{
+  "chunking": {
+    "chunk_count": 4,
+    "total_source_tokens": 27,
+    "coverage": 1.0,
+    "overlap_ratio": 0.0,
+    "mean_chunk_tokens": 6.75,
+    "min_chunk_tokens": 4,
+    "max_chunk_tokens": 8,
+    "size_cv": 0.2428680934926667,
+    "size_compliance": 1.0,
+    "evidence_completeness": 1.0,
+    "evidence_fragmentation": 1.0,
+    "structural_integrity": null,
+    "metadata_completeness": 1.0,
+    "metadata_accuracy": null,
+    "lexical_cohesion": null,
+    "lexical_boundary_clarity": 0.9761904761904763,
+    "lexical_chunk_stickiness": 0.023809523809523808,
+    "semantic_cohesion": null,
+    "semantic_boundary_clarity": null,
+    "semantic_chunk_stickiness": 0.8826413512415153,
+    "boundary_f1": 1.0,
+    "warnings": []
+  },
+  "embedding": {
+    "vector_count": 4,
+    "dimension": 2,
+    "zero_norm_rate": 0.0,
+    "duplicate_vector_rate": 0.0,
+    "mean_vector_norm": 0.8313843712771756,
+    "index_coverage": 1.0,
+    "query_topk_recall": 1.0,
+    "ann_recall_at_k": 1.0,
+    "positive_similarity": 0.9962507820030644,
+    "negative_similarity": 0.48171137502798844,
+    "similarity_margin": 0.5145394069750759
+  },
+  "retrieval": {
+    "summary": {
+      "query_count": 2,
+      "precision_at_k": 0.3333333333333333,
+      "recall_at_k": 1.0,
+      "f1_at_k": 0.5,
+      "hit_at_k": 1.0,
+      "mrr_at_k": 0.75,
+      "ndcg_at_k": 0.8154648767857288,
+      "average_precision_at_k": 0.75,
+      "token_recall": 1.0,
+      "token_precision": 0.39473684210526316,
+      "token_iou": 0.39473684210526316,
+      "complete_evidence_recall": 1.0,
+      "p50_latency_ms": 30.0,
+      "p95_latency_ms": 39.0
+    },
+    "per_query": [
+      {
+        "query_id": "q1",
+        "precision_at_k": 0.3333333333333333,
+        "recall_at_k": 1.0,
+        "f1_at_k": 0.5,
+        "hit_at_k": 1.0,
+        "mrr_at_k": 0.5,
+        "ndcg_at_k": 0.6309297535714575,
+        "average_precision_at_k": 0.5,
+        "token_recall": 1.0,
+        "token_precision": 0.3684210526315789,
+        "token_iou": 0.3684210526315789,
+        "complete_evidence_recall": 1.0,
+        "latency_ms": 20,
+        "missing_chunk_ids": []
+      },
+      {
+        "query_id": "q2",
+        "precision_at_k": 0.3333333333333333,
+        "recall_at_k": 1.0,
+        "f1_at_k": 0.5,
+        "hit_at_k": 1.0,
+        "mrr_at_k": 1.0,
+        "ndcg_at_k": 1.0,
+        "average_precision_at_k": 1.0,
+        "token_recall": 1.0,
+        "token_precision": 0.42105263157894735,
+        "token_iou": 0.42105263157894735,
+        "complete_evidence_recall": 1.0,
+        "latency_ms": 40,
+        "missing_chunk_ids": []
+      }
+    ],
+    "warnings": []
+  },
+  "reranking": {
+    "summary": {
+      "query_count": 2,
+      "ndcg_at_k": 1.0,
+      "ndcg_gain": 0.18453512321427123,
+      "mrr_at_k": 1.0,
+      "mrr_gain": 0.25,
+      "precision_at_k": 0.3333333333333333,
+      "precision_gain": 0.0,
+      "first_relevant_rank_change": 0.5,
+      "candidate_set_preservation_rate": 1.0
+    },
+    "per_query": [
+      {
+        "query_id": "q1",
+        "before_ndcg": 0.6309297535714575,
+        "after_ndcg": 1.0,
+        "ndcg_gain": 0.36907024642854247,
+        "before_mrr": 0.5,
+        "after_mrr": 1.0,
+        "mrr_gain": 0.5,
+        "before_precision": 0.3333333333333333,
+        "after_precision": 0.3333333333333333,
+        "precision_gain": 0.0,
+        "first_relevant_rank_change": 1,
+        "candidate_set_preserved": 1.0
+      },
+      {
+        "query_id": "q2",
+        "before_ndcg": 1.0,
+        "after_ndcg": 1.0,
+        "ndcg_gain": 0.0,
+        "before_mrr": 1.0,
+        "after_mrr": 1.0,
+        "mrr_gain": 0.0,
+        "before_precision": 0.3333333333333333,
+        "after_precision": 0.3333333333333333,
+        "precision_gain": 0.0,
+        "first_relevant_rank_change": 0,
+        "candidate_set_preserved": 1.0
+      }
+    ]
+  },
+  "augmentation": {
+    "summary": {
+      "query_count": 2,
+      "context_precision": 0.5,
+      "context_recall": 1.0,
+      "context_noise": 0.5,
+      "context_sufficient": 1.0,
+      "duplicate_ratio": 0.0,
+      "budget_compliant": 1.0,
+      "evidence_edge_placement": 1.0
+    },
+    "per_query": [
+      {
+        "query_id": "q1",
+        "context_precision": 0.4666666666666667,
+        "context_recall": 1.0,
+        "context_noise": 0.5333333333333333,
+        "context_sufficient": 1.0,
+        "context_tokens": 15,
+        "duplicate_ratio": 0.0,
+        "budget_compliant": 1.0,
+        "evidence_edge_placement": 1.0,
+        "missing_chunk_ids": []
+      },
+      {
+        "query_id": "q2",
+        "context_precision": 0.5333333333333333,
+        "context_recall": 1.0,
+        "context_noise": 0.4666666666666667,
+        "context_sufficient": 1.0,
+        "context_tokens": 15,
+        "duplicate_ratio": 0.0,
+        "budget_compliant": 1.0,
+        "evidence_edge_placement": 1.0,
+        "missing_chunk_ids": []
+      }
+    ],
+    "warnings": []
+  },
+  "generation": {
+    "summary": {
+      "query_count": 2,
+      "exact_match": null,
+      "answer_precision": null,
+      "answer_recall": null,
+      "answer_f1": null,
+      "rouge_l_f1": null,
+      "required_fact_coverage": null,
+      "citation_precision": null,
+      "citation_recall": null,
+      "citation_f1": null,
+      "annotated_claim_support": null,
+      "abstention_accuracy": null,
+      "context_grounding": 1.0,
+      "unsupported_number_rate": 0.0,
+      "task_success": null,
+      "p50_latency_ms": 600.0,
+      "p95_latency_ms": 780.0
+    },
+    "per_query": [
+      {
+        "query_id": "q1",
+        "exact_match": null,
+        "answer_precision": null,
+        "answer_recall": null,
+        "answer_f1": null,
+        "rouge_l_f1": null,
+        "required_fact_coverage": null,
+        "citation_precision": null,
+        "citation_recall": null,
+        "citation_f1": null,
+        "annotated_claim_support": null,
+        "abstention_accuracy": null,
+        "task_success": null,
+        "context_grounding": 1.0,
+        "unsupported_number_rate": 0.0,
+        "latency_ms": 400
+      },
+      {
+        "query_id": "q2",
+        "exact_match": null,
+        "answer_precision": null,
+        "answer_recall": null,
+        "answer_f1": null,
+        "rouge_l_f1": null,
+        "required_fact_coverage": null,
+        "citation_precision": null,
+        "citation_recall": null,
+        "citation_f1": null,
+        "annotated_claim_support": null,
+        "abstention_accuracy": null,
+        "task_success": null,
+        "context_grounding": 1.0,
+        "unsupported_number_rate": 0.0,
+        "latency_ms": 800
+      }
+    ]
+  },
+  "end_to_end": {
+    "query_count": 2,
+    "answer_exact_match": null,
+    "answer_f1": null,
+    "task_success_rate": null,
+    "p50_latency_ms": 675.0,
+    "p95_latency_ms": 877.5,
+    "mean_cost_usd": 0.002,
+    "mean_total_tokens": 800.0
+  },
+  "root_causes": {
+    "first_failing_stage": null,
+    "failures": [],
+    "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+  },
+  "scorecard": {
+    "overall": {
+      "score": 89.81,
+      "score_0_1": 0.8981,
+      "rating": "Very Good",
+      "status": "Provisional",
+      "message": "The evaluated results are strong, with some room to improve. This is a provisional score because evaluation data is incomplete.",
+      "evaluation_coverage": 0.6516,
+      "is_provisional": true,
+      "evaluated_stages": 6,
+      "total_stages": 7,
+      "quality_gate_failures": [],
+      "areas_to_review": [
+        {
+          "stage": "retrieval",
+          "label": "Information search",
+          "score": 79.39,
+          "improvement_areas": [
+            {
+              "metric": "precision_at_k",
+              "metric_score": 33.3,
+              "reason": "The search returns extra irrelevant chunks."
+            },
+            {
+              "metric": "token_iou",
+              "metric_score": 39.5,
+              "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+            },
+            {
+              "metric": "token_precision",
+              "metric_score": 39.5,
+              "reason": "A large share of the retrieved text is unrelated to the answer."
+            }
+          ]
+        },
+        {
+          "stage": "reranking",
+          "label": "Search ordering",
+          "score": 89.7,
+          "improvement_areas": [
+            {
+              "metric": "ndcg_gain",
+              "metric_score": 59.2,
+              "reason": "Reranking showed little improvement; the first ranking may already be strong."
+            },
+            {
+              "metric": "mrr_gain",
+              "metric_score": 62.5,
+              "reason": "Reranking did not move the first relevant result up much."
+            },
+            {
+              "metric": "precision_gain",
+              "metric_score": 50.0,
+              "reason": "Reranking did not bring more relevant chunks into the top results."
+            }
+          ]
+        },
+        {
+          "stage": "augmentation",
+          "label": "Answer context",
+          "score": 92.31,
+          "improvement_areas": [
+            {
+              "metric": "context_precision",
+              "metric_score": 50.0,
+              "reason": "The final prompt contains substantial irrelevant context."
+            }
+          ]
+        }
+      ]
+    },
+    "stages": {
+      "chunking": {
+        "name": "Document preparation",
+        "description": "Whether documents were split without losing important facts.",
+        "score": 97.62,
+        "score_0_1": 0.9762,
+        "rating": "Excellent",
+        "message": "Performance is strong across the available tests. Main improvement areas: semantic chunk stickiness. Only some configured metrics were available.",
+        "evaluation_coverage": 0.7447,
+        "metrics_scored": 11,
+        "metrics_expected": 16,
+        "missing_metrics": [
+          "structural_integrity",
+          "metadata_accuracy",
+          "lexical_cohesion",
+          "semantic_cohesion",
+          "semantic_boundary_clarity"
+        ],
+        "metric_breakdown": {
+          "coverage": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          },
+          "size_compliance": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 1,
+            "direction": "high",
+            "contribution": 1.0
+          },
+          "overlap_ratio": {
+            "value": 0.0,
+            "normalized_score": 1.0,
+            "weight": 0.5,
+            "direction": "ratio",
+            "contribution": 0.5
+          },
+          "size_cv": {
+            "value": 0.2428680934926667,
+            "normalized_score": 0.8046,
+            "weight": 0.2,
+            "direction": "ratio",
+            "contribution": 0.16091812240345366
+          },
+          "evidence_completeness": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          },
+          "evidence_fragmentation": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 1,
+            "direction": "fragmentation",
+            "contribution": 1.0
+          },
+          "metadata_completeness": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 1,
+            "direction": "high",
+            "contribution": 1.0
+          },
+          "boundary_f1": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 1.5,
+            "direction": "high",
+            "contribution": 1.5
+          },
+          "lexical_boundary_clarity": {
+            "value": 0.9761904761904763,
+            "normalized_score": 0.9762,
+            "weight": 0.3,
+            "direction": "high",
+            "contribution": 0.29285714285714287
+          },
+          "lexical_chunk_stickiness": {
+            "value": 0.023809523809523808,
+            "normalized_score": 0.9762,
+            "weight": 0.2,
+            "direction": "low",
+            "contribution": 0.19523809523809524
+          },
+          "semantic_chunk_stickiness": {
+            "value": 0.8826413512415153,
+            "normalized_score": 0.0587,
+            "weight": 0.3,
+            "direction": "cos_low",
+            "contribution": 0.0176037973137727
+          }
+        },
+        "improvement_areas": [
+          {
+            "metric": "semantic_chunk_stickiness",
+            "metric_score": 5.9,
+            "reason": "Adjacent chunks are very similar and may be over-split."
+          }
+        ],
+        "warnings": []
+      },
+      "embedding": {
+        "name": "Semantic indexing",
+        "description": "Whether content is represented and indexed so it can be found.",
+        "score": 98.42,
+        "score_0_1": 0.9842,
+        "rating": "Excellent",
+        "message": "Performance is strong across the available tests. Main improvement areas: negative similarity.",
+        "evaluation_coverage": 1.0,
+        "metrics_scored": 8,
+        "metrics_expected": 8,
+        "missing_metrics": [],
+        "metric_breakdown": {
+          "zero_norm_rate": {
+            "value": 0.0,
+            "normalized_score": 1.0,
+            "weight": 2,
+            "direction": "low",
+            "contribution": 2.0
+          },
+          "duplicate_vector_rate": {
+            "value": 0.0,
+            "normalized_score": 1.0,
+            "weight": 1,
+            "direction": "low",
+            "contribution": 1.0
+          },
+          "index_coverage": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 3,
+            "direction": "high",
+            "contribution": 3.0
+          },
+          "query_topk_recall": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          },
+          "ann_recall_at_k": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 2.0
+          },
+          "positive_similarity": {
+            "value": 0.9962507820030644,
+            "normalized_score": 0.9981,
+            "weight": 0.3,
+            "direction": "cos_high",
+            "contribution": 0.29943761730045965
+          },
+          "negative_similarity": {
+            "value": 0.48171137502798844,
+            "normalized_score": 0.2591,
+            "weight": 0.3,
+            "direction": "cos_low",
+            "contribution": 0.07774329374580173
+          },
+          "similarity_margin": {
+            "value": 0.5145394069750759,
+            "normalized_score": 1.0,
+            "weight": 1.5,
+            "direction": "margin",
+            "contribution": 1.5
+          }
+        },
+        "improvement_areas": [
+          {
+            "metric": "negative_similarity",
+            "metric_score": 25.9,
+            "reason": "Irrelevant content is too similar to the queries."
+          }
+        ],
+        "warnings": []
+      },
+      "retrieval": {
+        "name": "Information search",
+        "description": "How reliably the search finds the required information.",
+        "score": 79.39,
+        "score_0_1": 0.7939,
+        "rating": "Good",
+        "message": "Results look promising, but some areas need improvement. Main improvement areas: precision at k, token iou.",
+        "evaluation_coverage": 1.0,
+        "metrics_scored": 11,
+        "metrics_expected": 11,
+        "missing_metrics": [],
+        "metric_breakdown": {
+          "precision_at_k": {
+            "value": 0.3333333333333333,
+            "normalized_score": 0.3333,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 0.6666666666666666
+          },
+          "recall_at_k": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          },
+          "f1_at_k": {
+            "value": 0.5,
+            "normalized_score": 0.5,
+            "weight": 1,
+            "direction": "high",
+            "contribution": 0.5
+          },
+          "hit_at_k": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 1,
+            "direction": "high",
+            "contribution": 1.0
+          },
+          "mrr_at_k": {
+            "value": 0.75,
+            "normalized_score": 0.75,
+            "weight": 1.5,
+            "direction": "high",
+            "contribution": 1.125
+          },
+          "ndcg_at_k": {
+            "value": 0.8154648767857288,
+            "normalized_score": 0.8155,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 1.6309297535714575
+          },
+          "average_precision_at_k": {
+            "value": 0.75,
+            "normalized_score": 0.75,
+            "weight": 1,
+            "direction": "high",
+            "contribution": 0.75
+          },
+          "token_recall": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          },
+          "token_precision": {
+            "value": 0.39473684210526316,
+            "normalized_score": 0.3947,
+            "weight": 1.5,
+            "direction": "high",
+            "contribution": 0.5921052631578947
+          },
+          "token_iou": {
+            "value": 0.39473684210526316,
+            "normalized_score": 0.3947,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 0.7894736842105263
+          },
+          "complete_evidence_recall": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          }
+        },
+        "improvement_areas": [
+          {
+            "metric": "precision_at_k",
+            "metric_score": 33.3,
+            "reason": "The search returns extra irrelevant chunks."
+          },
+          {
+            "metric": "token_iou",
+            "metric_score": 39.5,
+            "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+          },
+          {
+            "metric": "token_precision",
+            "metric_score": 39.5,
+            "reason": "A large share of the retrieved text is unrelated to the answer."
+          }
+        ],
+        "warnings": []
+      },
+      "reranking": {
+        "name": "Search ordering",
+        "description": "Whether the important results are near the top.",
+        "score": 89.7,
+        "score_0_1": 0.897,
+        "rating": "Very Good",
+        "message": "The evaluated results are strong, with some room to improve. Main improvement areas: ndcg gain, mrr gain.",
+        "evaluation_coverage": 1.0,
+        "metrics_scored": 6,
+        "metrics_expected": 6,
+        "missing_metrics": [],
+        "metric_breakdown": {
+          "ndcg_at_k": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 4,
+            "direction": "high",
+            "contribution": 4.0
+          },
+          "ndcg_gain": {
+            "value": 0.18453512321427123,
+            "normalized_score": 0.5923,
+            "weight": 1.5,
+            "direction": "gain",
+            "contribution": 0.8884013424107033
+          },
+          "mrr_at_k": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 3,
+            "direction": "high",
+            "contribution": 3.0
+          },
+          "mrr_gain": {
+            "value": 0.25,
+            "normalized_score": 0.625,
+            "weight": 1,
+            "direction": "gain",
+            "contribution": 0.625
+          },
+          "precision_gain": {
+            "value": 0.0,
+            "normalized_score": 0.5,
+            "weight": 0.5,
+            "direction": "gain",
+            "contribution": 0.25
+          },
+          "candidate_set_preservation_rate": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 2.0
+          }
+        },
+        "improvement_areas": [
+          {
+            "metric": "ndcg_gain",
+            "metric_score": 59.2,
+            "reason": "Reranking showed little improvement; the first ranking may already be strong."
+          },
+          {
+            "metric": "mrr_gain",
+            "metric_score": 62.5,
+            "reason": "Reranking did not move the first relevant result up much."
+          },
+          {
+            "metric": "precision_gain",
+            "metric_score": 50.0,
+            "reason": "Reranking did not bring more relevant chunks into the top results."
+          }
+        ],
+        "warnings": []
+      },
+      "augmentation": {
+        "name": "Answer context",
+        "description": "Whether the LLM receives complete, relevant supporting material.",
+        "score": 92.31,
+        "score_0_1": 0.9231,
+        "rating": "Excellent",
+        "message": "Performance is strong across the available tests. Main improvement areas: context precision.",
+        "evaluation_coverage": 1.0,
+        "metrics_scored": 7,
+        "metrics_expected": 7,
+        "missing_metrics": [],
+        "metric_breakdown": {
+          "context_precision": {
+            "value": 0.5,
+            "normalized_score": 0.5,
+            "weight": 1.5,
+            "direction": "high",
+            "contribution": 0.75
+          },
+          "context_recall": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 3,
+            "direction": "high",
+            "contribution": 3.0
+          },
+          "context_noise": {
+            "value": 0.5,
+            "normalized_score": 0.5,
+            "weight": 0.5,
+            "direction": "low",
+            "contribution": 0.25
+          },
+          "context_sufficient": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 5,
+            "direction": "high",
+            "contribution": 5.0
+          },
+          "duplicate_ratio": {
+            "value": 0.0,
+            "normalized_score": 1.0,
+            "weight": 0.5,
+            "direction": "low",
+            "contribution": 0.5
+          },
+          "budget_compliant": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 2.0
+          },
+          "evidence_edge_placement": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 0.5,
+            "direction": "high",
+            "contribution": 0.5
+          }
+        },
+        "improvement_areas": [
+          {
+            "metric": "context_precision",
+            "metric_score": 50.0,
+            "reason": "The final prompt contains substantial irrelevant context."
+          }
+        ],
+        "warnings": []
+      },
+      "generation": {
+        "name": "Answer quality",
+        "description": "Answers compared with validated references and labels.",
+        "score": 100.0,
+        "score_0_1": 1.0,
+        "rating": "Excellent",
+        "message": "Performance is strong across the available tests. Only some configured metrics were available.",
+        "evaluation_coverage": 0.1356,
+        "metrics_scored": 2,
+        "metrics_expected": 14,
+        "missing_metrics": [
+          "exact_match",
+          "answer_precision",
+          "answer_recall",
+          "answer_f1",
+          "rouge_l_f1",
+          "required_fact_coverage",
+          "citation_precision",
+          "citation_recall",
+          "citation_f1",
+          "annotated_claim_support",
+          "abstention_accuracy",
+          "task_success"
+        ],
+        "metric_breakdown": {
+          "context_grounding": {
+            "value": 1.0,
+            "normalized_score": 1.0,
+            "weight": 2,
+            "direction": "high",
+            "contribution": 2.0
+          },
+          "unsupported_number_rate": {
+            "value": 0.0,
+            "normalized_score": 1.0,
+            "weight": 2,
+            "direction": "low",
+            "contribution": 2.0
+          }
+        },
+        "improvement_areas": [],
+        "warnings": []
+      },
+      "end_to_end": {
+        "name": "User experience",
+        "description": "Overall correctness, task success and performance.",
+        "score": null,
+        "score_0_1": null,
+        "rating": "Not Evaluated",
+        "message": "Not enough applicable measurements to calculate a score.",
+        "evaluation_coverage": 0.0,
+        "metrics_scored": 0,
+        "metrics_expected": 3,
+        "missing_metrics": [
+          "answer_exact_match",
+          "answer_f1",
+          "task_success_rate"
+        ],
+        "metric_breakdown": {},
+        "improvement_areas": [],
+        "warnings": []
+      }
+    },
+    "stage_weights": {
+      "chunking": 10,
+      "embedding": 10,
+      "retrieval": 20,
+      "reranking": 10,
+      "augmentation": 15,
+      "generation": 20,
+      "end_to_end": 15
+    },
+    "method": "Weighted normalized metrics; metrics that were not measured are left out of the score and shown in the coverage. The overall score weights each stage by its weight x measured coverage. Ratings describe the supplied test set, not production readiness."
+  }
+}

@@ -1,0 +1,62 @@
+/* Cookbook widgets follow Material's light/dark palette and remain usable on phones. */
+.cb-hero, .cb-command, .cb-lab {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  background: var(--md-default-bg-color);
+}
+.cb-hero { background: linear-gradient(125deg, rgba(79, 70, 229, .12), rgba(6, 182, 212, .08)); }
+.md-typeset .cb-eyebrow { font-size: .62rem; font-weight: 700; letter-spacing: .12em; color: var(--md-primary-fg-color); margin: 0 0 .6rem; }
+[data-md-color-scheme="slate"] .cb-eyebrow { color: #a5b4fc; }
+.md-typeset .cb-command h3, .md-typeset .cb-lab h3 { margin-top: 0; }
+.cb-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin: 1rem 0; }
+.cb-command label, .cb-lab label { display: flex; flex-direction: column; gap: .25rem; font-size: .72rem; font-weight: 600; }
+.cb-command input:not([type="checkbox"]), .cb-command select, .cb-lab select {
+  width: 100%; min-width: 0; padding: .6rem; border-radius: 6px;
+  border: 1px solid var(--md-default-fg-color--light);
+  color: var(--md-default-fg-color); background: var(--md-code-bg-color); font: inherit;
+}
+.cb-command .cb-toggle { flex-direction: row; align-items: center; margin: .7rem 0; }
+.cb-command input[type="checkbox"] { width: 1rem; height: 1rem; accent-color: var(--md-primary-fg-color); }
+.cb-baseline { padding: .7rem; border-left: 3px solid var(--md-primary-fg-color); }
+.cb-actions, .cb-stage-buttons { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
+.cb-command button, .cb-lab button {
+  border: 1px solid var(--md-default-fg-color--light); border-radius: 6px;
+  background: var(--md-code-bg-color); color: var(--md-default-fg-color);
+  padding: .4rem .65rem; cursor: pointer; font: inherit; font-size: .7rem;
+}
+.cb-command button.cb-primary, .cb-lab button.cb-primary { color: #fff; background: #4f46e5; border-color: #4f46e5; }
+.cb-command button:disabled { opacity: .5; cursor: not-allowed; }
+.cb-command :focus-visible, .cb-lab :focus-visible { outline: 3px solid #0891b2; outline-offset: 3px; }
+.cb-command .cb-error { color: #b91c1c; font-weight: 600; }
+[data-md-color-scheme="slate"] .cb-command .cb-error { color: #fca5a5; }
+.cb-command pre, .cb-lab pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; border-radius: 8px; background: var(--md-code-bg-color); }
+.md-typeset .cb-command pre code { white-space: pre-wrap; padding: 0; }
+.cb-copy-status, .cb-play-status, .cb-output-note, .cb-provenance { font-size: .65rem; color: var(--md-default-fg-color--light); }
+.cb-diagram svg { width: 100%; height: auto; display: block; margin: .9rem 0 .3rem; }
+.cb-diagram rect { fill: var(--md-code-bg-color); stroke: var(--md-default-fg-color--light); stroke-width: 1; transition: fill .2s, stroke .2s; }
+.cb-diagram text { fill: var(--md-default-fg-color); text-anchor: middle; font-family: var(--md-text-font-family); }
+.cb-svg-number { font-size: 12px; font-weight: 700; }
+.cb-svg-label { font-size: 15px; font-weight: 600; }
+.cb-diagram path { stroke: var(--md-default-fg-color--light); fill: none; stroke-width: 1.5; }
+.cb-diagram .cb-active rect { fill: rgba(99, 102, 241, .18); stroke: #818cf8; stroke-width: 3; }
+.cb-diagram .cb-failed rect { stroke: #f97316; stroke-width: 3; stroke-dasharray: 5 3; }
+.cb-playing .cb-active rect { animation: cb-pulse 1.3s ease-in-out infinite alternate; }
+.cb-stage-buttons button[aria-pressed="true"] { border-color: #818cf8; background: rgba(99, 102, 241, .18); }
+.cb-step { border-left: 3px solid #818cf8; padding: .8rem; margin: 1rem 0; background: var(--md-code-bg-color); border-radius: 0 8px 8px 0; }
+.md-typeset .cb-step h4 { margin: .2rem 0; }
+.cb-step p { font-size: .75rem; }
+.cb-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; margin-top: 1rem; }
+.cb-metrics div { padding: .7rem; background: var(--md-code-bg-color); border-radius: 8px; }
+.cb-metrics span { display: block; font-size: .65rem; }
+.cb-metrics strong { display: block; font-size: 1rem; margin-top: .2rem; }
+.cb-overall { font-size: .72rem; }
+@keyframes cb-pulse { from { stroke-opacity: .4; } to { stroke-opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .cb-playing .cb-active rect { animation: none; } .cb-diagram rect { transition: none; } }
+@media (max-width: 600px) {
+  .cb-fields, .cb-metrics { grid-template-columns: 1fr; }
+  .cb-hero, .cb-command, .cb-lab { padding: .8rem; }
+  .cb-diagram { overflow-x: auto; }
+  .cb-diagram svg { min-width: 620px; }
+}

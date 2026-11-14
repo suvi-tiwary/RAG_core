@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="title desc">
+  <title id="title">Simple RAG</title>
+  <desc id="desc">The question is embedded and the five most similar chunks are retrieved. The keyword reranker adds a bonus for shared words and keeps the best two. The grounded generator sends them to the LLM, which answers with a citation.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; }
+      .title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .h { font: 700 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .cls { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0e7490; }
+      .ex { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; white-space: pre; }
+      .sm { font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; white-space: pre; }
+      .tag { font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #b45309; }
+      .note { font: 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .big { font: 600 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .keep { fill: #15803d; font-weight: 700; }
+      .drop { fill: #94a3b8; }
+      .code { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #e2e8f0; white-space: pre; }
+      .cm { fill: #94a3b8; }
+      .st { fill: #86efac; }
+      .q { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; }
+      .search { fill: #ecfeff; stroke: #06b6d4; stroke-width: 1.5; }
+      .gen { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 2; stroke-dasharray: 6 5; animation: dash 0.9s linear infinite; }
+      .hl { fill: none; stroke: #f97316; stroke-width: 3; opacity: 0; animation: glow 10s infinite; }
+      .bar { animation: grow 10s infinite; transform-box: fill-box; transform-origin: left; }
+      @keyframes dash { to { stroke-dashoffset: -11; } }
+      @keyframes glow { 0% { opacity: 0; } 2% { opacity: 1; } 18% { opacity: 1; } 21% { opacity: 0; } 100% { opacity: 0; } }
+      @keyframes grow { 0%, 19% { transform: scaleX(1); } 20% { transform: scaleX(0); } 30%, 100% { transform: scaleX(1); } }
+      @media (prefers-reduced-motion: reduce) { .flow, .hl, .bar { animation: none; } }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="959" height="599" rx="16"/>
+  <text class="title" x="30" y="44">Simple RAG: retrieve → rerank → generate</text>
+  <text class="sub" x="30" y="66">One search, one LLM call. rag_type="simple"</text>
+
+  <!-- question -->
+  <rect class="q" x="30" y="84" width="900" height="44" rx="10"/>
+  <text class="big" x="48" y="112">Question:  “How many leave days do I get?”</text>
+
+  <path class="flow" d="M170 130 V154" marker-end="url(#arrow)"/>
+
+  <!-- 1. retrieve -->
+  <rect class="search" x="30" y="160" width="280" height="252" rx="10"/>
+  <text class="h" x="46" y="186">1 · Retrieve <tspan class="tag" dx="6">top_k=5</tspan></text>
+  <text class="cls" x="46" y="206">Retriever + MemoryStore</text>
+  <text class="note" x="46" y="228">embed question, compare with every chunk</text>
+  <text class="ex" x="46" y="262">chunk_0</text>
+  <text class="ex" x="46" y="290">chunk_7</text>
+  <text class="ex" x="46" y="318">chunk_3</text>
+  <text class="ex" x="46" y="346">chunk_9</text>
+  <text class="ex" x="46" y="374">chunk_2</text>
+  <rect class="bar" x="112" y="252" width="123" height="12" rx="3" fill="#06b6d4"/>
+  <rect class="bar" x="112" y="280" width="111" height="12" rx="3" fill="#22d3ee"/>
+  <rect class="bar" x="112" y="308" width="92" height="12" rx="3" fill="#67e8f9"/>
+  <rect class="bar" x="112" y="336" width="83" height="12" rx="3" fill="#a5f3fc"/>
+  <rect class="bar" x="112" y="364" width="72" height="12" rx="3" fill="#cffafe"/>
+  <text class="ex" x="292" y="262" text-anchor="end">0.82</text>
+  <text class="ex" x="292" y="290" text-anchor="end">0.74</text>
+  <text class="ex" x="292" y="318" text-anchor="end">0.61</text>
+  <text class="ex" x="292" y="346" text-anchor="end">0.55</text>
+  <text class="ex" x="292" y="374" text-anchor="end">0.48</text>
+  <text class="note" x="46" y="400">cosine similarity, best first</text>
+
+  <path class="flow" d="M312 286 H336" marker-end="url(#arrow)"/>
+
+  <!-- 2. rerank -->
+  <rect class="search" x="340" y="160" width="280" height="252" rx="10"/>
+  <text class="h" x="356" y="186">2 · Rerank <tspan class="tag" dx="6">top_n=2</tspan></text>
+  <text class="cls" x="356" y="206">KeywordReranker</text>
+  <text class="note" x="356" y="228">score + 0.05 × shared words</text>
+  <text class="ex" x="356" y="262">chunk_0  0.82+0.15 = <tspan class="keep">0.97 ✓</tspan></text>
+  <text class="ex" x="356" y="290">chunk_3  0.61+0.20 = <tspan class="keep">0.81 ✓</tspan></text>
+  <text class="ex drop" x="356" y="318">chunk_7  0.74+0.00 = 0.74 ✗</text>
+  <text class="ex drop" x="356" y="346">chunk_9  0.55+0.05 = 0.60 ✗</text>
+  <text class="ex drop" x="356" y="374">chunk_2  0.48+0.00 = 0.48 ✗</text>
+  <text class="note" x="356" y="400">chunk_3 shares “leave days” → moves up</text>
+
+  <path class="flow" d="M622 286 H646" marker-end="url(#arrow)"/>
+
+  <!-- 3. generate -->
+  <rect class="gen" x="650" y="160" width="280" height="252" rx="10"/>
+  <text class="h" x="666" y="186">3 · Generate</text>
+  <text class="cls" x="666" y="206">GroundedGenerator → LLM</text>
+  <text class="note" x="666" y="228">prompt sent to the LLM:</text>
+  <text class="sm" x="666" y="252"><tspan class="tag">SYSTEM</tspan>  Answer only from the</text>
+  <text class="sm" x="666" y="268">        context. Cite chunk IDs.</text>
+  <text class="sm" x="666" y="290"><tspan class="tag">CONTEXT</tspan></text>
+  <text class="sm" x="666" y="306">[chunk_0] Source: hr.pdf</text>
+  <text class="sm" x="666" y="322">Employees get 20 paid leave…</text>
+  <text class="sm" x="666" y="338">[chunk_3] Source: hr.pdf</text>
+  <text class="sm" x="666" y="354">Leave days reset every Jan…</text>
+  <text class="sm" x="666" y="376"><tspan class="tag">QUESTION</tspan></text>
+  <text class="sm" x="666" y="392">How many leave days do I get?</text>
+
+  <path class="flow" d="M790 414 V438" marker-end="url(#arrow)"/>
+
+  <!-- answer -->
+  <rect class="gen" x="30" y="444" width="900" height="48" rx="10"/>
+  <text class="big" x="48" y="474">Answer:  “You get 20 paid leave days every year [chunk_0].”</text>
+  <text class="note" x="912" y="474" text-anchor="end">no useful chunk → “I don't know…”</text>
+
+  <!-- highlight each step in turn -->
+  <rect class="hl" x="30" y="84" width="900" height="44" rx="10" style="animation-delay:0s"/>
+  <rect class="hl" x="30" y="160" width="280" height="252" rx="10" style="animation-delay:2s"/>
+  <rect class="hl" x="340" y="160" width="280" height="252" rx="10" style="animation-delay:4s"/>
+  <rect class="hl" x="650" y="160" width="280" height="252" rx="10" style="animation-delay:6s"/>
+  <rect class="hl" x="30" y="444" width="900" height="48" rx="10" style="animation-delay:8s"/>
+
+  <!-- code -->
+  <rect x="30" y="512" width="900" height="66" rx="12" fill="#0f172a"/>
+  <text class="code" x="52" y="540">rag = SimpleRAG(retriever, reranker, generator, top_k=5, top_n=2)</text>
+  <text class="code" x="52" y="562">rag.answer(<tspan class="st">"How many leave days do I get?"</tspan>)   <tspan class="cm"># or RAGTitan("simple").ask(...)</tspan></text>
+</svg>

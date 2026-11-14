@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 512"
+     width="960" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">rag-titan: Catch regressions</title>
+  <desc id="desc">Save a baseline, then compare a broken run against it; the command exits with code 1.</desc>
+  <defs>
+    <style>
+.t { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; }
+.bar { font: 600 12px system-ui, -apple-system, "Segoe UI", sans-serif;
+       fill: #94a3b8; text-anchor: middle; }
+@media (prefers-reduced-motion: reduce) {
+  .t { animation: none !important; opacity: 1; }
+  .cover { display: none; }
+}
+@keyframes l0 { 0%, 1.93% { opacity: 0; } 2.90%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l0 { animation: l0 20.7s infinite; }
+@keyframes c0 { 0%, 1.93% { transform: translateX(0); } 9.66%, 100% { transform: translateX(578px); } }
+.c0 { animation: c0 20.7s infinite steps(67, end); }
+@keyframes l1 { 0%, 14.01% { opacity: 0; } 14.98%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l1 { animation: l1 20.7s infinite; }
+@keyframes l2 { 0%, 16.18% { opacity: 0; } 17.15%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l2 { animation: l2 20.7s infinite; }
+@keyframes l3 { 0%, 18.36% { opacity: 0; } 19.32%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l3 { animation: l3 20.7s infinite; }
+@keyframes l4 { 0%, 20.53% { opacity: 0; } 21.50%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l4 { animation: l4 20.7s infinite; }
+@keyframes l5 { 0%, 25.60% { opacity: 0; } 26.57%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l5 { animation: l5 20.7s infinite; }
+@keyframes c5 { 0%, 25.60% { transform: translateX(0); } 33.33%, 100% { transform: translateX(840px); } }
+.c5 { animation: c5 20.7s infinite steps(98, end); }
+@keyframes l6 { 0%, 33.33% { opacity: 0; } 34.30%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l6 { animation: l6 20.7s infinite; }
+@keyframes c6 { 0%, 33.33% { transform: translateX(0); } 41.06%, 100% { transform: translateX(249px); } }
+.c6 { animation: c6 20.7s infinite steps(28, end); }
+@keyframes l7 { 0%, 45.41% { opacity: 0; } 46.38%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l7 { animation: l7 20.7s infinite; }
+@keyframes l8 { 0%, 47.58% { opacity: 0; } 48.55%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l8 { animation: l8 20.7s infinite; }
+@keyframes l9 { 0%, 49.76% { opacity: 0; } 50.72%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l9 { animation: l9 20.7s infinite; }
+@keyframes l10 { 0%, 51.93% { opacity: 0; } 52.90%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l10 { animation: l10 20.7s infinite; }
+@keyframes l11 { 0%, 54.11% { opacity: 0; } 55.07%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l11 { animation: l11 20.7s infinite; }
+@keyframes l12 { 0%, 56.28% { opacity: 0; } 57.25%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l12 { animation: l12 20.7s infinite; }
+@keyframes l13 { 0%, 58.45% { opacity: 0; } 59.42%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l13 { animation: l13 20.7s infinite; }
+@keyframes l14 { 0%, 63.53% { opacity: 0; } 64.49%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l14 { animation: l14 20.7s infinite; }
+@keyframes c14 { 0%, 63.53% { transform: translateX(0); } 71.26%, 100% { transform: translateX(71px); } }
+.c14 { animation: c14 20.7s infinite steps(7, end); }
+@keyframes l15 { 0%, 75.60% { opacity: 0; } 76.57%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l15 { animation: l15 20.7s infinite; }
+    </style>
+    <clipPath id="screen"><rect x="0" y="0" width="960" height="512"/></clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="959" height="511" rx="14"
+        fill="#0f172a" stroke="#1e293b"/>
+  <rect x="0.5" y="0.5" width="959" height="40" rx="14" fill="#1e293b"/>
+  <rect x="0.5" y="26" width="959" height="15" fill="#1e293b"/>
+  <circle cx="26" cy="21" r="6" fill="#f87171"/>
+  <circle cx="46" cy="21" r="6" fill="#fbbf24"/>
+  <circle cx="66" cy="21" r="6" fill="#4ade80"/>
+  <text class="bar" x="480" y="25">rag-titan — terminal</text>
+  <text class="t l0" x="44" y="90" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>rag-titan evaluate --input sample.json --output baseline.json --k 3</text>
+<g clip-path="url(#screen)"><rect class="cover c0" x="60.9" y="73" width="578" height="24" fill="#0f172a"/></g>
+  <text class="t l1" x="44" y="114" fill="#94a3b8">Reports saved: baseline.json and baseline.md</text>
+  <text class="t l2" x="44" y="138" fill="#86efac">Overall score: 93.2/100 (Excellent)</text>
+  <text class="t l3" x="44" y="162" fill="#94a3b8">Status: Evaluated | Measurement coverage: 97%</text>
+  <text class="t l4" x="44" y="186" fill="#86efac">First failing stage: none</text>
+  <text class="t l5" x="44" y="224" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>rag-titan evaluate --input missed-evidence.json --output candidate.json --baseline baseline.json \</text>
+<g clip-path="url(#screen)"><rect class="cover c5" x="60.9" y="207" width="840" height="24" fill="#0f172a"/></g>
+  <text class="t l6" x="44" y="248" fill="#e2e8f0">    --k 3 --fail-on-regression</text>
+<g clip-path="url(#screen)"><rect class="cover c6" x="60.9" y="231" width="249" height="24" fill="#0f172a"/></g>
+  <text class="t l7" x="44" y="272" fill="#94a3b8">Reports saved: candidate.json and candidate.md</text>
+  <text class="t l8" x="44" y="296" fill="#fdba74">Overall score: 63.2/100 (Average)</text>
+  <text class="t l9" x="44" y="320" fill="#94a3b8">Status: Action Required | Measurement coverage: 97%</text>
+  <text class="t l10" x="44" y="344" fill="#fdba74">First failing stage: retrieval</text>
+  <text class="t l11" x="44" y="368" fill="#94a3b8">Queries to look at:</text>
+  <text class="t l12" x="44" y="392" fill="#94a3b8">  - q1 (retrieval): no relevant chunk in the top K</text>
+  <text class="t l13" x="44" y="416" fill="#fca5a5">Regressions against the baseline: retrieval.precision_at_k, retrieval.recall_at_k, … (+29 more)</text>
+  <text class="t l14" x="44" y="454" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>echo $?</text>
+<g clip-path="url(#screen)"><rect class="cover c14" x="60.9" y="437" width="71" height="24" fill="#0f172a"/></g>
+  <text class="t l15" x="44" y="478" fill="#fca5a5">1</text>
+</svg>

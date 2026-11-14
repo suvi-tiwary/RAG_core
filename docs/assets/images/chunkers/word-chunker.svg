@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-labelledby="title desc">
+<title id="title">WordChunker</title>
+<desc id="desc">WordChunker cuts the leave-policy text into 19 words and makes 5 chunks of 6 words that overlap by 2.</desc>
+<!-- made by tools/diagrams/make_chunk_diagrams.py from real chunker output; do not edit -->
+<defs><style>
+.bg { fill: #ffffff; stroke: #e2e8f0; }
+.title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+.sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+.h { font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #334155; }
+.unit { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1; }
+.mono { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a;
+        white-space: pre; }
+.pick { fill: none; stroke: #f97316; stroke-width: 2.5; }
+.shared { fill: rgba(249, 115, 22, 0.28); stroke: #f97316; stroke-width: 2.5; }
+.card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+.tag { font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #64748b; }
+.ov { fill: #ea580c; font-weight: 700; }
+.foot { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; }
+
+@keyframes h0 { 0%, 0.00% { opacity: 0; } 0.50%, 15.50% { opacity: 1; } 16.00%, 100% { opacity: 0; } }
+@keyframes c0 { 0%, 0.00% { opacity: 0.15; } 0.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h0 { opacity: 0; animation: h0 10.0s infinite; }
+.c0 { opacity: 0.15; animation: c0 10.0s infinite; }
+@keyframes h1 { 0%, 16.00% { opacity: 0; } 16.50%, 31.50% { opacity: 1; } 32.00%, 100% { opacity: 0; } }
+@keyframes c1 { 0%, 16.00% { opacity: 0.15; } 16.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h1 { opacity: 0; animation: h1 10.0s infinite; }
+.c1 { opacity: 0.15; animation: c1 10.0s infinite; }
+@keyframes h2 { 0%, 32.00% { opacity: 0; } 32.50%, 47.50% { opacity: 1; } 48.00%, 100% { opacity: 0; } }
+@keyframes c2 { 0%, 32.00% { opacity: 0.15; } 32.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h2 { opacity: 0; animation: h2 10.0s infinite; }
+.c2 { opacity: 0.15; animation: c2 10.0s infinite; }
+@keyframes h3 { 0%, 48.00% { opacity: 0; } 48.50%, 63.50% { opacity: 1; } 64.00%, 100% { opacity: 0; } }
+@keyframes c3 { 0%, 48.00% { opacity: 0.15; } 48.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h3 { opacity: 0; animation: h3 10.0s infinite; }
+.c3 { opacity: 0.15; animation: c3 10.0s infinite; }
+@keyframes h4 { 0%, 64.00% { opacity: 0; } 64.50%, 79.50% { opacity: 1; } 80.00%, 100% { opacity: 0; } }
+@keyframes c4 { 0%, 64.00% { opacity: 0.15; } 64.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h4 { opacity: 0; animation: h4 10.0s infinite; }
+.c4 { opacity: 0.15; animation: c4 10.0s infinite; }
+@media (prefers-reduced-motion: reduce) { .h0, .h1, .h2, .h3, .h4 { animation: none; opacity: 0; } .c0, .c1, .c2, .c3, .c4 { animation: none; opacity: 1; } }
+</style></defs>
+<rect class="bg" x="1" y="1" width="958" height="438" rx="14"/>
+<text class="title" x="40" y="46">WordChunker</text>
+<text class="sub" x="40" y="70">WordChunker(chunk_size=6, overlap=2): windows of 6 words, each starting 4 words after the last one.</text>
+<text class="sub" x="40" y="90">Orange frame = the chunk being made. Filled orange = overlap, repeated from the chunk before.</text>
+<text class="h" x="40" y="114">1. The text, cut into 19 words</text>
+<rect class="unit" x="40.0" y="128" width="52.5" height="26" rx="5"/>
+<text class="mono" x="48.0" y="146">Leave</text>
+<rect class="unit" x="98.5" y="128" width="59.8" height="26" rx="5"/>
+<text class="mono" x="106.5" y="146">policy</text>
+<rect class="unit" x="164.3" y="128" width="52.5" height="26" rx="5"/>
+<text class="mono" x="172.3" y="146">Staff</text>
+<rect class="unit" x="222.8" y="128" width="37.9" height="26" rx="5"/>
+<text class="mono" x="230.8" y="146">get</text>
+<rect class="unit" x="266.7" y="128" width="59.8" height="26" rx="5"/>
+<text class="mono" x="274.7" y="146">twenty</text>
+<rect class="unit" x="332.5" y="128" width="52.5" height="26" rx="5"/>
+<text class="mono" x="340.5" y="146">days.</text>
+<rect class="unit" x="391.0" y="128" width="59.8" height="26" rx="5"/>
+<text class="mono" x="399.0" y="146">Unused</text>
+<rect class="unit" x="456.8" y="128" width="45.2" height="26" rx="5"/>
+<text class="mono" x="464.8" y="146">days</text>
+<rect class="unit" x="508.0" y="128" width="52.5" height="26" rx="5"/>
+<text class="mono" x="516.0" y="146">carry</text>
+<rect class="unit" x="566.5" y="128" width="52.5" height="26" rx="5"/>
+<text class="mono" x="574.5" y="146">over.</text>
+<rect class="unit" x="625.0" y="128" width="37.9" height="26" rx="5"/>
+<text class="mono" x="633.0" y="146">Ask</text>
+<rect class="unit" x="668.9" y="128" width="30.6" height="26" rx="5"/>
+<text class="mono" x="676.9" y="146">HR</text>
+<rect class="unit" x="705.5" y="128" width="37.9" height="26" rx="5"/>
+<text class="mono" x="713.5" y="146">for</text>
+<rect class="unit" x="749.4" y="128" width="37.9" height="26" rx="5"/>
+<text class="mono" x="757.4" y="146">the</text>
+<rect class="unit" x="793.3" y="128" width="52.5" height="26" rx="5"/>
+<text class="mono" x="801.3" y="146">form.</text>
+<rect class="unit" x="851.8" y="128" width="45.2" height="26" rx="5"/>
+<text class="mono" x="859.8" y="146">Sick</text>
+<rect class="unit" x="40.0" y="160" width="52.5" height="26" rx="5"/>
+<text class="mono" x="48.0" y="178">leave</text>
+<rect class="unit" x="98.5" y="160" width="30.6" height="26" rx="5"/>
+<text class="mono" x="106.5" y="178">is</text>
+<rect class="unit" x="135.1" y="160" width="81.7" height="26" rx="5"/>
+<text class="mono" x="143.1" y="178">separate.</text>
+<g class="h0"><rect class="pick" x="38.0" y="126" width="56.5" height="30" rx="6"/>
+<rect class="pick" x="96.5" y="126" width="63.8" height="30" rx="6"/>
+<rect class="pick" x="162.3" y="126" width="56.5" height="30" rx="6"/>
+<rect class="pick" x="220.8" y="126" width="41.9" height="30" rx="6"/>
+<rect class="pick" x="264.7" y="126" width="63.8" height="30" rx="6"/>
+<rect class="pick" x="330.5" y="126" width="56.5" height="30" rx="6"/></g>
+<g class="h1"><rect class="pick" x="389.0" y="126" width="63.8" height="30" rx="6"/>
+<rect class="pick" x="454.8" y="126" width="49.2" height="30" rx="6"/>
+<rect class="pick" x="506.0" y="126" width="56.5" height="30" rx="6"/>
+<rect class="pick" x="564.5" y="126" width="56.5" height="30" rx="6"/><rect class="shared" x="264.7" y="126" width="63.8" height="30" rx="6"/>
+<rect class="shared" x="330.5" y="126" width="56.5" height="30" rx="6"/></g>
+<g class="h2"><rect class="pick" x="623.0" y="126" width="41.9" height="30" rx="6"/>
+<rect class="pick" x="666.9" y="126" width="34.6" height="30" rx="6"/>
+<rect class="pick" x="703.5" y="126" width="41.9" height="30" rx="6"/>
+<rect class="pick" x="747.4" y="126" width="41.9" height="30" rx="6"/><rect class="shared" x="506.0" y="126" width="56.5" height="30" rx="6"/>
+<rect class="shared" x="564.5" y="126" width="56.5" height="30" rx="6"/></g>
+<g class="h3"><rect class="pick" x="791.3" y="126" width="56.5" height="30" rx="6"/>
+<rect class="pick" x="849.8" y="126" width="49.2" height="30" rx="6"/>
+<rect class="pick" x="38.0" y="158" width="56.5" height="30" rx="6"/>
+<rect class="pick" x="96.5" y="158" width="34.6" height="30" rx="6"/><rect class="shared" x="703.5" y="126" width="41.9" height="30" rx="6"/>
+<rect class="shared" x="747.4" y="126" width="41.9" height="30" rx="6"/></g>
+<g class="h4"><rect class="pick" x="133.1" y="158" width="85.7" height="30" rx="6"/><rect class="shared" x="38.0" y="158" width="56.5" height="30" rx="6"/>
+<rect class="shared" x="96.5" y="158" width="34.6" height="30" rx="6"/></g>
+<text class="h" x="40" y="210">2. The chunks (real output)</text>
+<g class="c0"><rect class="card" x="40" y="220" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="241">C0</text>
+<text class="mono" x="84" y="241">Leave policy Staff get twenty days.</text></g>
+<g class="c1"><rect class="card" x="40" y="256" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="277">C1</text>
+<text class="mono" x="84" y="277"><tspan class="ov">twenty days.</tspan> Unused days carry over.</text></g>
+<g class="c2"><rect class="card" x="40" y="292" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="313">C2</text>
+<text class="mono" x="84" y="313"><tspan class="ov">carry over.</tspan> Ask HR for the</text></g>
+<g class="c3"><rect class="card" x="40" y="328" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="349">C3</text>
+<text class="mono" x="84" y="349"><tspan class="ov">for the</tspan> form. Sick leave is</text></g>
+<g class="c4"><rect class="card" x="40" y="364" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="385">C4</text>
+<text class="mono" x="84" y="385"><tspan class="ov">leave is</tspan> separate.</text></g>
+<text class="foot" x="40" y="420">N = 19 words · S = 6 · O = 2 · H = 4 · K = 1 + ⌈(N − S) / H⌉ = 5 chunks</text>
+</svg>

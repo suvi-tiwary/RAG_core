@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500" role="img" aria-labelledby="title desc">
+  <title id="title">Indexing pipeline</title>
+  <desc id="desc">Load turns a file into a document dict, chunk splits it into overlapping word windows, embed turns each chunk into a vector, store saves chunks with vectors for search.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; }
+      .title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .label { font: 600 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #1e3a8a; text-anchor: middle; }
+      .cls { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #3b82f6; text-anchor: middle; }
+      .head { font: 700 11px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: .05em; }
+      .ex { font: 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; white-space: pre; }
+      .note { font: 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .code { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #e2e8f0; white-space: pre; }
+      .cm { fill: #94a3b8; }
+      .st { fill: #86efac; }
+      .step { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.5; }
+      .card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 2; stroke-dasharray: 6 5; animation: dash 0.9s linear infinite; }
+      .hl { fill: none; stroke: #f97316; stroke-width: 3; opacity: 0; animation: glow 8s infinite; }
+      @keyframes dash { to { stroke-dashoffset: -11; } }
+      @keyframes glow { 0% { opacity: 0; } 3% { opacity: 1; } 22% { opacity: 1; } 26% { opacity: 0; } 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .flow, .hl { animation: none; } }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="959" height="499" rx="16"/>
+  <text class="title" x="30" y="44">Indexing: load → chunk → embed → store</text>
+  <text class="sub" x="30" y="66">What your data looks like after each step (IndexingPipeline.run).</text>
+
+  <!-- step headers -->
+  <rect class="step" x="30" y="86" width="200" height="56" rx="10"/>
+  <text class="label" x="130" y="110">1 · Load</text>
+  <text class="cls" x="130" y="130">PdfLoader · DocxLoader</text>
+
+  <rect class="step" x="260" y="86" width="200" height="56" rx="10"/>
+  <text class="label" x="360" y="110">2 · Chunk</text>
+  <text class="cls" x="360" y="130">WordChunker</text>
+
+  <rect class="step" x="490" y="86" width="200" height="56" rx="10"/>
+  <text class="label" x="590" y="110">3 · Embed</text>
+  <text class="cls" x="590" y="130">OllamaEmbedder</text>
+
+  <rect class="step" x="720" y="86" width="200" height="56" rx="10"/>
+  <text class="label" x="820" y="110">4 · Store</text>
+  <text class="cls" x="820" y="130">MemoryStore</text>
+
+  <path class="flow" d="M232 114 H256" marker-end="url(#arrow)"/>
+  <path class="flow" d="M462 114 H486" marker-end="url(#arrow)"/>
+  <path class="flow" d="M692 114 H716" marker-end="url(#arrow)"/>
+
+  <!-- card 1: document dict -->
+  <rect class="card" x="30" y="158" width="200" height="232" rx="10"/>
+  <text class="head" x="44" y="182">DOCUMENT DICT</text>
+  <text class="ex" x="44" y="208">{</text>
+  <text class="ex" x="44" y="227">  "source": "hr.pdf",</text>
+  <text class="ex" x="44" y="246">  "file_type": ".pdf",</text>
+  <text class="ex" x="44" y="265">  "text": "Employees</text>
+  <text class="ex" x="44" y="284">    get 20 paid leave</text>
+  <text class="ex" x="44" y="303">    days every year.</text>
+  <text class="ex" x="44" y="322">    Salary is paid …"</text>
+  <text class="ex" x="44" y="341">}</text>
+  <text class="note" x="44" y="372">one dict per file</text>
+
+  <!-- card 2: overlapping word windows -->
+  <rect class="card" x="260" y="158" width="200" height="232" rx="10"/>
+  <text class="head" x="274" y="182">SIZE 150 · OVERLAP 30</text>
+  <line x1="325" y1="206" x2="450" y2="206" stroke="#94a3b8"/>
+  <text class="note" x="274" y="210">words</text>
+  <rect x="325" y="220" width="48" height="16" rx="3" fill="#93c5fd"/>
+  <rect x="363" y="246" width="48" height="16" rx="3" fill="#93c5fd"/>
+  <rect x="402" y="272" width="48" height="16" rx="3" fill="#93c5fd"/>
+  <rect x="363" y="220" width="10" height="16" fill="#2563eb"/>
+  <rect x="363" y="246" width="10" height="16" fill="#2563eb"/>
+  <rect x="402" y="246" width="9" height="16" fill="#2563eb"/>
+  <rect x="402" y="272" width="9" height="16" fill="#2563eb"/>
+  <text class="ex" x="274" y="232">chunk_0</text>
+  <text class="ex" x="274" y="258">chunk_1</text>
+  <text class="ex" x="274" y="284">chunk_2</text>
+  <text class="note" x="274" y="318">step = 150 − 30 = 120 words</text>
+  <text class="note" x="274" y="342">dark = shared words, so a</text>
+  <text class="note" x="274" y="360">sentence is never lost</text>
+  <text class="note" x="274" y="378">between two chunks</text>
+
+  <!-- card 3: vectors -->
+  <rect class="card" x="490" y="158" width="200" height="232" rx="10"/>
+  <text class="head" x="504" y="182">ONE VECTOR PER CHUNK</text>
+  <text class="ex" x="504" y="208">"chunk_0" →</text>
+  <text class="ex" x="504" y="227">[ 0.12, -0.08, 0.33,</text>
+  <text class="ex" x="504" y="246">  0.91, -0.27, … ]</text>
+  <g>
+    <rect x="504" y="264" width="20" height="20" fill="#bfdbfe"/>
+    <rect x="526" y="264" width="20" height="20" fill="#e2e8f0"/>
+    <rect x="548" y="264" width="20" height="20" fill="#93c5fd"/>
+    <rect x="570" y="264" width="20" height="20" fill="#1d4ed8"/>
+    <rect x="592" y="264" width="20" height="20" fill="#e2e8f0"/>
+    <rect x="614" y="264" width="20" height="20" fill="#60a5fa"/>
+    <rect x="636" y="264" width="20" height="20" fill="#dbeafe"/>
+    <rect x="658" y="264" width="20" height="20" fill="#3b82f6"/>
+  </g>
+  <text class="note" x="504" y="314">768 numbers that capture</text>
+  <text class="note" x="504" y="332">the meaning of the text.</text>
+  <text class="note" x="504" y="356">Similar meaning →</text>
+  <text class="note" x="504" y="374">similar vectors.</text>
+
+  <!-- card 4: stored records -->
+  <rect class="card" x="720" y="158" width="200" height="232" rx="10"/>
+  <text class="head" x="734" y="182">STORED RECORDS</text>
+  <text class="ex" x="734" y="208">id       source  vector</text>
+  <line x1="734" y1="215" x2="906" y2="215" stroke="#cbd5e1"/>
+  <text class="ex" x="734" y="234">chunk_0  hr.pdf  ▮▮▮</text>
+  <text class="ex" x="734" y="253">chunk_1  hr.pdf  ▮▮▮</text>
+  <text class="ex" x="734" y="272">chunk_2  it.pdf  ▮▮▮</text>
+  <text class="ex" x="734" y="291">…</text>
+  <text class="ex" x="734" y="322">count()  → 12</text>
+  <text class="ex" x="734" y="341">search(vector, top_k)</text>
+  <text class="ex" x="734" y="360">  → most similar first</text>
+
+  <!-- highlight each step in turn -->
+  <rect class="hl" x="30" y="86" width="200" height="304" rx="10" style="animation-delay:0s"/>
+  <rect class="hl" x="260" y="86" width="200" height="304" rx="10" style="animation-delay:2s"/>
+  <rect class="hl" x="490" y="86" width="200" height="304" rx="10" style="animation-delay:4s"/>
+  <rect class="hl" x="720" y="86" width="200" height="304" rx="10" style="animation-delay:6s"/>
+
+  <!-- code -->
+  <rect x="30" y="414" width="900" height="62" rx="12" fill="#0f172a"/>
+  <text class="code" x="52" y="440">pipeline.run([<tspan class="st">"hr.pdf"</tspan>, <tspan class="st">"it.pdf"</tspan>])     <tspan class="cm"># → 12 chunks stored</tspan></text>
+  <text class="code" x="52" y="462"><tspan class="cm"># RAGTitan.index([...]) runs this pipeline for you</tspan></text>
+</svg>

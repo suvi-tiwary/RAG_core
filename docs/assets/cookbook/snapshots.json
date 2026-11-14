@@ -1,0 +1,2115 @@
+{
+  "version": "0.8.5",
+  "cases": {
+    "sample": {
+      "query": {
+        "id": "q1",
+        "expected_chunk_ids": [
+          "c1"
+        ],
+        "expected_evidence": [
+          "Employees get 25 days of annual leave."
+        ],
+        "retrieved_ids": [
+          "c2",
+          "c1",
+          "c3"
+        ],
+        "reranked_ids": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "context_ids": [
+          "c1",
+          "c2"
+        ],
+        "answer": "Employees get 25 days of annual leave.",
+        "expected_answer": "Employees get 25 days of annual leave.",
+        "required_facts": [
+          "days"
+        ],
+        "citations": [
+          "c1"
+        ],
+        "expected_citations": [
+          "c1"
+        ],
+        "verified_claims": [
+          {
+            "text": "Employees get 25 days of annual leave.",
+            "supported": true
+          }
+        ],
+        "answerable": true,
+        "abstained": false,
+        "task_success": true,
+        "retrieval_latency_ms": 20,
+        "generation_latency_ms": 400,
+        "latency_ms": 450,
+        "cost_usd": 0.002,
+        "total_tokens": 800
+      },
+      "runs": {
+        "1": {
+          "overall": {
+            "score": 87.57,
+            "score_0_1": 0.8757,
+            "rating": "Very Good",
+            "status": "Action Required",
+            "message": "The evaluated results are strong, with some room to improve. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9745,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.7,
+                "message": "Information search: recall at k is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "complete_evidence_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence spans cannot be recovered in full."
+                  },
+                  {
+                    "metric": "recall_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search misses expected relevant chunks."
+                  },
+                  {
+                    "metric": "token_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence is absent from the retrieved chunks."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 92.31,
+                "improvement_areas": [
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              },
+              {
+                "stage": "reranking",
+                "label": "Search ordering",
+                "score": 93.75,
+                "improvement_areas": [
+                  {
+                    "metric": "ndcg_gain",
+                    "metric_score": 75.0,
+                    "reason": "Reranking showed little improvement; the first ranking may already be strong."
+                  },
+                  {
+                    "metric": "mrr_gain",
+                    "metric_score": 75.0,
+                    "reason": "Reranking did not move the first relevant result up much."
+                  },
+                  {
+                    "metric": "precision_gain",
+                    "metric_score": 75.0,
+                    "reason": "Reranking did not bring more relevant chunks into the top results."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "retrieval",
+            "failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "suggestion": "Try hybrid retrieval or query rewriting, or raise top-k."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 0.5,
+              "f1_at_k": 0.5,
+              "hit_at_k": 0.5,
+              "mrr_at_k": 0.5,
+              "ndcg_at_k": 0.5,
+              "average_precision_at_k": 0.5,
+              "token_recall": 0.5,
+              "token_precision": 0.5,
+              "token_iou": 0.5,
+              "complete_evidence_recall": 0.5,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.5,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.5,
+              "precision_at_k": 1.0,
+              "precision_gain": 0.5,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 1.0,
+              "answer_precision": 1.0,
+              "answer_recall": 1.0,
+              "answer_f1": 1.0,
+              "rouge_l_f1": 1.0,
+              "required_fact_coverage": 1.0,
+              "citation_precision": 1.0,
+              "citation_recall": 1.0,
+              "citation_f1": 1.0,
+              "annotated_claim_support": 1.0,
+              "abstention_accuracy": 1.0,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": 1.0,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "2": {
+          "overall": {
+            "score": 94.13,
+            "score_0_1": 0.9413,
+            "rating": "Excellent",
+            "status": "Evaluated",
+            "message": "Performance is strong across the available tests. Review individual stages before deciding whether to deploy.",
+            "evaluation_coverage": 0.9745,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 83.98,
+                "improvement_areas": [
+                  {
+                    "metric": "precision_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search returns extra irrelevant chunks."
+                  },
+                  {
+                    "metric": "token_iou",
+                    "metric_score": 56.7,
+                    "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+                  },
+                  {
+                    "metric": "token_precision",
+                    "metric_score": 56.7,
+                    "reason": "A large share of the retrieved text is unrelated to the answer."
+                  }
+                ]
+              },
+              {
+                "stage": "reranking",
+                "label": "Search ordering",
+                "score": 89.7,
+                "improvement_areas": [
+                  {
+                    "metric": "ndcg_gain",
+                    "metric_score": 59.2,
+                    "reason": "Reranking showed little improvement; the first ranking may already be strong."
+                  },
+                  {
+                    "metric": "mrr_gain",
+                    "metric_score": 62.5,
+                    "reason": "Reranking did not move the first relevant result up much."
+                  },
+                  {
+                    "metric": "precision_gain",
+                    "metric_score": 50.0,
+                    "reason": "Reranking did not bring more relevant chunks into the top results."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 92.31,
+                "improvement_areas": [
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": null,
+            "failures": [],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 1.0,
+              "f1_at_k": 0.6666666666666666,
+              "hit_at_k": 1.0,
+              "mrr_at_k": 0.75,
+              "ndcg_at_k": 0.8154648767857288,
+              "average_precision_at_k": 0.75,
+              "token_recall": 1.0,
+              "token_precision": 0.5666666666666667,
+              "token_iou": 0.5666666666666667,
+              "complete_evidence_recall": 1.0,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.18453512321427123,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.25,
+              "precision_at_k": 0.5,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 1.0,
+              "answer_precision": 1.0,
+              "answer_recall": 1.0,
+              "answer_f1": 1.0,
+              "rouge_l_f1": 1.0,
+              "required_fact_coverage": 1.0,
+              "citation_precision": 1.0,
+              "citation_recall": 1.0,
+              "citation_f1": 1.0,
+              "annotated_claim_support": 1.0,
+              "abstention_accuracy": 1.0,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": 1.0,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "3": {
+          "overall": {
+            "score": 93.18,
+            "score_0_1": 0.9318,
+            "rating": "Excellent",
+            "status": "Evaluated",
+            "message": "Performance is strong across the available tests. Review individual stages before deciding whether to deploy.",
+            "evaluation_coverage": 0.9745,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 79.39,
+                "improvement_areas": [
+                  {
+                    "metric": "precision_at_k",
+                    "metric_score": 33.3,
+                    "reason": "The search returns extra irrelevant chunks."
+                  },
+                  {
+                    "metric": "token_iou",
+                    "metric_score": 39.5,
+                    "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+                  },
+                  {
+                    "metric": "token_precision",
+                    "metric_score": 39.5,
+                    "reason": "A large share of the retrieved text is unrelated to the answer."
+                  }
+                ]
+              },
+              {
+                "stage": "reranking",
+                "label": "Search ordering",
+                "score": 89.7,
+                "improvement_areas": [
+                  {
+                    "metric": "ndcg_gain",
+                    "metric_score": 59.2,
+                    "reason": "Reranking showed little improvement; the first ranking may already be strong."
+                  },
+                  {
+                    "metric": "mrr_gain",
+                    "metric_score": 62.5,
+                    "reason": "Reranking did not move the first relevant result up much."
+                  },
+                  {
+                    "metric": "precision_gain",
+                    "metric_score": 50.0,
+                    "reason": "Reranking did not bring more relevant chunks into the top results."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 92.31,
+                "improvement_areas": [
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": null,
+            "failures": [],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.3333333333333333,
+              "recall_at_k": 1.0,
+              "f1_at_k": 0.5,
+              "hit_at_k": 1.0,
+              "mrr_at_k": 0.75,
+              "ndcg_at_k": 0.8154648767857288,
+              "average_precision_at_k": 0.75,
+              "token_recall": 1.0,
+              "token_precision": 0.39473684210526316,
+              "token_iou": 0.39473684210526316,
+              "complete_evidence_recall": 1.0,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.18453512321427123,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.25,
+              "precision_at_k": 0.3333333333333333,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 1.0,
+              "answer_precision": 1.0,
+              "answer_recall": 1.0,
+              "answer_f1": 1.0,
+              "rouge_l_f1": 1.0,
+              "required_fact_coverage": 1.0,
+              "citation_precision": 1.0,
+              "citation_recall": 1.0,
+              "citation_f1": 1.0,
+              "annotated_claim_support": 1.0,
+              "abstention_accuracy": 1.0,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": 1.0,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        }
+      }
+    },
+    "missed-evidence": {
+      "query": {
+        "id": "q1",
+        "expected_chunk_ids": [
+          "c1"
+        ],
+        "expected_evidence": [
+          "Employees get 25 days of annual leave."
+        ],
+        "retrieved_ids": [
+          "c2",
+          "c3"
+        ],
+        "reranked_ids": [
+          "c2",
+          "c3"
+        ],
+        "context_ids": [
+          "c2"
+        ],
+        "answer": "I don't know.",
+        "expected_answer": "Employees get 25 days of annual leave.",
+        "required_facts": [
+          "days"
+        ],
+        "citations": [],
+        "expected_citations": [
+          "c1"
+        ],
+        "verified_claims": [],
+        "answerable": true,
+        "abstained": true,
+        "task_success": false,
+        "retrieval_latency_ms": 20,
+        "generation_latency_ms": 400,
+        "latency_ms": 450,
+        "cost_usd": 0.002,
+        "total_tokens": 800
+      },
+      "runs": {
+        "1": {
+          "overall": {
+            "score": 64.86,
+            "score_0_1": 0.6486,
+            "rating": "Average",
+            "status": "Action Required",
+            "message": "Several checks need improvement before wider use. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9745,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.7,
+                "message": "Information search: recall at k is below the recommended minimum."
+              },
+              {
+                "stage": "augmentation",
+                "metric": "context_sufficient",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "message": "Answer context: context sufficient is below the recommended minimum."
+              },
+              {
+                "stage": "end_to_end",
+                "metric": "task_success_rate",
+                "observed": 0.5,
+                "minimum": 0.75,
+                "message": "User experience: task success rate is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "complete_evidence_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence spans cannot be recovered in full."
+                  },
+                  {
+                    "metric": "recall_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search misses expected relevant chunks."
+                  },
+                  {
+                    "metric": "token_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence is absent from the retrieved chunks."
+                  }
+                ]
+              },
+              {
+                "stage": "end_to_end",
+                "label": "User experience",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "task_success_rate",
+                    "metric_score": 50.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  },
+                  {
+                    "metric": "answer_f1",
+                    "metric_score": 50.0,
+                    "reason": "The response differs from the reference answer's wording or details."
+                  },
+                  {
+                    "metric": "answer_exact_match",
+                    "metric_score": 50.0,
+                    "reason": "The generated answer does not exactly match the reference wording."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 57.95,
+                "improvement_areas": [
+                  {
+                    "metric": "context_sufficient",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt lacks information required for a complete answer."
+                  },
+                  {
+                    "metric": "context_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence did not reach the LLM."
+                  },
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 26.7,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "retrieval",
+            "failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "suggestion": "Try hybrid retrieval or query rewriting, or raise top-k."
+              },
+              {
+                "stage": "augmentation",
+                "metric": "context_sufficient",
+                "observed": 0.5,
+                "minimum": 0.9,
+                "suggestion": "Pack all the supporting evidence into the context, within the budget."
+              },
+              {
+                "stage": "generation",
+                "metric": "answer_f1",
+                "observed": 0.5,
+                "minimum": 0.75,
+                "suggestion": "Compare the answers with the references: check the prompt and the LLM."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 0.5,
+              "f1_at_k": 0.5,
+              "hit_at_k": 0.5,
+              "mrr_at_k": 0.5,
+              "ndcg_at_k": 0.5,
+              "average_precision_at_k": 0.5,
+              "token_recall": 0.5,
+              "token_precision": 0.5,
+              "token_iou": 0.5,
+              "complete_evidence_recall": 0.5,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 0.5,
+              "ndcg_gain": 0.0,
+              "mrr_at_k": 0.5,
+              "mrr_gain": 0.0,
+              "precision_at_k": 0.5,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.0,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.26666666666666666,
+              "context_recall": 0.5,
+              "context_noise": 0.7333333333333334,
+              "context_sufficient": 0.5,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 0.5,
+              "answer_precision": 0.5,
+              "answer_recall": 0.5,
+              "answer_f1": 0.5,
+              "rouge_l_f1": 0.5,
+              "required_fact_coverage": 0.5,
+              "citation_precision": 1.0,
+              "citation_recall": 0.5,
+              "citation_f1": 1.0,
+              "annotated_claim_support": 1.0,
+              "abstention_accuracy": 0.5,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": 0.5,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "2": {
+          "overall": {
+            "score": 63.79,
+            "score_0_1": 0.6379,
+            "rating": "Average",
+            "status": "Action Required",
+            "message": "Several checks need improvement before wider use. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9745,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.7,
+                "message": "Information search: recall at k is below the recommended minimum."
+              },
+              {
+                "stage": "augmentation",
+                "metric": "context_sufficient",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "message": "Answer context: context sufficient is below the recommended minimum."
+              },
+              {
+                "stage": "end_to_end",
+                "metric": "task_success_rate",
+                "observed": 0.5,
+                "minimum": 0.75,
+                "message": "User experience: task success rate is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 44.79,
+                "improvement_areas": [
+                  {
+                    "metric": "complete_evidence_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence spans cannot be recovered in full."
+                  },
+                  {
+                    "metric": "recall_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search misses expected relevant chunks."
+                  },
+                  {
+                    "metric": "token_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence is absent from the retrieved chunks."
+                  }
+                ]
+              },
+              {
+                "stage": "end_to_end",
+                "label": "User experience",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "task_success_rate",
+                    "metric_score": 50.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  },
+                  {
+                    "metric": "answer_f1",
+                    "metric_score": 50.0,
+                    "reason": "The response differs from the reference answer's wording or details."
+                  },
+                  {
+                    "metric": "answer_exact_match",
+                    "metric_score": 50.0,
+                    "reason": "The generated answer does not exactly match the reference wording."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 57.95,
+                "improvement_areas": [
+                  {
+                    "metric": "context_sufficient",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt lacks information required for a complete answer."
+                  },
+                  {
+                    "metric": "context_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence did not reach the LLM."
+                  },
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 26.7,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "retrieval",
+            "failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "suggestion": "Try hybrid retrieval or query rewriting, or raise top-k."
+              },
+              {
+                "stage": "augmentation",
+                "metric": "context_sufficient",
+                "observed": 0.5,
+                "minimum": 0.9,
+                "suggestion": "Pack all the supporting evidence into the context, within the budget."
+              },
+              {
+                "stage": "generation",
+                "metric": "answer_f1",
+                "observed": 0.5,
+                "minimum": 0.75,
+                "suggestion": "Compare the answers with the references: check the prompt and the LLM."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.25,
+              "recall_at_k": 0.5,
+              "f1_at_k": 0.3333333333333333,
+              "hit_at_k": 0.5,
+              "mrr_at_k": 0.5,
+              "ndcg_at_k": 0.5,
+              "average_precision_at_k": 0.5,
+              "token_recall": 0.5,
+              "token_precision": 0.3333333333333333,
+              "token_iou": 0.3333333333333333,
+              "complete_evidence_recall": 0.5,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 0.5,
+              "ndcg_gain": 0.0,
+              "mrr_at_k": 0.5,
+              "mrr_gain": 0.0,
+              "precision_at_k": 0.25,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.0,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.26666666666666666,
+              "context_recall": 0.5,
+              "context_noise": 0.7333333333333334,
+              "context_sufficient": 0.5,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 0.5,
+              "answer_precision": 0.5,
+              "answer_recall": 0.5,
+              "answer_f1": 0.5,
+              "rouge_l_f1": 0.5,
+              "required_fact_coverage": 0.5,
+              "citation_precision": 1.0,
+              "citation_recall": 0.5,
+              "citation_f1": 1.0,
+              "annotated_claim_support": 1.0,
+              "abstention_accuracy": 0.5,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": 0.5,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "3": {
+          "overall": {
+            "score": 63.21,
+            "score_0_1": 0.6321,
+            "rating": "Average",
+            "status": "Action Required",
+            "message": "Several checks need improvement before wider use. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9745,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.7,
+                "message": "Information search: recall at k is below the recommended minimum."
+              },
+              {
+                "stage": "augmentation",
+                "metric": "context_sufficient",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "message": "Answer context: context sufficient is below the recommended minimum."
+              },
+              {
+                "stage": "end_to_end",
+                "metric": "task_success_rate",
+                "observed": 0.5,
+                "minimum": 0.75,
+                "message": "User experience: task success rate is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 41.96,
+                "improvement_areas": [
+                  {
+                    "metric": "complete_evidence_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence spans cannot be recovered in full."
+                  },
+                  {
+                    "metric": "recall_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search misses expected relevant chunks."
+                  },
+                  {
+                    "metric": "token_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence is absent from the retrieved chunks."
+                  }
+                ]
+              },
+              {
+                "stage": "end_to_end",
+                "label": "User experience",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "task_success_rate",
+                    "metric_score": 50.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  },
+                  {
+                    "metric": "answer_f1",
+                    "metric_score": 50.0,
+                    "reason": "The response differs from the reference answer's wording or details."
+                  },
+                  {
+                    "metric": "answer_exact_match",
+                    "metric_score": 50.0,
+                    "reason": "The generated answer does not exactly match the reference wording."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 57.95,
+                "improvement_areas": [
+                  {
+                    "metric": "context_sufficient",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt lacks information required for a complete answer."
+                  },
+                  {
+                    "metric": "context_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence did not reach the LLM."
+                  },
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 26.7,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "retrieval",
+            "failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "suggestion": "Try hybrid retrieval or query rewriting, or raise top-k."
+              },
+              {
+                "stage": "augmentation",
+                "metric": "context_sufficient",
+                "observed": 0.5,
+                "minimum": 0.9,
+                "suggestion": "Pack all the supporting evidence into the context, within the budget."
+              },
+              {
+                "stage": "generation",
+                "metric": "answer_f1",
+                "observed": 0.5,
+                "minimum": 0.75,
+                "suggestion": "Compare the answers with the references: check the prompt and the LLM."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.16666666666666666,
+              "recall_at_k": 0.5,
+              "f1_at_k": 0.25,
+              "hit_at_k": 0.5,
+              "mrr_at_k": 0.5,
+              "ndcg_at_k": 0.5,
+              "average_precision_at_k": 0.5,
+              "token_recall": 0.5,
+              "token_precision": 0.21052631578947367,
+              "token_iou": 0.21052631578947367,
+              "complete_evidence_recall": 0.5,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 0.5,
+              "ndcg_gain": 0.0,
+              "mrr_at_k": 0.5,
+              "mrr_gain": 0.0,
+              "precision_at_k": 0.16666666666666666,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.0,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.26666666666666666,
+              "context_recall": 0.5,
+              "context_noise": 0.7333333333333334,
+              "context_sufficient": 0.5,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 0.5,
+              "answer_precision": 0.5,
+              "answer_recall": 0.5,
+              "answer_f1": 0.5,
+              "rouge_l_f1": 0.5,
+              "required_fact_coverage": 0.5,
+              "citation_precision": 1.0,
+              "citation_recall": 0.5,
+              "citation_f1": 1.0,
+              "annotated_claim_support": 1.0,
+              "abstention_accuracy": 0.5,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": 0.5,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        }
+      }
+    },
+    "wrong-answer": {
+      "query": {
+        "id": "q1",
+        "expected_chunk_ids": [
+          "c1"
+        ],
+        "expected_evidence": [
+          "Employees get 25 days of annual leave."
+        ],
+        "retrieved_ids": [
+          "c2",
+          "c1",
+          "c3"
+        ],
+        "reranked_ids": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "context_ids": [
+          "c1",
+          "c2"
+        ],
+        "answer": "Annual leave is unlimited.",
+        "expected_answer": "Employees get 25 days of annual leave.",
+        "required_facts": [
+          "days"
+        ],
+        "citations": [
+          "c3"
+        ],
+        "expected_citations": [
+          "c1"
+        ],
+        "verified_claims": [
+          {
+            "text": "Annual leave is unlimited.",
+            "supported": false
+          }
+        ],
+        "answerable": true,
+        "abstained": false,
+        "task_success": false,
+        "retrieval_latency_ms": 20,
+        "generation_latency_ms": 400,
+        "latency_ms": 450,
+        "cost_usd": 0.002,
+        "total_tokens": 800
+      },
+      "runs": {
+        "1": {
+          "overall": {
+            "score": 59.83,
+            "score_0_1": 0.5983,
+            "rating": "Needs Improvement",
+            "status": "Action Required",
+            "message": "Important weaknesses were found in the evaluated pipeline. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9609,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.7,
+                "message": "Information search: recall at k is below the recommended minimum."
+              },
+              {
+                "stage": "generation",
+                "metric": "annotated_claim_support",
+                "observed": 0.0,
+                "minimum": 0.8,
+                "message": "Answer quality: annotated claim support is below the recommended minimum."
+              },
+              {
+                "stage": "end_to_end",
+                "metric": "task_success_rate",
+                "observed": 0.0,
+                "minimum": 0.75,
+                "message": "User experience: task success rate is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "end_to_end",
+                "label": "User experience",
+                "score": 17.27,
+                "improvement_areas": [
+                  {
+                    "metric": "task_success_rate",
+                    "metric_score": 0.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  },
+                  {
+                    "metric": "answer_f1",
+                    "metric_score": 43.2,
+                    "reason": "The response differs from the reference answer's wording or details."
+                  },
+                  {
+                    "metric": "answer_exact_match",
+                    "metric_score": 0.0,
+                    "reason": "The generated answer does not exactly match the reference wording."
+                  }
+                ]
+              },
+              {
+                "stage": "generation",
+                "label": "Answer quality",
+                "score": 24.49,
+                "improvement_areas": [
+                  {
+                    "metric": "annotated_claim_support",
+                    "metric_score": 0.0,
+                    "reason": "Some claims failed the human-verified evidence checks."
+                  },
+                  {
+                    "metric": "required_fact_coverage",
+                    "metric_score": 0.0,
+                    "reason": "The response is missing some required facts."
+                  },
+                  {
+                    "metric": "task_success",
+                    "metric_score": 0.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  }
+                ]
+              },
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "complete_evidence_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence spans cannot be recovered in full."
+                  },
+                  {
+                    "metric": "recall_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search misses expected relevant chunks."
+                  },
+                  {
+                    "metric": "token_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence is absent from the retrieved chunks."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "retrieval",
+            "failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "suggestion": "Try hybrid retrieval or query rewriting, or raise top-k."
+              },
+              {
+                "stage": "generation",
+                "metric": "answer_f1",
+                "observed": 0.4318181818181818,
+                "minimum": 0.75,
+                "suggestion": "Compare the answers with the references: check the prompt and the LLM."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 0.5,
+              "f1_at_k": 0.5,
+              "hit_at_k": 0.5,
+              "mrr_at_k": 0.5,
+              "ndcg_at_k": 0.5,
+              "average_precision_at_k": 0.5,
+              "token_recall": 0.5,
+              "token_precision": 0.5,
+              "token_iou": 0.5,
+              "complete_evidence_recall": 0.5,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.5,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.5,
+              "precision_at_k": 1.0,
+              "precision_gain": 0.5,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 0.0,
+              "answer_precision": 0.625,
+              "answer_recall": 0.33035714285714285,
+              "answer_f1": 0.4318181818181818,
+              "rouge_l_f1": 0.4318181818181818,
+              "required_fact_coverage": 0.0,
+              "citation_precision": 0.0,
+              "citation_recall": 0.0,
+              "citation_f1": 0.0,
+              "annotated_claim_support": 0.0,
+              "abstention_accuracy": 1.0,
+              "context_grounding": 0.75,
+              "unsupported_number_rate": null,
+              "task_success": 0.0,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "2": {
+          "overall": {
+            "score": 66.48,
+            "score_0_1": 0.6648,
+            "rating": "Average",
+            "status": "Action Required",
+            "message": "Several checks need improvement before wider use. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9609,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "generation",
+                "metric": "annotated_claim_support",
+                "observed": 0.0,
+                "minimum": 0.8,
+                "message": "Answer quality: annotated claim support is below the recommended minimum."
+              },
+              {
+                "stage": "end_to_end",
+                "metric": "task_success_rate",
+                "observed": 0.0,
+                "minimum": 0.75,
+                "message": "User experience: task success rate is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "end_to_end",
+                "label": "User experience",
+                "score": 17.27,
+                "improvement_areas": [
+                  {
+                    "metric": "task_success_rate",
+                    "metric_score": 0.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  },
+                  {
+                    "metric": "answer_f1",
+                    "metric_score": 43.2,
+                    "reason": "The response differs from the reference answer's wording or details."
+                  },
+                  {
+                    "metric": "answer_exact_match",
+                    "metric_score": 0.0,
+                    "reason": "The generated answer does not exactly match the reference wording."
+                  }
+                ]
+              },
+              {
+                "stage": "generation",
+                "label": "Answer quality",
+                "score": 24.49,
+                "improvement_areas": [
+                  {
+                    "metric": "annotated_claim_support",
+                    "metric_score": 0.0,
+                    "reason": "Some claims failed the human-verified evidence checks."
+                  },
+                  {
+                    "metric": "required_fact_coverage",
+                    "metric_score": 0.0,
+                    "reason": "The response is missing some required facts."
+                  },
+                  {
+                    "metric": "task_success",
+                    "metric_score": 0.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  }
+                ]
+              },
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 83.98,
+                "improvement_areas": [
+                  {
+                    "metric": "precision_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search returns extra irrelevant chunks."
+                  },
+                  {
+                    "metric": "token_iou",
+                    "metric_score": 56.7,
+                    "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+                  },
+                  {
+                    "metric": "token_precision",
+                    "metric_score": 56.7,
+                    "reason": "A large share of the retrieved text is unrelated to the answer."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "generation",
+            "failures": [
+              {
+                "stage": "generation",
+                "metric": "answer_f1",
+                "observed": 0.4318181818181818,
+                "minimum": 0.75,
+                "suggestion": "Compare the answers with the references: check the prompt and the LLM."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 1.0,
+              "f1_at_k": 0.6666666666666666,
+              "hit_at_k": 1.0,
+              "mrr_at_k": 0.75,
+              "ndcg_at_k": 0.8154648767857288,
+              "average_precision_at_k": 0.75,
+              "token_recall": 1.0,
+              "token_precision": 0.5666666666666667,
+              "token_iou": 0.5666666666666667,
+              "complete_evidence_recall": 1.0,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.18453512321427123,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.25,
+              "precision_at_k": 0.5,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 0.0,
+              "answer_precision": 0.625,
+              "answer_recall": 0.33035714285714285,
+              "answer_f1": 0.4318181818181818,
+              "rouge_l_f1": 0.4318181818181818,
+              "required_fact_coverage": 0.0,
+              "citation_precision": 0.0,
+              "citation_recall": 0.0,
+              "citation_f1": 0.0,
+              "annotated_claim_support": 0.0,
+              "abstention_accuracy": 1.0,
+              "context_grounding": 0.75,
+              "unsupported_number_rate": null,
+              "task_success": 0.0,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "3": {
+          "overall": {
+            "score": 65.52,
+            "score_0_1": 0.6552,
+            "rating": "Average",
+            "status": "Action Required",
+            "message": "Several checks need improvement before wider use. One or more critical quality checks failed.",
+            "evaluation_coverage": 0.9609,
+            "is_provisional": false,
+            "evaluated_stages": 7,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "generation",
+                "metric": "annotated_claim_support",
+                "observed": 0.0,
+                "minimum": 0.8,
+                "message": "Answer quality: annotated claim support is below the recommended minimum."
+              },
+              {
+                "stage": "end_to_end",
+                "metric": "task_success_rate",
+                "observed": 0.0,
+                "minimum": 0.75,
+                "message": "User experience: task success rate is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "end_to_end",
+                "label": "User experience",
+                "score": 17.27,
+                "improvement_areas": [
+                  {
+                    "metric": "task_success_rate",
+                    "metric_score": 0.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  },
+                  {
+                    "metric": "answer_f1",
+                    "metric_score": 43.2,
+                    "reason": "The response differs from the reference answer's wording or details."
+                  },
+                  {
+                    "metric": "answer_exact_match",
+                    "metric_score": 0.0,
+                    "reason": "The generated answer does not exactly match the reference wording."
+                  }
+                ]
+              },
+              {
+                "stage": "generation",
+                "label": "Answer quality",
+                "score": 24.49,
+                "improvement_areas": [
+                  {
+                    "metric": "annotated_claim_support",
+                    "metric_score": 0.0,
+                    "reason": "Some claims failed the human-verified evidence checks."
+                  },
+                  {
+                    "metric": "required_fact_coverage",
+                    "metric_score": 0.0,
+                    "reason": "The response is missing some required facts."
+                  },
+                  {
+                    "metric": "task_success",
+                    "metric_score": 0.0,
+                    "reason": "Some end-user tasks were marked unsuccessful."
+                  }
+                ]
+              },
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 79.39,
+                "improvement_areas": [
+                  {
+                    "metric": "precision_at_k",
+                    "metric_score": 33.3,
+                    "reason": "The search returns extra irrelevant chunks."
+                  },
+                  {
+                    "metric": "token_iou",
+                    "metric_score": 39.5,
+                    "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+                  },
+                  {
+                    "metric": "token_precision",
+                    "metric_score": 39.5,
+                    "reason": "A large share of the retrieved text is unrelated to the answer."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "generation",
+            "failures": [
+              {
+                "stage": "generation",
+                "metric": "answer_f1",
+                "observed": 0.4318181818181818,
+                "minimum": 0.75,
+                "suggestion": "Compare the answers with the references: check the prompt and the LLM."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.3333333333333333,
+              "recall_at_k": 1.0,
+              "f1_at_k": 0.5,
+              "hit_at_k": 1.0,
+              "mrr_at_k": 0.75,
+              "ndcg_at_k": 0.8154648767857288,
+              "average_precision_at_k": 0.75,
+              "token_recall": 1.0,
+              "token_precision": 0.39473684210526316,
+              "token_iou": 0.39473684210526316,
+              "complete_evidence_recall": 1.0,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.18453512321427123,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.25,
+              "precision_at_k": 0.3333333333333333,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": 0.0,
+              "answer_precision": 0.625,
+              "answer_recall": 0.33035714285714285,
+              "answer_f1": 0.4318181818181818,
+              "rouge_l_f1": 0.4318181818181818,
+              "required_fact_coverage": 0.0,
+              "citation_precision": 0.0,
+              "citation_recall": 0.0,
+              "citation_f1": 0.0,
+              "annotated_claim_support": 0.0,
+              "abstention_accuracy": 1.0,
+              "context_grounding": 0.75,
+              "unsupported_number_rate": null,
+              "task_success": 0.0,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        }
+      }
+    },
+    "missing-labels": {
+      "query": {
+        "id": "q1",
+        "expected_chunk_ids": [
+          "c1"
+        ],
+        "expected_evidence": [
+          "Employees get 25 days of annual leave."
+        ],
+        "retrieved_ids": [
+          "c2",
+          "c1",
+          "c3"
+        ],
+        "reranked_ids": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "context_ids": [
+          "c1",
+          "c2"
+        ],
+        "answer": "Employees get 25 days of annual leave.",
+        "citations": [
+          "c1"
+        ],
+        "abstained": false,
+        "retrieval_latency_ms": 20,
+        "generation_latency_ms": 400,
+        "latency_ms": 450,
+        "cost_usd": 0.002,
+        "total_tokens": 800
+      },
+      "runs": {
+        "1": {
+          "overall": {
+            "score": 81.41,
+            "score_0_1": 0.8141,
+            "rating": "Very Good",
+            "status": "Action Required",
+            "message": "The evaluated results are strong, with some room to improve. One or more critical quality checks failed. This is a provisional score because evaluation data is incomplete.",
+            "evaluation_coverage": 0.6516,
+            "is_provisional": true,
+            "evaluated_stages": 6,
+            "total_stages": 7,
+            "quality_gate_failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.7,
+                "message": "Information search: recall at k is below the recommended minimum."
+              }
+            ],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 50.0,
+                "improvement_areas": [
+                  {
+                    "metric": "complete_evidence_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence spans cannot be recovered in full."
+                  },
+                  {
+                    "metric": "recall_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search misses expected relevant chunks."
+                  },
+                  {
+                    "metric": "token_recall",
+                    "metric_score": 50.0,
+                    "reason": "Some required evidence is absent from the retrieved chunks."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 92.31,
+                "improvement_areas": [
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              },
+              {
+                "stage": "reranking",
+                "label": "Search ordering",
+                "score": 93.75,
+                "improvement_areas": [
+                  {
+                    "metric": "ndcg_gain",
+                    "metric_score": 75.0,
+                    "reason": "Reranking showed little improvement; the first ranking may already be strong."
+                  },
+                  {
+                    "metric": "mrr_gain",
+                    "metric_score": 75.0,
+                    "reason": "Reranking did not move the first relevant result up much."
+                  },
+                  {
+                    "metric": "precision_gain",
+                    "metric_score": 75.0,
+                    "reason": "Reranking did not bring more relevant chunks into the top results."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": "retrieval",
+            "failures": [
+              {
+                "stage": "retrieval",
+                "metric": "recall_at_k",
+                "observed": 0.5,
+                "minimum": 0.8,
+                "suggestion": "Try hybrid retrieval or query rewriting, or raise top-k."
+              }
+            ],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 0.5,
+              "f1_at_k": 0.5,
+              "hit_at_k": 0.5,
+              "mrr_at_k": 0.5,
+              "ndcg_at_k": 0.5,
+              "average_precision_at_k": 0.5,
+              "token_recall": 0.5,
+              "token_precision": 0.5,
+              "token_iou": 0.5,
+              "complete_evidence_recall": 0.5,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.5,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.5,
+              "precision_at_k": 1.0,
+              "precision_gain": 0.5,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": null,
+              "answer_precision": null,
+              "answer_recall": null,
+              "answer_f1": null,
+              "rouge_l_f1": null,
+              "required_fact_coverage": null,
+              "citation_precision": null,
+              "citation_recall": null,
+              "citation_f1": null,
+              "annotated_claim_support": null,
+              "abstention_accuracy": null,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": null,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "2": {
+          "overall": {
+            "score": 91.22,
+            "score_0_1": 0.9122,
+            "rating": "Excellent",
+            "status": "Provisional",
+            "message": "Performance is strong across the available tests. This is a provisional score because evaluation data is incomplete.",
+            "evaluation_coverage": 0.6516,
+            "is_provisional": true,
+            "evaluated_stages": 6,
+            "total_stages": 7,
+            "quality_gate_failures": [],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 83.98,
+                "improvement_areas": [
+                  {
+                    "metric": "precision_at_k",
+                    "metric_score": 50.0,
+                    "reason": "The search returns extra irrelevant chunks."
+                  },
+                  {
+                    "metric": "token_iou",
+                    "metric_score": 56.7,
+                    "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+                  },
+                  {
+                    "metric": "token_precision",
+                    "metric_score": 56.7,
+                    "reason": "A large share of the retrieved text is unrelated to the answer."
+                  }
+                ]
+              },
+              {
+                "stage": "reranking",
+                "label": "Search ordering",
+                "score": 89.7,
+                "improvement_areas": [
+                  {
+                    "metric": "ndcg_gain",
+                    "metric_score": 59.2,
+                    "reason": "Reranking showed little improvement; the first ranking may already be strong."
+                  },
+                  {
+                    "metric": "mrr_gain",
+                    "metric_score": 62.5,
+                    "reason": "Reranking did not move the first relevant result up much."
+                  },
+                  {
+                    "metric": "precision_gain",
+                    "metric_score": 50.0,
+                    "reason": "Reranking did not bring more relevant chunks into the top results."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 92.31,
+                "improvement_areas": [
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": null,
+            "failures": [],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.5,
+              "recall_at_k": 1.0,
+              "f1_at_k": 0.6666666666666666,
+              "hit_at_k": 1.0,
+              "mrr_at_k": 0.75,
+              "ndcg_at_k": 0.8154648767857288,
+              "average_precision_at_k": 0.75,
+              "token_recall": 1.0,
+              "token_precision": 0.5666666666666667,
+              "token_iou": 0.5666666666666667,
+              "complete_evidence_recall": 1.0,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.18453512321427123,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.25,
+              "precision_at_k": 0.5,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": null,
+              "answer_precision": null,
+              "answer_recall": null,
+              "answer_f1": null,
+              "rouge_l_f1": null,
+              "required_fact_coverage": null,
+              "citation_precision": null,
+              "citation_recall": null,
+              "citation_f1": null,
+              "annotated_claim_support": null,
+              "abstention_accuracy": null,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": null,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        },
+        "3": {
+          "overall": {
+            "score": 89.81,
+            "score_0_1": 0.8981,
+            "rating": "Very Good",
+            "status": "Provisional",
+            "message": "The evaluated results are strong, with some room to improve. This is a provisional score because evaluation data is incomplete.",
+            "evaluation_coverage": 0.6516,
+            "is_provisional": true,
+            "evaluated_stages": 6,
+            "total_stages": 7,
+            "quality_gate_failures": [],
+            "areas_to_review": [
+              {
+                "stage": "retrieval",
+                "label": "Information search",
+                "score": 79.39,
+                "improvement_areas": [
+                  {
+                    "metric": "precision_at_k",
+                    "metric_score": 33.3,
+                    "reason": "The search returns extra irrelevant chunks."
+                  },
+                  {
+                    "metric": "token_iou",
+                    "metric_score": 39.5,
+                    "reason": "Retrieved chunks contain unnecessary text or miss evidence."
+                  },
+                  {
+                    "metric": "token_precision",
+                    "metric_score": 39.5,
+                    "reason": "A large share of the retrieved text is unrelated to the answer."
+                  }
+                ]
+              },
+              {
+                "stage": "reranking",
+                "label": "Search ordering",
+                "score": 89.7,
+                "improvement_areas": [
+                  {
+                    "metric": "ndcg_gain",
+                    "metric_score": 59.2,
+                    "reason": "Reranking showed little improvement; the first ranking may already be strong."
+                  },
+                  {
+                    "metric": "mrr_gain",
+                    "metric_score": 62.5,
+                    "reason": "Reranking did not move the first relevant result up much."
+                  },
+                  {
+                    "metric": "precision_gain",
+                    "metric_score": 50.0,
+                    "reason": "Reranking did not bring more relevant chunks into the top results."
+                  }
+                ]
+              },
+              {
+                "stage": "augmentation",
+                "label": "Answer context",
+                "score": 92.31,
+                "improvement_areas": [
+                  {
+                    "metric": "context_precision",
+                    "metric_score": 50.0,
+                    "reason": "The final prompt contains substantial irrelevant context."
+                  }
+                ]
+              }
+            ]
+          },
+          "root_causes": {
+            "first_failing_stage": null,
+            "failures": [],
+            "method": "rule-based hints from thresholds, in pipeline order; not a proof of the cause"
+          },
+          "summaries": {
+            "retrieval": {
+              "query_count": 2,
+              "precision_at_k": 0.3333333333333333,
+              "recall_at_k": 1.0,
+              "f1_at_k": 0.5,
+              "hit_at_k": 1.0,
+              "mrr_at_k": 0.75,
+              "ndcg_at_k": 0.8154648767857288,
+              "average_precision_at_k": 0.75,
+              "token_recall": 1.0,
+              "token_precision": 0.39473684210526316,
+              "token_iou": 0.39473684210526316,
+              "complete_evidence_recall": 1.0,
+              "p50_latency_ms": 30.0,
+              "p95_latency_ms": 39.0
+            },
+            "reranking": {
+              "query_count": 2,
+              "ndcg_at_k": 1.0,
+              "ndcg_gain": 0.18453512321427123,
+              "mrr_at_k": 1.0,
+              "mrr_gain": 0.25,
+              "precision_at_k": 0.3333333333333333,
+              "precision_gain": 0.0,
+              "first_relevant_rank_change": 0.5,
+              "candidate_set_preservation_rate": 1.0
+            },
+            "augmentation": {
+              "query_count": 2,
+              "context_precision": 0.5,
+              "context_recall": 1.0,
+              "context_noise": 0.5,
+              "context_sufficient": 1.0,
+              "duplicate_ratio": 0.0,
+              "budget_compliant": 1.0,
+              "evidence_edge_placement": 1.0
+            },
+            "generation": {
+              "query_count": 2,
+              "exact_match": null,
+              "answer_precision": null,
+              "answer_recall": null,
+              "answer_f1": null,
+              "rouge_l_f1": null,
+              "required_fact_coverage": null,
+              "citation_precision": null,
+              "citation_recall": null,
+              "citation_f1": null,
+              "annotated_claim_support": null,
+              "abstention_accuracy": null,
+              "context_grounding": 1.0,
+              "unsupported_number_rate": 0.0,
+              "task_success": null,
+              "p50_latency_ms": 600.0,
+              "p95_latency_ms": 780.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

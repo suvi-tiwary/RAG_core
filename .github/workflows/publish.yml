@@ -1,0 +1,79 @@
+# Builds the package and uploads it with PyPI trusted publishing (no tokens).
+#
+#   Run manually (Actions -> Publish -> Run workflow)  -> TestPyPI only
+#   Publish a GitHub Release                           -> TestPyPI, then PyPI
+#
+# One-time setup is described in RELEASING.md.
+name: Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      # A release must build a NEW version that matches its tag (v0.2.1 -> 0.2.1).
+      # Without this, a release made before the PR was merged rebuilds the old
+      # version, PyPI skips it, and the run still looks green.
+      - name: Check the release version
+        if: github.event_name == 'release'
+        run: |
+          version=$(python -c "import rag_titan; print(rag_titan.__version__)")
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match __version__ $version. Merge the PR first, then create the release from main."
+            exit 1
+          fi
+          status=$(curl -s -o /dev/null -w "%{http_code}" "https://pypi.org/pypi/rag-titan/$version/json")
+          if [ "$status" = "200" ]; then
+            echo "::error::rag-titan $version is already on PyPI. Bump __version__ before releasing."
+            exit 1
+          fi
+          echo "Releasing rag-titan $version"
+      - run: ruff check .
+      - run: pytest
+      - run: python -m build
+      - run: twine check dist/*
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+
+  publish-testpypi:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: testpypi
+    permissions:
+      id-token: write   # needed for trusted publishing
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          # a version can be uploaded only once, so a re-run should not fail
+          skip-existing: true
+
+  publish-pypi:
+    needs: publish-testpypi
+    # the real PyPI is only used for GitHub Releases, never for manual runs
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write   # needed for trusted publishing
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

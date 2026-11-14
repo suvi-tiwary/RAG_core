@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 436" width="960" height="436" role="img" aria-labelledby="title desc">
+<title id="title">HeadingChunker</title>
+<desc id="desc">HeadingChunker keeps every chunk inside one section: 2 sections give 4 chunks.</desc>
+<!-- made by tools/diagrams/make_chunk_diagrams.py from real chunker output; do not edit -->
+<defs><style>
+.bg { fill: #ffffff; stroke: #e2e8f0; }
+.title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+.sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+.h { font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #334155; }
+.unit { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1; }
+.mono { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a;
+        white-space: pre; }
+.pick { fill: none; stroke: #f97316; stroke-width: 2.5; }
+.shared { fill: rgba(249, 115, 22, 0.28); stroke: #f97316; stroke-width: 2.5; }
+.card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+.tag { font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #64748b; }
+.ov { fill: #ea580c; font-weight: 700; }
+.foot { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; }
+
+@keyframes h0 { 0%, 0.00% { opacity: 0; } 0.50%, 18.55% { opacity: 1; } 19.05%, 100% { opacity: 0; } }
+@keyframes c0 { 0%, 0.00% { opacity: 0.15; } 0.50%, 97.12% { opacity: 1; } 97.62%, 100% { opacity: 0.15; } }
+.h0 { opacity: 0; animation: h0 8.4s infinite; }
+.c0 { opacity: 0.15; animation: c0 8.4s infinite; }
+@keyframes h1 { 0%, 19.05% { opacity: 0; } 19.55%, 37.60% { opacity: 1; } 38.10%, 100% { opacity: 0; } }
+@keyframes c1 { 0%, 19.05% { opacity: 0.15; } 19.55%, 97.12% { opacity: 1; } 97.62%, 100% { opacity: 0.15; } }
+.h1 { opacity: 0; animation: h1 8.4s infinite; }
+.c1 { opacity: 0.15; animation: c1 8.4s infinite; }
+@keyframes h2 { 0%, 38.10% { opacity: 0; } 38.60%, 56.64% { opacity: 1; } 57.14%, 100% { opacity: 0; } }
+@keyframes c2 { 0%, 38.10% { opacity: 0.15; } 38.60%, 97.12% { opacity: 1; } 97.62%, 100% { opacity: 0.15; } }
+.h2 { opacity: 0; animation: h2 8.4s infinite; }
+.c2 { opacity: 0.15; animation: c2 8.4s infinite; }
+@keyframes h3 { 0%, 57.14% { opacity: 0; } 57.64%, 75.69% { opacity: 1; } 76.19%, 100% { opacity: 0; } }
+@keyframes c3 { 0%, 57.14% { opacity: 0.15; } 57.64%, 97.12% { opacity: 1; } 97.62%, 100% { opacity: 0.15; } }
+.h3 { opacity: 0; animation: h3 8.4s infinite; }
+.c3 { opacity: 0.15; animation: c3 8.4s infinite; }
+@media (prefers-reduced-motion: reduce) { .h0, .h1, .h2, .h3 { animation: none; opacity: 0; } .c0, .c1, .c2, .c3 { animation: none; opacity: 1; } }
+</style></defs>
+<rect class="bg" x="1" y="1" width="958" height="434" rx="14"/>
+<text class="title" x="40" y="46">HeadingChunker</text>
+<text class="sub" x="40" y="70">HeadingChunker(chunk_size=80, overlap=0): never mixes two sections; each chunk starts with its heading path.</text>
+<text class="sub" x="40" y="90">Orange frame = the chunk being made. Filled orange = overlap, repeated from the chunk before.</text>
+<text class="h" x="40" y="114">1. The text, cut into 2 sections (number = size in characters)</text>
+<rect class="unit" x="40.0" y="128" width="454.0" height="42" rx="5"/>
+<text class="mono" x="48.0" y="146">[Leave policy &gt; Annual leave]  Staff get twenty days. Unused</text>
+<text class="mono" x="48.0" y="162"> days carry over. Ask HR for the form.  70</text>
+<rect class="unit" x="40.0" y="176" width="454.0" height="42" rx="5"/>
+<text class="mono" x="48.0" y="194">[Leave policy &gt; Sick leave]  Sick leave is separate. Dr. Lee</text>
+<text class="mono" x="48.0" y="210"> signs it within 3.5 days.  58</text>
+<g class="h0"><rect class="pick" x="38.0" y="126" width="458.0" height="46" rx="6"/></g>
+<g class="h1"><rect class="shared" x="38.0" y="126" width="458.0" height="46" rx="6"/></g>
+<g class="h2"><rect class="pick" x="38.0" y="174" width="458.0" height="46" rx="6"/></g>
+<g class="h3"><rect class="shared" x="38.0" y="174" width="458.0" height="46" rx="6"/></g>
+<text class="h" x="40" y="242">2. The chunks (real output)</text>
+<g class="c0"><rect class="card" x="40" y="252" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="273">C0</text>
+<text class="mono" x="84" y="273">Leave policy &gt; Annual leave↵↵Staff get twenty days. Unused days carry over.</text></g>
+<g class="c1"><rect class="card" x="40" y="288" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="309">C1</text>
+<text class="mono" x="84" y="309">Leave policy &gt; Annual leave↵↵Ask HR for the form.</text></g>
+<g class="c2"><rect class="card" x="40" y="324" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="345">C2</text>
+<text class="mono" x="84" y="345">Leave policy &gt; Sick leave↵↵Sick leave is separate.</text></g>
+<g class="c3"><rect class="card" x="40" y="360" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="381">C3</text>
+<text class="mono" x="84" y="381">Leave policy &gt; Sick leave↵↵Dr. Lee signs it within 3.5 days.</text></g>
+<text class="foot" x="40" y="416">S = 80 · K = 4 chunks · a chunk never mixes two sections</text>
+</svg>

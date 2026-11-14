@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-labelledby="title desc">
+  <title id="title">rag-titan</title>
+  <desc id="desc">rag-titan: a Swiss Army knife for RAG. Many RAG types, one simple API, runs locally. Files become chunks, then vectors, then a cited answer.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="logo-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#ffffff" opacity="0.07"/>
+    </pattern>
+    <style>
+      .title { font: 800 84px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; letter-spacing: -0.02em; }
+      .tag { font: 600 28px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #c7d2fe; }
+      .sub { font: 400 19px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #94a3b8; }
+      .chip { font: 600 15px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #e0e7ff; text-anchor: middle; }
+      .chipbox { fill: #ffffff; fill-opacity: 0.08; stroke: #a5b4fc; stroke-opacity: 0.45; }
+      .pill { fill: #ffffff; fill-opacity: 0.06; stroke: #ffffff; stroke-opacity: 0.22; stroke-width: 1.5; }
+      .plabel { font: 700 17px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+      .pex { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #a5b4fc; text-anchor: end; }
+      .flow { fill: none; stroke: #a5b4fc; stroke-width: 2; stroke-dasharray: 5 5; opacity: 0.8; animation: dash 0.9s linear infinite; }
+      .hl { fill: none; stroke: #c4b5fd; stroke-width: 2.5; opacity: 0; animation: glow 8s infinite; }
+      @keyframes dash { to { stroke-dashoffset: -10; } }
+      @keyframes glow { 0% { opacity: 0; } 3% { opacity: 1; } 22% { opacity: 1; } 26% { opacity: 0; } 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .flow, .hl { animation: none; } }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a5b4fc"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="360" rx="24" fill="url(#bg)"/>
+  <rect width="1280" height="360" rx="24" fill="url(#dots)"/>
+
+  <!-- logo (same drawing as logo.svg) -->
+  <g transform="translate(72 108) scale(1.2)">
+    <rect width="120" height="120" rx="28" fill="url(#logo-bg)"/>
+    <rect x="22" y="33" width="40" height="11" rx="5.5" fill="#ffffff"/>
+    <rect x="22" y="54.5" width="30" height="11" rx="5.5" fill="#ffffff" opacity="0.8"/>
+    <rect x="22" y="76" width="36" height="11" rx="5.5" fill="#ffffff" opacity="0.6"/>
+    <path d="M64 38.5 C74 38.5 72 60 80 60 M54 60 H80 M60 81.5 C72 81.5 72 60 80 60" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="88" cy="60" r="12" fill="#ffffff"/>
+    <path d="M82.5 60.5 L86.5 64.5 L94 56" fill="none" stroke="#6d28d9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- name and tagline -->
+  <text class="title" x="250" y="168">rag-titan</text>
+  <text class="tag" x="252" y="214">A Swiss Army knife for RAG</text>
+  <text class="sub" x="252" y="248">Many RAG types · one simple API · runs locally</text>
+
+  <rect class="chipbox" x="252" y="270" width="96" height="34" rx="17"/>
+  <text class="chip" x="300" y="292">simple</text>
+  <rect class="chipbox" x="358" y="270" width="112" height="34" rx="17"/>
+  <text class="chip" x="414" y="292">adaptive</text>
+  <rect class="chipbox" x="480" y="270" width="96" height="34" rx="17"/>
+  <text class="chip" x="528" y="292">agents</text>
+  <rect class="chipbox" x="586" y="270" width="96" height="34" rx="17"/>
+  <text class="chip" x="634" y="292">ollama</text>
+
+  <!-- mini flow: files -> chunks -> vectors -> answer -->
+  <rect class="pill" x="880" y="54" width="320" height="48" rx="24"/>
+  <text class="plabel" x="906" y="84">files</text>
+  <text class="pex" x="1176" y="84">handbook.pdf</text>
+
+  <rect class="pill" x="880" y="124" width="320" height="48" rx="24"/>
+  <text class="plabel" x="906" y="154">chunks</text>
+  <text class="pex" x="1176" y="154">chunk_0 … chunk_11</text>
+
+  <rect class="pill" x="880" y="194" width="320" height="48" rx="24"/>
+  <text class="plabel" x="906" y="224">vectors</text>
+  <text class="pex" x="1176" y="224">[0.12, -0.08, …]</text>
+
+  <rect class="pill" x="880" y="264" width="320" height="48" rx="24" style="fill:#8b5cf6;fill-opacity:0.25;stroke:#c4b5fd;stroke-opacity:0.7"/>
+  <text class="plabel" x="906" y="294">answer</text>
+  <text class="pex" x="1176" y="294" style="fill:#e0e7ff">20 days [chunk_0]</text>
+
+  <path class="flow" d="M1040 104 V120" marker-end="url(#arrow)"/>
+  <path class="flow" d="M1040 174 V190" marker-end="url(#arrow)"/>
+  <path class="flow" d="M1040 244 V260" marker-end="url(#arrow)"/>
+
+  <rect class="hl" x="880" y="54" width="320" height="48" rx="24" style="animation-delay:0s"/>
+  <rect class="hl" x="880" y="124" width="320" height="48" rx="24" style="animation-delay:2s"/>
+  <rect class="hl" x="880" y="194" width="320" height="48" rx="24" style="animation-delay:4s"/>
+  <rect class="hl" x="880" y="264" width="320" height="48" rx="24" style="animation-delay:6s"/>
+</svg>

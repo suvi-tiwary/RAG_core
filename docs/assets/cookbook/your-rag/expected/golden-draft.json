@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "question": "How much is the daily meal allowance?",
+    "expected_answer": "",
+    "expected_evidence": [
+      "The daily meal allowance is 40 euros."
+    ],
+    "required_facts": [],
+    "answerable": true,
+    "validated": false,
+    "_todo": "Check the suggested evidence, write expected_answer, then set validated to true"
+  },
+  {
+    "id": "q2",
+    "question": "Can I fly business class on a four-hour flight?",
+    "expected_answer": "",
+    "expected_evidence": [
+      "Business class is allowed for flights of six hours or longer."
+    ],
+    "required_facts": [],
+    "answerable": true,
+    "validated": false,
+    "_todo": "Check the suggested evidence, write expected_answer, then set validated to true"
+  },
+  {
+    "id": "q3",
+    "question": "What is the hotel limit per night?",
+    "expected_answer": "",
+    "expected_evidence": [
+      "Hotels must cost less than 150 euros per night."
+    ],
+    "required_facts": [],
+    "answerable": true,
+    "validated": false,
+    "_todo": "Check the suggested evidence, write expected_answer, then set validated to true"
+  },
+  {
+    "id": "q4",
+    "question": "Who has to approve a trip abroad?",
+    "expected_answer": "",
+    "expected_evidence": [
+      "Trips abroad also need approval from HR."
+    ],
+    "required_facts": [],
+    "answerable": true,
+    "validated": false,
+    "_todo": "Check the suggested evidence, write expected_answer, then set validated to true"
+  },
+  {
+    "id": "q5",
+    "question": "Is there a gym allowance?",
+    "expected_answer": "",
+    "expected_evidence": [
+      "The daily meal allowance is 40 euros."
+    ],
+    "required_facts": [],
+    "answerable": true,
+    "validated": false,
+    "_todo": "Check the suggested evidence, write expected_answer, then set validated to true"
+  }
+]

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-labelledby="title">
+  <title id="title">rag-titan logo</title>
+  <defs>
+    <linearGradient id="logo-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- many document chunks flow into one grounded answer -->
+  <rect width="120" height="120" rx="28" fill="url(#logo-bg)"/>
+  <rect x="22" y="33" width="40" height="11" rx="5.5" fill="#ffffff"/>
+  <rect x="22" y="54.5" width="30" height="11" rx="5.5" fill="#ffffff" opacity="0.8"/>
+  <rect x="22" y="76" width="36" height="11" rx="5.5" fill="#ffffff" opacity="0.6"/>
+  <path d="M64 38.5 C74 38.5 72 60 80 60 M54 60 H80 M60 81.5 C72 81.5 72 60 80 60" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="88" cy="60" r="12" fill="#ffffff"/>
+  <path d="M82.5 60.5 L86.5 64.5 L94 56" fill="none" stroke="#6d28d9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

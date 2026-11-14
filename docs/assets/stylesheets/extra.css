@@ -1,0 +1,74 @@
+/* The home page uses the banner image as its header, so hide the page title there. */
+.md-content__inner:has(img[src$="banner.svg"]) > h1 {
+  display: none;
+}
+
+/* Give the banner the same rounded look as the other diagrams. */
+.md-typeset img[src$="banner.svg"] {
+  border-radius: 12px;
+}
+
+/* Keep short code like rag_type="adaptive" on one line inside tables. */
+.md-typeset table:not([class]) code {
+  white-space: nowrap;
+  word-break: normal;
+}
+
+/* Chunk playground on the chunking page (docs/assets/javascripts/chunk-playground.js).
+   Theme variables keep it readable in light and dark mode. */
+#chunk-playground-app {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+#chunk-playground-app textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: 0.75rem/1.5 var(--md-code-font-family);
+  color: var(--md-default-fg-color);
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+.cp-controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 0.6rem; }
+.cp-field { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; }
+.cp-field output { min-width: 2.2em; font-weight: 700; font-family: var(--md-code-font-family); }
+.cp-field select {
+  color: var(--md-default-fg-color);
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+  padding: 0.15rem 0.3rem;
+}
+.md-typeset pre.cp-stats {
+  font-size: 0.7rem;
+  white-space: pre-wrap;
+  background: var(--md-code-bg-color);
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  margin: 0.6rem 0;
+}
+.cp-chunks { display: flex; flex-direction: column; gap: 0.4rem; }
+.cp-chunk { border-left: 4px solid; border-radius: 6px; padding: 0.3rem 0.6rem; }
+.cp-head { font-size: 0.65rem; font-weight: 700; opacity: 0.75; }
+.cp-text { font: 0.75rem/1.5 var(--md-code-font-family); white-space: pre-wrap; word-break: break-word; }
+.cp-text mark { background: rgba(249, 115, 22, 0.35); color: inherit; border-radius: 3px; }
+.cp-c0 { border-color: #3b82f6; background: rgba(59, 130, 246, 0.10); }
+.cp-c1 { border-color: #22c55e; background: rgba(34, 197, 94, 0.10); }
+.cp-c2 { border-color: #a855f7; background: rgba(168, 85, 247, 0.10); }
+.cp-c3 { border-color: #06b6d4; background: rgba(6, 182, 212, 0.10); }
+.cp-c4 { border-color: #eab308; background: rgba(234, 179, 8, 0.12); }
+.cp-c5 { border-color: #ec4899; background: rgba(236, 72, 153, 0.10); }
+.cp-presets { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; font-size: 0.7rem; margin-bottom: 0.5rem; }
+.cp-preset {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  cursor: pointer;
+}
+.cp-preset:hover { border-color: var(--md-accent-fg-color); }

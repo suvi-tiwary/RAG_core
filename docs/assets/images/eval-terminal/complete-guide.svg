@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 622"
+     width="960" height="622" role="img" aria-labelledby="title desc">
+  <title id="title">rag-titan: Evaluate your RAG, start to finish</title>
+  <desc id="desc">A small stand-in RAG answers five golden questions and logs what it did; the logs become one data file, and rag-titan scores every stage.</desc>
+  <defs>
+    <style>
+.t { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; }
+.bar { font: 600 12px system-ui, -apple-system, "Segoe UI", sans-serif;
+       fill: #94a3b8; text-anchor: middle; }
+@media (prefers-reduced-motion: reduce) {
+  .t { animation: none !important; opacity: 1; }
+  .cover { display: none; }
+}
+@keyframes l0 { 0%, 1.46% { opacity: 0; } 2.19%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l0 { animation: l0 27.4s infinite; }
+@keyframes c0 { 0%, 1.46% { transform: translateX(0); } 7.29%, 100% { transform: translateX(527px); } }
+.c0 { animation: c0 27.4s infinite steps(61, end); }
+@keyframes l1 { 0%, 7.29% { opacity: 0; } 8.01%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l1 { animation: l1 27.4s infinite; }
+@keyframes c1 { 0%, 7.29% { transform: translateX(0); } 13.11%, 100% { transform: translateX(147px); } }
+.c1 { animation: c1 27.4s infinite steps(16, end); }
+@keyframes l2 { 0%, 16.39% { opacity: 0; } 17.12%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l2 { animation: l2 27.4s infinite; }
+@keyframes l3 { 0%, 20.22% { opacity: 0; } 20.95%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l3 { animation: l3 27.4s infinite; }
+@keyframes c3 { 0%, 20.22% { transform: translateX(0); } 26.05%, 100% { transform: translateX(620px); } }
+.c3 { animation: c3 27.4s infinite steps(72, end); }
+@keyframes l4 { 0%, 26.05% { opacity: 0; } 26.78%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l4 { animation: l4 27.4s infinite; }
+@keyframes c4 { 0%, 26.05% { transform: translateX(0); } 31.88%, 100% { transform: translateX(173px); } }
+.c4 { animation: c4 27.4s infinite steps(19, end); }
+@keyframes l5 { 0%, 35.15% { opacity: 0; } 35.88%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l5 { animation: l5 27.4s infinite; }
+@keyframes l6 { 0%, 38.98% { opacity: 0; } 39.71%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l6 { animation: l6 27.4s infinite; }
+@keyframes c6 { 0%, 38.98% { transform: translateX(0); } 44.81%, 100% { transform: translateX(181px); } }
+.c6 { animation: c6 27.4s infinite steps(20, end); }
+@keyframes l7 { 0%, 48.09% { opacity: 0; } 48.82%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l7 { animation: l7 27.4s infinite; }
+@keyframes l8 { 0%, 51.91% { opacity: 0; } 52.64%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l8 { animation: l8 27.4s infinite; }
+@keyframes c8 { 0%, 51.91% { transform: translateX(0); } 57.74%, 100% { transform: translateX(173px); } }
+.c8 { animation: c8 27.4s infinite steps(19, end); }
+@keyframes l9 { 0%, 57.74% { opacity: 0; } 58.47%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l9 { animation: l9 27.4s infinite; }
+@keyframes c9 { 0%, 57.74% { transform: translateX(0); } 63.57%, 100% { transform: translateX(604px); } }
+.c9 { animation: c9 27.4s infinite steps(70, end); }
+@keyframes l10 { 0%, 66.85% { opacity: 0; } 67.58%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l10 { animation: l10 27.4s infinite; }
+@keyframes l11 { 0%, 68.49% { opacity: 0; } 69.22%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l11 { animation: l11 27.4s infinite; }
+@keyframes l12 { 0%, 70.13% { opacity: 0; } 70.86%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l12 { animation: l12 27.4s infinite; }
+@keyframes l13 { 0%, 71.77% { opacity: 0; } 72.50%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l13 { animation: l13 27.4s infinite; }
+@keyframes l14 { 0%, 73.41% { opacity: 0; } 74.13%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l14 { animation: l14 27.4s infinite; }
+@keyframes l15 { 0%, 75.05% { opacity: 0; } 75.77%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l15 { animation: l15 27.4s infinite; }
+@keyframes l16 { 0%, 76.68% { opacity: 0; } 77.41%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l16 { animation: l16 27.4s infinite; }
+@keyframes l17 { 0%, 78.32% { opacity: 0; } 79.05%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l17 { animation: l17 27.4s infinite; }
+@keyframes l18 { 0%, 79.96% { opacity: 0; } 80.69%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l18 { animation: l18 27.4s infinite; }
+@keyframes l19 { 0%, 81.60% { opacity: 0; } 82.33%, 94% { opacity: 1; } 100% { opacity: 0; } }
+.l19 { animation: l19 27.4s infinite; }
+    </style>
+    <clipPath id="screen"><rect x="0" y="0" width="960" height="622"/></clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="959" height="621" rx="14"
+        fill="#0f172a" stroke="#1e293b"/>
+  <rect x="0.5" y="0.5" width="959" height="40" rx="14" fill="#1e293b"/>
+  <rect x="0.5" y="26" width="959" height="15" fill="#1e293b"/>
+  <circle cx="26" cy="21" r="6" fill="#f87171"/>
+  <circle cx="46" cy="21" r="6" fill="#fbbf24"/>
+  <circle cx="66" cy="21" r="6" fill="#4ade80"/>
+  <text class="bar" x="480" y="25">rag-titan — terminal</text>
+  <text class="t l0" x="44" y="90" fill="#7dd3fc"># Your RAG answers the golden questions and saves what it did</text>
+<g clip-path="url(#screen)"><rect class="cover c0" x="44.0" y="73" width="527" height="24" fill="#0f172a"/></g>
+  <text class="t l1" x="44" y="114" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>python my_rag.py</text>
+<g clip-path="url(#screen)"><rect class="cover c1" x="60.9" y="97" width="147" height="24" fill="#0f172a"/></g>
+  <text class="t l2" x="44" y="138" fill="#94a3b8">Answered 5 questions -&gt; my_rag_logs.json</text>
+  <text class="t l3" x="44" y="176" fill="#7dd3fc"># Join the logs with golden.json, then add chunking and embedding inputs</text>
+<g clip-path="url(#screen)"><rect class="cover c3" x="44.0" y="159" width="620" height="24" fill="#0f172a"/></g>
+  <text class="t l4" x="44" y="200" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>python make_data.py</text>
+<g clip-path="url(#screen)"><rect class="cover c4" x="60.9" y="183" width="173" height="24" fill="#0f172a"/></g>
+  <text class="t l5" x="44" y="224" fill="#94a3b8">Wrote my-data.json: 5 queries, 5 chunks</text>
+  <text class="t l6" x="44" y="262" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>python add_stages.py</text>
+<g clip-path="url(#screen)"><rect class="cover c6" x="60.9" y="245" width="181" height="24" fill="#0f172a"/></g>
+  <text class="t l7" x="44" y="286" fill="#94a3b8">Wrote eval-data.json: chunking and embedding inputs added</text>
+  <text class="t l8" x="44" y="324" fill="#7dd3fc"># Score every stage</text>
+<g clip-path="url(#screen)"><rect class="cover c8" x="44.0" y="307" width="173" height="24" fill="#0f172a"/></g>
+  <text class="t l9" x="44" y="348" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>rag-titan evaluate --input eval-data.json --output baseline.json --k 3</text>
+<g clip-path="url(#screen)"><rect class="cover c9" x="60.9" y="331" width="604" height="24" fill="#0f172a"/></g>
+  <text class="t l10" x="44" y="372" fill="#94a3b8">Reports saved: baseline.json and baseline.md</text>
+  <text class="t l11" x="44" y="396" fill="#86efac">Overall score: 81.2/100 (Very Good)</text>
+  <text class="t l12" x="44" y="420" fill="#fde68a">Status: Provisional | Measurement coverage: 75%</text>
+  <text class="t l13" x="44" y="444" fill="#fdba74">First failing stage: generation</text>
+  <text class="t l14" x="44" y="468" fill="#94a3b8">Queries to look at:</text>
+  <text class="t l15" x="44" y="492" fill="#94a3b8">  - q5 (generation): answered when it should refuse, or the reverse</text>
+  <text class="t l16" x="44" y="516" fill="#94a3b8">  - q4 (generation): answer differs from the reference (F1 0.00)</text>
+  <text class="t l17" x="44" y="540" fill="#94a3b8">Not measured (null in the report) - to measure it:</text>
+  <text class="t l18" x="44" y="564" fill="#94a3b8">  - search ordering: add "reranked_ids" (only if you have a reranker)</text>
+  <text class="t l19" x="44" y="588" fill="#94a3b8">  - task success: add "task_success" per query (a person's yes/no)</text>
+</svg>

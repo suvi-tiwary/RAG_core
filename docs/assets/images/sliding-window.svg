@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-labelledby="title desc">
+  <title id="title">Sliding windows</title>
+  <desc id="desc">A window of 4 units slides over the 10 letters a to j, moving 3 units each time because 1 unit overlaps. It makes three chunks: abcd, defg and ghij. The shared letters d and g are highlighted.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; }
+      .title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .idx { font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #94a3b8; text-anchor: middle; }
+      .unit { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.5; }
+      .shared { fill: #fff7ed; stroke: #f97316; stroke-width: 1.5; }
+      .letter { font: 600 20px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #1e3a8a; text-anchor: middle; }
+      .measure { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .mlabel { font: 600 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #334155; text-anchor: middle; }
+      .card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+      .chunk { font: 600 17px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; text-anchor: middle; }
+      .ov { fill: #ea580c; font-weight: 800; }
+      .formula { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; text-anchor: middle; }
+      .note { font: 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; text-anchor: middle; }
+      .window { fill: none; stroke: #f97316; stroke-width: 3; animation: slide 9s ease-in-out infinite; }
+      .step { opacity: .35; animation: on 9s infinite; }
+      @keyframes slide {
+        0%, 28% { transform: translateX(0); }
+        33%, 61% { transform: translateX(204px); }
+        66%, 94% { transform: translateX(408px); }
+        100% { transform: translateX(0); }
+      }
+      @keyframes on { 0%, 28% { opacity: 1; } 33%, 100% { opacity: .35; } }
+      @media (prefers-reduced-motion: reduce) { .window, .step { animation: none; opacity: 1; } }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="1" y="1" width="958" height="438" rx="14"/>
+  <text class="title" x="40" y="46">Sliding windows</text>
+  <text class="sub" x="40" y="70">Size S = 4 units, overlap O = 1, so each window starts H = S − O = 3 units after the last one.</text>
+
+  <!-- unit positions -->
+  <g>
+    <text class="idx" x="174" y="136">1</text><text class="idx" x="242" y="136">2</text>
+    <text class="idx" x="310" y="136">3</text><text class="idx" x="378" y="136">4</text>
+    <text class="idx" x="446" y="136">5</text><text class="idx" x="514" y="136">6</text>
+    <text class="idx" x="582" y="136">7</text><text class="idx" x="650" y="136">8</text>
+    <text class="idx" x="718" y="136">9</text><text class="idx" x="786" y="136">10</text>
+  </g>
+
+  <!-- the 10 units; d and g are shared by two windows -->
+  <g>
+    <rect class="unit" x="144" y="150" width="60" height="56" rx="8"/><text class="letter" x="174" y="185">a</text>
+    <rect class="unit" x="212" y="150" width="60" height="56" rx="8"/><text class="letter" x="242" y="185">b</text>
+    <rect class="unit" x="280" y="150" width="60" height="56" rx="8"/><text class="letter" x="310" y="185">c</text>
+    <rect class="shared" x="348" y="150" width="60" height="56" rx="8"/><text class="letter" x="378" y="185">d</text>
+    <rect class="unit" x="416" y="150" width="60" height="56" rx="8"/><text class="letter" x="446" y="185">e</text>
+    <rect class="unit" x="484" y="150" width="60" height="56" rx="8"/><text class="letter" x="514" y="185">f</text>
+    <rect class="shared" x="552" y="150" width="60" height="56" rx="8"/><text class="letter" x="582" y="185">g</text>
+    <rect class="unit" x="620" y="150" width="60" height="56" rx="8"/><text class="letter" x="650" y="185">h</text>
+    <rect class="unit" x="688" y="150" width="60" height="56" rx="8"/><text class="letter" x="718" y="185">i</text>
+    <rect class="unit" x="756" y="150" width="60" height="56" rx="8"/><text class="letter" x="786" y="185">j</text>
+  </g>
+
+  <!-- the moving window -->
+  <rect class="window" x="139" y="144" width="274" height="68" rx="11"/>
+
+  <!-- measurements -->
+  <path class="measure" d="M144 226 V236 H408 V226"/>
+  <text class="mlabel" x="276" y="254">S = 4 units per chunk</text>
+  <path class="measure" d="M144 272 H346" marker-end="url(#arrow)"/>
+  <text class="mlabel" x="246" y="292">stride H = 3</text>
+  <path class="measure" d="M378 210 V222" stroke-dasharray="3 3"/>
+  <text class="mlabel" x="520" y="254" style="fill:#ea580c">O = 1 unit shared (d, then g)</text>
+
+  <!-- the chunks, lit up as the window reaches them -->
+  <g class="step" style="animation-delay:0s">
+    <rect class="card" x="150" y="312" width="200" height="54" rx="10"/>
+    <text class="chunk" x="250" y="345">C₀ = abc<tspan class="ov">d</tspan></text>
+  </g>
+  <g class="step" style="animation-delay:3s">
+    <rect class="card" x="380" y="312" width="200" height="54" rx="10"/>
+    <text class="chunk" x="480" y="345">C₁ = <tspan class="ov">d</tspan>ef<tspan class="ov">g</tspan></text>
+  </g>
+  <g class="step" style="animation-delay:6s">
+    <rect class="card" x="610" y="312" width="200" height="54" rx="10"/>
+    <text class="chunk" x="710" y="345">C₂ = <tspan class="ov">g</tspan>hij</text>
+  </g>
+
+  <text class="formula" x="480" y="402">N = 10:  K = 1 + ⌈(N − S) / H⌉ = 1 + ⌈6 / 3⌉ = 3 chunks</text>
+  <text class="note" x="480" y="424">Drop the shared unit at the start of each chunk and join: abcd + efg + hij = the original text.</text>
+</svg>

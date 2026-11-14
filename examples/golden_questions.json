@@ -1,0 +1,18 @@
+[
+  {"id": "g_001", "question": "How many paid leave days do I get each year?",
+   "expected_evidence": ["gets 20 paid leave days per calendar year"],
+   "expected_answer": "Every full-time employee gets 20 paid leave days per calendar year.",
+   "required_facts": ["20"], "answerable": true, "validated": true},
+  {"id": "g_002", "question": "When do I need a note from the doctor?",
+   "expected_evidence": ["From the third sick day you need a doctor's note"],
+   "expected_answer": "From the third sick day you need a doctor's note.",
+   "required_facts": ["third"], "answerable": true, "validated": true},
+  {"id": "g_003", "question": "How many days a week can I work from home?",
+   "expected_evidence": ["work from home up to three days per week"],
+   "expected_answer": "Employees may work from home up to three days per week.",
+   "required_facts": ["three days"], "answerable": true, "validated": true},
+  {"id": "g_004", "question": "Can I work from another country for a while?",
+   "expected_evidence": ["allowed for at most 20 working days per year"],
+   "expected_answer": "Yes, for at most 20 working days per year, with written approval from HR.",
+   "required_facts": ["20 working days", "HR"], "answerable": true, "validated": true}
+]

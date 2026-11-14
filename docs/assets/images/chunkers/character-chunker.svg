@@ -1,0 +1,399 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 472" width="960" height="472" role="img" aria-labelledby="title desc">
+<title id="title">CharacterChunker</title>
+<desc id="desc">CharacterChunker cuts the leave-policy text into 105 characters and makes 5 chunks of 30 characters that overlap by 6.</desc>
+<!-- made by tools/diagrams/make_chunk_diagrams.py from real chunker output; do not edit -->
+<defs><style>
+.bg { fill: #ffffff; stroke: #e2e8f0; }
+.title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+.sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+.h { font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #334155; }
+.unit { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1; }
+.mono { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a;
+        white-space: pre; }
+.pick { fill: none; stroke: #f97316; stroke-width: 2.5; }
+.shared { fill: rgba(249, 115, 22, 0.28); stroke: #f97316; stroke-width: 2.5; }
+.card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+.tag { font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #64748b; }
+.ov { fill: #ea580c; font-weight: 700; }
+.foot { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; }
+
+@keyframes h0 { 0%, 0.00% { opacity: 0; } 0.50%, 15.50% { opacity: 1; } 16.00%, 100% { opacity: 0; } }
+@keyframes c0 { 0%, 0.00% { opacity: 0.15; } 0.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h0 { opacity: 0; animation: h0 10.0s infinite; }
+.c0 { opacity: 0.15; animation: c0 10.0s infinite; }
+@keyframes h1 { 0%, 16.00% { opacity: 0; } 16.50%, 31.50% { opacity: 1; } 32.00%, 100% { opacity: 0; } }
+@keyframes c1 { 0%, 16.00% { opacity: 0.15; } 16.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h1 { opacity: 0; animation: h1 10.0s infinite; }
+.c1 { opacity: 0.15; animation: c1 10.0s infinite; }
+@keyframes h2 { 0%, 32.00% { opacity: 0; } 32.50%, 47.50% { opacity: 1; } 48.00%, 100% { opacity: 0; } }
+@keyframes c2 { 0%, 32.00% { opacity: 0.15; } 32.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h2 { opacity: 0; animation: h2 10.0s infinite; }
+.c2 { opacity: 0.15; animation: c2 10.0s infinite; }
+@keyframes h3 { 0%, 48.00% { opacity: 0; } 48.50%, 63.50% { opacity: 1; } 64.00%, 100% { opacity: 0; } }
+@keyframes c3 { 0%, 48.00% { opacity: 0.15; } 48.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h3 { opacity: 0; animation: h3 10.0s infinite; }
+.c3 { opacity: 0.15; animation: c3 10.0s infinite; }
+@keyframes h4 { 0%, 64.00% { opacity: 0; } 64.50%, 79.50% { opacity: 1; } 80.00%, 100% { opacity: 0; } }
+@keyframes c4 { 0%, 64.00% { opacity: 0.15; } 64.50%, 97.50% { opacity: 1; } 98.00%, 100% { opacity: 0.15; } }
+.h4 { opacity: 0; animation: h4 10.0s infinite; }
+.c4 { opacity: 0.15; animation: c4 10.0s infinite; }
+@media (prefers-reduced-motion: reduce) { .h0, .h1, .h2, .h3, .h4 { animation: none; opacity: 0; } .c0, .c1, .c2, .c3, .c4 { animation: none; opacity: 1; } }
+</style></defs>
+<rect class="bg" x="1" y="1" width="958" height="470" rx="14"/>
+<text class="title" x="40" y="46">CharacterChunker</text>
+<text class="sub" x="40" y="70">CharacterChunker(chunk_size=30, overlap=6): windows of 30 characters, each starting 24 characters after the last one.</text>
+<text class="sub" x="40" y="90">Orange frame = the chunk being made. Filled orange = overlap, repeated from the chunk before.</text>
+<text class="h" x="40" y="114">1. The text, cut into 105 characters (· = space, ↵ = line break)</text>
+<rect class="unit" x="40.0" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="44.0" y="146">L</text>
+<rect class="unit" x="61.3" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="65.3" y="146">e</text>
+<rect class="unit" x="82.6" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="86.6" y="146">a</text>
+<rect class="unit" x="103.9" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="107.9" y="146">v</text>
+<rect class="unit" x="125.2" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="129.2" y="146">e</text>
+<rect class="unit" x="146.5" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="150.5" y="146">·</text>
+<rect class="unit" x="167.8" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="171.8" y="146">p</text>
+<rect class="unit" x="189.1" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="193.1" y="146">o</text>
+<rect class="unit" x="210.4" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="214.4" y="146">l</text>
+<rect class="unit" x="231.7" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="235.7" y="146">i</text>
+<rect class="unit" x="253.0" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="257.0" y="146">c</text>
+<rect class="unit" x="274.3" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="278.3" y="146">y</text>
+<rect class="unit" x="295.6" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="299.6" y="146">↵</text>
+<rect class="unit" x="316.9" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="320.9" y="146">↵</text>
+<rect class="unit" x="338.2" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="342.2" y="146">S</text>
+<rect class="unit" x="359.5" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="363.5" y="146">t</text>
+<rect class="unit" x="380.8" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="384.8" y="146">a</text>
+<rect class="unit" x="402.1" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="406.1" y="146">f</text>
+<rect class="unit" x="423.4" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="427.4" y="146">f</text>
+<rect class="unit" x="444.7" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="448.7" y="146">·</text>
+<rect class="unit" x="466.0" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="470.0" y="146">g</text>
+<rect class="unit" x="487.3" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="491.3" y="146">e</text>
+<rect class="unit" x="508.6" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="512.6" y="146">t</text>
+<rect class="unit" x="529.9" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="533.9" y="146">·</text>
+<rect class="unit" x="551.2" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="555.2" y="146">t</text>
+<rect class="unit" x="572.5" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="576.5" y="146">w</text>
+<rect class="unit" x="593.8" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="597.8" y="146">e</text>
+<rect class="unit" x="615.1" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="619.1" y="146">n</text>
+<rect class="unit" x="636.4" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="640.4" y="146">t</text>
+<rect class="unit" x="657.7" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="661.7" y="146">y</text>
+<rect class="unit" x="679.0" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="683.0" y="146">·</text>
+<rect class="unit" x="700.3" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="704.3" y="146">d</text>
+<rect class="unit" x="721.6" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="725.6" y="146">a</text>
+<rect class="unit" x="742.9" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="746.9" y="146">y</text>
+<rect class="unit" x="764.2" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="768.2" y="146">s</text>
+<rect class="unit" x="785.5" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="789.5" y="146">.</text>
+<rect class="unit" x="806.8" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="810.8" y="146">·</text>
+<rect class="unit" x="828.1" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="832.1" y="146">U</text>
+<rect class="unit" x="849.4" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="853.4" y="146">n</text>
+<rect class="unit" x="870.7" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="874.7" y="146">u</text>
+<rect class="unit" x="892.0" y="128" width="15.3" height="26" rx="5"/>
+<text class="mono" x="896.0" y="146">s</text>
+<rect class="unit" x="40.0" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="44.0" y="178">e</text>
+<rect class="unit" x="61.3" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="65.3" y="178">d</text>
+<rect class="unit" x="82.6" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="86.6" y="178">·</text>
+<rect class="unit" x="103.9" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="107.9" y="178">d</text>
+<rect class="unit" x="125.2" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="129.2" y="178">a</text>
+<rect class="unit" x="146.5" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="150.5" y="178">y</text>
+<rect class="unit" x="167.8" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="171.8" y="178">s</text>
+<rect class="unit" x="189.1" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="193.1" y="178">·</text>
+<rect class="unit" x="210.4" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="214.4" y="178">c</text>
+<rect class="unit" x="231.7" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="235.7" y="178">a</text>
+<rect class="unit" x="253.0" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="257.0" y="178">r</text>
+<rect class="unit" x="274.3" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="278.3" y="178">r</text>
+<rect class="unit" x="295.6" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="299.6" y="178">y</text>
+<rect class="unit" x="316.9" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="320.9" y="178">·</text>
+<rect class="unit" x="338.2" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="342.2" y="178">o</text>
+<rect class="unit" x="359.5" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="363.5" y="178">v</text>
+<rect class="unit" x="380.8" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="384.8" y="178">e</text>
+<rect class="unit" x="402.1" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="406.1" y="178">r</text>
+<rect class="unit" x="423.4" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="427.4" y="178">.</text>
+<rect class="unit" x="444.7" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="448.7" y="178">·</text>
+<rect class="unit" x="466.0" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="470.0" y="178">A</text>
+<rect class="unit" x="487.3" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="491.3" y="178">s</text>
+<rect class="unit" x="508.6" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="512.6" y="178">k</text>
+<rect class="unit" x="529.9" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="533.9" y="178">·</text>
+<rect class="unit" x="551.2" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="555.2" y="178">H</text>
+<rect class="unit" x="572.5" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="576.5" y="178">R</text>
+<rect class="unit" x="593.8" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="597.8" y="178">·</text>
+<rect class="unit" x="615.1" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="619.1" y="178">f</text>
+<rect class="unit" x="636.4" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="640.4" y="178">o</text>
+<rect class="unit" x="657.7" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="661.7" y="178">r</text>
+<rect class="unit" x="679.0" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="683.0" y="178">·</text>
+<rect class="unit" x="700.3" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="704.3" y="178">t</text>
+<rect class="unit" x="721.6" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="725.6" y="178">h</text>
+<rect class="unit" x="742.9" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="746.9" y="178">e</text>
+<rect class="unit" x="764.2" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="768.2" y="178">·</text>
+<rect class="unit" x="785.5" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="789.5" y="178">f</text>
+<rect class="unit" x="806.8" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="810.8" y="178">o</text>
+<rect class="unit" x="828.1" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="832.1" y="178">r</text>
+<rect class="unit" x="849.4" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="853.4" y="178">m</text>
+<rect class="unit" x="870.7" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="874.7" y="178">.</text>
+<rect class="unit" x="892.0" y="160" width="15.3" height="26" rx="5"/>
+<text class="mono" x="896.0" y="178">·</text>
+<rect class="unit" x="40.0" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="44.0" y="210">S</text>
+<rect class="unit" x="61.3" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="65.3" y="210">i</text>
+<rect class="unit" x="82.6" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="86.6" y="210">c</text>
+<rect class="unit" x="103.9" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="107.9" y="210">k</text>
+<rect class="unit" x="125.2" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="129.2" y="210">·</text>
+<rect class="unit" x="146.5" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="150.5" y="210">l</text>
+<rect class="unit" x="167.8" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="171.8" y="210">e</text>
+<rect class="unit" x="189.1" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="193.1" y="210">a</text>
+<rect class="unit" x="210.4" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="214.4" y="210">v</text>
+<rect class="unit" x="231.7" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="235.7" y="210">e</text>
+<rect class="unit" x="253.0" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="257.0" y="210">·</text>
+<rect class="unit" x="274.3" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="278.3" y="210">i</text>
+<rect class="unit" x="295.6" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="299.6" y="210">s</text>
+<rect class="unit" x="316.9" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="320.9" y="210">·</text>
+<rect class="unit" x="338.2" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="342.2" y="210">s</text>
+<rect class="unit" x="359.5" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="363.5" y="210">e</text>
+<rect class="unit" x="380.8" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="384.8" y="210">p</text>
+<rect class="unit" x="402.1" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="406.1" y="210">a</text>
+<rect class="unit" x="423.4" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="427.4" y="210">r</text>
+<rect class="unit" x="444.7" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="448.7" y="210">a</text>
+<rect class="unit" x="466.0" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="470.0" y="210">t</text>
+<rect class="unit" x="487.3" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="491.3" y="210">e</text>
+<rect class="unit" x="508.6" y="192" width="15.3" height="26" rx="5"/>
+<text class="mono" x="512.6" y="210">.</text>
+<g class="h0"><rect class="pick" x="38.0" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="59.3" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="80.6" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="101.9" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="123.2" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="144.5" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="165.8" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="187.1" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="208.4" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="229.7" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="251.0" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="272.3" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="293.6" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="314.9" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="336.2" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="357.5" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="378.8" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="400.1" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="421.4" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="442.7" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="464.0" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="485.3" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="506.6" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="527.9" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="549.2" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="570.5" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="591.8" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="613.1" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="634.4" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="655.7" y="126" width="19.3" height="30" rx="6"/></g>
+<g class="h1"><rect class="pick" x="677.0" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="698.3" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="719.6" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="740.9" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="762.2" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="783.5" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="804.8" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="826.1" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="847.4" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="868.7" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="890.0" y="126" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="38.0" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="59.3" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="80.6" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="101.9" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="123.2" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="144.5" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="165.8" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="187.1" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="208.4" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="229.7" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="251.0" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="272.3" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="293.6" y="158" width="19.3" height="30" rx="6"/><rect class="shared" x="549.2" y="126" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="570.5" y="126" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="591.8" y="126" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="613.1" y="126" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="634.4" y="126" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="655.7" y="126" width="19.3" height="30" rx="6"/></g>
+<g class="h2"><rect class="pick" x="314.9" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="336.2" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="357.5" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="378.8" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="400.1" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="421.4" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="442.7" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="464.0" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="485.3" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="506.6" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="527.9" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="549.2" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="570.5" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="591.8" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="613.1" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="634.4" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="655.7" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="677.0" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="698.3" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="719.6" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="740.9" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="762.2" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="783.5" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="804.8" y="158" width="19.3" height="30" rx="6"/><rect class="shared" x="187.1" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="208.4" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="229.7" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="251.0" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="272.3" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="293.6" y="158" width="19.3" height="30" rx="6"/></g>
+<g class="h3"><rect class="pick" x="826.1" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="847.4" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="868.7" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="890.0" y="158" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="38.0" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="59.3" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="80.6" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="101.9" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="123.2" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="144.5" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="165.8" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="187.1" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="208.4" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="229.7" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="251.0" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="272.3" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="293.6" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="314.9" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="336.2" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="357.5" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="378.8" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="400.1" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="421.4" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="442.7" y="190" width="19.3" height="30" rx="6"/><rect class="shared" x="698.3" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="719.6" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="740.9" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="762.2" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="783.5" y="158" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="804.8" y="158" width="19.3" height="30" rx="6"/></g>
+<g class="h4"><rect class="pick" x="464.0" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="485.3" y="190" width="19.3" height="30" rx="6"/>
+<rect class="pick" x="506.6" y="190" width="19.3" height="30" rx="6"/><rect class="shared" x="336.2" y="190" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="357.5" y="190" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="378.8" y="190" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="400.1" y="190" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="421.4" y="190" width="19.3" height="30" rx="6"/>
+<rect class="shared" x="442.7" y="190" width="19.3" height="30" rx="6"/></g>
+<text class="h" x="40" y="242">2. The chunks (real output)</text>
+<g class="c0"><rect class="card" x="40" y="252" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="273">C0</text>
+<text class="mono" x="84" y="273">Leave policy↵↵Staff get twenty</text></g>
+<g class="c1"><rect class="card" x="40" y="288" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="309">C1</text>
+<text class="mono" x="84" y="309"><tspan class="ov">twenty</tspan> days. Unused days carry</text></g>
+<g class="c2"><rect class="card" x="40" y="324" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="345">C2</text>
+<text class="mono" x="84" y="345"><tspan class="ov"> carry</tspan> over. Ask HR for the fo</text></g>
+<g class="c3"><rect class="card" x="40" y="360" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="381">C3</text>
+<text class="mono" x="84" y="381"><tspan class="ov">the fo</tspan>rm. Sick leave is separa</text></g>
+<g class="c4"><rect class="card" x="40" y="396" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="417">C4</text>
+<text class="mono" x="84" y="417"><tspan class="ov">separa</tspan>te.</text></g>
+<text class="foot" x="40" y="452">N = 105 characters · S = 30 · O = 6 · H = 24 · K = 1 + ⌈(N − S) / H⌉ = 5 chunks</text>
+</svg>

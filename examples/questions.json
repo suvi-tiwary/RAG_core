@@ -1,0 +1,14 @@
+[
+  {"id": "q_001", "question": "How many paid leave days do I get each year?",
+   "required_evidence_ids": ["leave_policy.md"], "task_type": "fact"},
+  {"id": "q_002", "question": "When do I need a note from the doctor?",
+   "required_evidence_ids": ["leave_policy.md"], "task_type": "fact"},
+  {"id": "q_003", "question": "How many days a week can I work from home?",
+   "required_evidence_ids": ["remote_work.md"], "task_type": "fact"},
+  {"id": "q_004", "question": "Can I work from another country for a while?",
+   "required_evidence_ids": ["remote_work.md"], "task_type": "semantic"},
+  {"id": "q_005", "question": "What is the maximum hotel cost per night?",
+   "required_evidence_ids": ["expenses.md"], "task_type": "fact"},
+  {"id": "q_006", "question": "What do I get for working from home: equipment and money for furniture?",
+   "required_evidence_ids": ["remote_work.md", "expenses.md"], "task_type": "multi_hop"}
+]

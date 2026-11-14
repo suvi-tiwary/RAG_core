@@ -1,0 +1,6 @@
+Overall score: 65.5/100 (Average)
+Status: Action Required | Measurement coverage: 96%
+First failing stage: generation
+Queries to look at:
+  - q1 (generation): the task was marked unsuccessful
+  - q2 (generation): the task was marked unsuccessful

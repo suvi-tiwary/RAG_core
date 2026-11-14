@@ -1,0 +1,89 @@
+# 1. The minimum: one chunk, one question
+$ rag-titan evaluate --input minimal.json --output minimal-report.json --k 1
+Reports saved: minimal-report.json and minimal-report.md
+Overall score: 100.0/100 (Excellent)
+Status: Provisional | Measurement coverage: 27%
+First failing stage: none
+Not measured (null in the report) - to measure it:
+  - semantic indexing: add "embeddings" (chunk and query vectors)
+  - search ordering: add "reranked_ids" (only if you have a reranker)
+  - context and evidence checks: add "documents" and "expected_evidence" (build_dataset() does it)
+  - task success: add "task_success" per query (a person's yes/no)
+  - refusals: add a question with "answerable": false and "abstained"
+  - end-to-end time and cost: add "latency_ms", "cost_usd", "total_tokens"
+
+# The complete data file: every input rag-titan accepts
+$ rag-titan evaluate --input full-data.json --output full-report.json --k 2
+Reports saved: full-report.json and full-report.md
+Overall score: 94.0/100 (Excellent)
+Status: Evaluated | Measurement coverage: 100%
+First failing stage: none
+
+# 2. Prepare your documents
+$ python prepare_docs.py
+Documents: 3
+  problem in todo.md: short
+  problem in travel_policy_backup.md: exact duplicate
+Clean documents: 1
+Write golden questions for: travel_policy.md
+
+# 3. Golden questions: rag-titan drafts, you review, then check
+$ rag-titan golden --questions questions.txt --files documents/travel_policy.md --output golden-draft.json
+Wrote golden-draft.json: 5 questions, 5 with a suggested evidence quote.
+Next: for every question, check the quote, write expected_answer and required_facts, then set validated to true.
+$ python check_golden.py
+Questions: 5
+Human-validated: 5
+Ready: True
+
+# 4. Your RAG answers the questions and saves what it did
+$ python my_rag.py
+Answered 5 questions -> my_rag_logs.json
+
+# 5. Build the data file and evaluate
+$ python make_data.py
+Wrote my-data.json: 5 queries, 5 chunks
+$ rag-titan evaluate --input my-data.json --output first-report.json --k 3
+Reports saved: first-report.json and first-report.md
+Overall score: 78.3/100 (Good)
+Status: Provisional | Measurement coverage: 60%
+First failing stage: generation
+Queries to look at:
+  - q5 (generation): answered when it should refuse, or the reverse
+  - q4 (generation): answer differs from the reference (F1 0.00)
+Not measured (null in the report) - to measure it:
+  - semantic indexing: add "embeddings" (chunk and query vectors)
+  - search ordering: add "reranked_ids" (only if you have a reranker)
+  - task success: add "task_success" per query (a person's yes/no)
+
+# 6. Add the chunking and embedding inputs, evaluate again
+$ python add_stages.py
+Wrote eval-data.json: chunking and embedding inputs added
+$ rag-titan evaluate --input eval-data.json --output baseline.json --k 3
+Reports saved: baseline.json and baseline.md
+Overall score: 81.2/100 (Very Good)
+Status: Provisional | Measurement coverage: 75%
+First failing stage: generation
+Queries to look at:
+  - q5 (generation): answered when it should refuse, or the reverse
+  - q4 (generation): answer differs from the reference (F1 0.00)
+Not measured (null in the report) - to measure it:
+  - search ordering: add "reranked_ids" (only if you have a reranker)
+  - task success: add "task_success" per query (a person's yes/no)
+
+# 7. Improve your RAG, then compare with the baseline
+$ python my_rag.py --improved
+Answered 5 questions -> my_rag_logs.json
+$ python make_data.py
+Wrote my-data.json: 5 queries, 5 chunks
+$ python add_stages.py
+Wrote eval-data.json: chunking and embedding inputs added
+$ rag-titan evaluate --input eval-data.json --output candidate.json --k 3 --baseline baseline.json --fail-on-regression
+Reports saved: candidate.json and candidate.md
+Overall score: 87.1/100 (Very Good)
+Status: Provisional | Measurement coverage: 75%
+First failing stage: none
+Regressions against the baseline: none
+Not measured (null in the report) - to measure it:
+  - search ordering: add "reranked_ids" (only if you have a reranker)
+  - task success: add "task_success" per query (a person's yes/no)

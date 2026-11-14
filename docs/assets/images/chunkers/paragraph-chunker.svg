@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 368" width="960" height="368" role="img" aria-labelledby="title desc">
+<title id="title">ParagraphChunker</title>
+<desc id="desc">ParagraphChunker cuts the text into 4 paragraphs and packs whole paragraphs into 3 chunks of at most 70 characters.</desc>
+<!-- made by tools/diagrams/make_chunk_diagrams.py from real chunker output; do not edit -->
+<defs><style>
+.bg { fill: #ffffff; stroke: #e2e8f0; }
+.title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+.sub { font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+.h { font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #334155; }
+.unit { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1; }
+.mono { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a;
+        white-space: pre; }
+.pick { fill: none; stroke: #f97316; stroke-width: 2.5; }
+.shared { fill: rgba(249, 115, 22, 0.28); stroke: #f97316; stroke-width: 2.5; }
+.card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+.tag { font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #64748b; }
+.ov { fill: #ea580c; font-weight: 700; }
+.foot { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; }
+
+@keyframes h0 { 0%, 0.00% { opacity: 0; } 0.50%, 23.03% { opacity: 1; } 23.53%, 100% { opacity: 0; } }
+@keyframes c0 { 0%, 0.00% { opacity: 0.15; } 0.50%, 96.56% { opacity: 1; } 97.06%, 100% { opacity: 0.15; } }
+.h0 { opacity: 0; animation: h0 6.8s infinite; }
+.c0 { opacity: 0.15; animation: c0 6.8s infinite; }
+@keyframes h1 { 0%, 23.53% { opacity: 0; } 24.03%, 46.56% { opacity: 1; } 47.06%, 100% { opacity: 0; } }
+@keyframes c1 { 0%, 23.53% { opacity: 0.15; } 24.03%, 96.56% { opacity: 1; } 97.06%, 100% { opacity: 0.15; } }
+.h1 { opacity: 0; animation: h1 6.8s infinite; }
+.c1 { opacity: 0.15; animation: c1 6.8s infinite; }
+@keyframes h2 { 0%, 47.06% { opacity: 0; } 47.56%, 70.09% { opacity: 1; } 70.59%, 100% { opacity: 0; } }
+@keyframes c2 { 0%, 47.06% { opacity: 0.15; } 47.56%, 96.56% { opacity: 1; } 97.06%, 100% { opacity: 0.15; } }
+.h2 { opacity: 0; animation: h2 6.8s infinite; }
+.c2 { opacity: 0.15; animation: c2 6.8s infinite; }
+@media (prefers-reduced-motion: reduce) { .h0, .h1, .h2 { animation: none; opacity: 0; } .c0, .c1, .c2 { animation: none; opacity: 1; } }
+</style></defs>
+<rect class="bg" x="1" y="1" width="958" height="366" rx="14"/>
+<text class="title" x="40" y="46">ParagraphChunker</text>
+<text class="sub" x="40" y="70">ParagraphChunker(chunk_size=70, overlap=0): whole paragraphs (split at blank lines), packed up to 70.</text>
+<text class="sub" x="40" y="90">Orange frame = the chunk being made. Filled orange = overlap, repeated from the chunk before.</text>
+<text class="h" x="40" y="114">1. The text, cut into 4 paragraphs (number = size in characters)</text>
+<rect class="unit" x="40.0" y="128" width="132.8" height="26" rx="5"/>
+<text class="mono" x="48.0" y="146">Leave policy  14</text>
+<rect class="unit" x="178.8" y="128" width="381.0" height="26" rx="5"/>
+<text class="mono" x="186.8" y="146">Staff get twenty days. Unused days carry over.  48</text>
+<rect class="unit" x="40.0" y="160" width="366.4" height="26" rx="5"/>
+<text class="mono" x="48.0" y="178">Ask HR for the form. Sick leave is separate.  46</text>
+<rect class="unit" x="412.4" y="160" width="286.1" height="26" rx="5"/>
+<text class="mono" x="420.4" y="178">Dr. Lee signs it within 3.5 days.  33</text>
+<g class="h0"><rect class="pick" x="38.0" y="126" width="136.8" height="30" rx="6"/>
+<rect class="pick" x="176.8" y="126" width="385.0" height="30" rx="6"/></g>
+<g class="h1"><rect class="pick" x="38.0" y="158" width="370.4" height="30" rx="6"/></g>
+<g class="h2"><rect class="pick" x="410.4" y="158" width="290.1" height="30" rx="6"/></g>
+<text class="h" x="40" y="210">2. The chunks (real output)</text>
+<g class="c0"><rect class="card" x="40" y="220" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="241">C0</text>
+<text class="mono" x="84" y="241">Leave policy↵↵Staff get twenty days. Unused days carry over.</text></g>
+<g class="c1"><rect class="card" x="40" y="256" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="277">C1</text>
+<text class="mono" x="84" y="277">Ask HR for the form. Sick leave is separate.</text></g>
+<g class="c2"><rect class="card" x="40" y="292" width="880" height="30" rx="8"/>
+<text class="tag" x="50" y="313">C2</text>
+<text class="mono" x="84" y="313">Dr. Lee signs it within 3.5 days.</text></g>
+<text class="foot" x="40" y="348">S = 70 · O = 0 · K = 3 chunks · whole paragraphs, sizes add up to ≤ S</text>
+</svg>

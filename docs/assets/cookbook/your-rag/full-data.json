@@ -1,0 +1,100 @@
+{
+  "documents": {
+    "travel_policy.md": "Economy class is required for all flights under six hours. Business class is allowed for flights of six hours or longer.\n\nThe daily meal allowance is 40 euros. Receipts are needed for every meal above 15 euros.\n\nAllowed extras:\n- a taxi to the airport\n- one checked bag\n"
+  },
+  "chunks": [
+    {
+      "id": "c1",
+      "text": "Economy class is required for all flights under six hours. Business class is allowed for flights of six hours or longer.",
+      "doc_id": "travel_policy.md",
+      "start": 0,
+      "end": 120,
+      "metadata": {"source": "travel_policy.md", "page": 1}
+    },
+    {
+      "id": "c2",
+      "text": "The daily meal allowance is 40 euros. Receipts are needed for every meal above 15 euros.",
+      "doc_id": "travel_policy.md",
+      "start": 122,
+      "end": 210,
+      "metadata": {"source": "travel_policy.md", "page": 1}
+    },
+    {
+      "id": "c3",
+      "text": "Allowed extras:\n- a taxi to the airport\n- one checked bag",
+      "doc_id": "travel_policy.md",
+      "start": 212,
+      "end": 269,
+      "metadata": {"source": "travel_policy.md", "page": 1}
+    }
+  ],
+  "queries": [
+    {
+      "id": "q1",
+      "text": "How much is the daily meal allowance?",
+      "expected_chunk_ids": ["c2"],
+      "relevance": {"c2": 3, "c3": 1},
+      "expected_evidence": ["The daily meal allowance is 40 euros."],
+      "retrieved_ids": ["c3", "c2", "c1"],
+      "reranked_ids": ["c2", "c3", "c1"],
+      "context_ids": ["c2", "c3"],
+      "answer": "The daily meal allowance is 40 euros.",
+      "expected_answer": "The daily meal allowance is 40 euros.",
+      "required_facts": ["40"],
+      "citations": ["c2"],
+      "expected_citations": ["c2"],
+      "verified_claims": [
+        {"text": "The daily meal allowance is 40 euros.", "supported": true}
+      ],
+      "answerable": true,
+      "abstained": false,
+      "task_success": true,
+      "retrieval_latency_ms": 12,
+      "generation_latency_ms": 840,
+      "latency_ms": 852,
+      "cost_usd": 0.0004,
+      "total_tokens": 310
+    },
+    {
+      "id": "q2",
+      "text": "Is there a gym allowance?",
+      "expected_chunk_ids": [],
+      "retrieved_ids": ["c2", "c3", "c1"],
+      "reranked_ids": ["c2", "c3", "c1"],
+      "context_ids": ["c2", "c3"],
+      "answer": "I don't know based on the documents.",
+      "answerable": false,
+      "abstained": true,
+      "task_success": true,
+      "retrieval_latency_ms": 11,
+      "generation_latency_ms": 420,
+      "latency_ms": 431,
+      "cost_usd": 0.0002,
+      "total_tokens": 190
+    }
+  ],
+  "embeddings": {
+    "vectors": {"c1": [0.9, 0.1, 0.1], "c2": [0.1, 0.9, 0.2], "c3": [0.1, 0.3, 0.9]},
+    "query_vectors": {"q1": [0.1, 0.9, 0.3], "q2": [0.3, 0.6, 0.6]},
+    "relevant_ids": {"q1": ["c2"]},
+    "indexed_ids": ["c1", "c2", "c3"],
+    "index_results": {"q1": ["c2", "c3"], "q2": ["c3", "c2"]}
+  },
+  "sentence_vectors": {
+    "c1": [[0.9, 0.1, 0.0], [0.8, 0.2, 0.1]],
+    "c2": [[0.1, 0.9, 0.1], [0.2, 0.8, 0.3]],
+    "c3": [[0.1, 0.3, 0.9], [0.0, 0.2, 0.9]]
+  },
+  "expected_chunks": [
+    "Economy class is required for all flights under six hours. Business class is allowed for flights of six hours or longer.",
+    "The daily meal allowance is 40 euros. Receipts are needed for every meal above 15 euros.",
+    "Allowed extras:\n- a taxi to the airport\n- one checked bag"
+  ],
+  "expected_evidence": ["The daily meal allowance is 40 euros."],
+  "structural_blocks": ["- a taxi to the airport\n- one checked bag"],
+  "required_metadata": ["source", "page"],
+  "expected_metadata": {"c1": {"page": 1}, "c2": {"page": 1}, "c3": {"page": 1}},
+  "size_limits": [5, 60],
+  "boundary_tolerance": 2,
+  "max_context_tokens": 80
+}

@@ -1,0 +1,21 @@
+[
+  {"id": "q1", "question": "How much is the daily meal allowance?",
+   "expected_answer": "The daily meal allowance is 40 euros.",
+   "expected_evidence": ["The daily meal allowance is 40 euros."],
+   "required_facts": ["40"], "answerable": true, "validated": true},
+  {"id": "q2", "question": "Can I fly business class on a four-hour flight?",
+   "expected_answer": "No. Economy class is required for all flights under six hours.",
+   "expected_evidence": ["Economy class is required for all flights under six hours."],
+   "required_facts": ["economy"], "answerable": true, "validated": true},
+  {"id": "q3", "question": "What is the hotel limit per night?",
+   "expected_answer": "Hotels must cost less than 150 euros per night.",
+   "expected_evidence": ["Hotels must cost less than 150 euros per night."],
+   "required_facts": ["150"], "answerable": true, "validated": true},
+  {"id": "q4", "question": "Who has to approve a trip abroad?",
+   "expected_answer": "Trips abroad need approval from HR, and from your manager.",
+   "expected_evidence": ["Trips abroad also need approval from HR."],
+   "required_facts": ["HR"], "answerable": true, "validated": true},
+  {"id": "q5", "question": "Is there a gym allowance?",
+   "expected_answer": "", "expected_evidence": [], "required_facts": [],
+   "answerable": false, "validated": true}
+]

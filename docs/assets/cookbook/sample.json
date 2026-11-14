@@ -1,0 +1,230 @@
+{
+  "document_text": "Employees get 25 days of annual leave. Sick pay is full salary for 10 days. Travel needs manager approval. Remote work is allowed 3 days a week.",
+  "chunks": [
+    {
+      "id": "c1",
+      "text": "Employees get 25 days of annual leave. ",
+      "start": 0,
+      "end": 39,
+      "metadata": {
+        "source": "handbook.md",
+        "page": 1
+      }
+    },
+    {
+      "id": "c2",
+      "text": "Sick pay is full salary for 10 days. ",
+      "start": 39,
+      "end": 76,
+      "metadata": {
+        "source": "handbook.md",
+        "page": 1
+      }
+    },
+    {
+      "id": "c3",
+      "text": "Travel needs manager approval. ",
+      "start": 76,
+      "end": 107,
+      "metadata": {
+        "source": "handbook.md",
+        "page": 1
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Remote work is allowed 3 days a week.",
+      "start": 107,
+      "end": 144,
+      "metadata": {
+        "source": "handbook.md",
+        "page": 1
+      }
+    }
+  ],
+  "queries": [
+    {
+      "id": "q1",
+      "expected_chunk_ids": [
+        "c1"
+      ],
+      "expected_evidence": [
+        "Employees get 25 days of annual leave."
+      ],
+      "retrieved_ids": [
+        "c2",
+        "c1",
+        "c3"
+      ],
+      "reranked_ids": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "context_ids": [
+        "c1",
+        "c2"
+      ],
+      "answer": "Employees get 25 days of annual leave.",
+      "expected_answer": "Employees get 25 days of annual leave.",
+      "required_facts": [
+        "days"
+      ],
+      "citations": [
+        "c1"
+      ],
+      "expected_citations": [
+        "c1"
+      ],
+      "verified_claims": [
+        {
+          "text": "Employees get 25 days of annual leave.",
+          "supported": true
+        }
+      ],
+      "answerable": true,
+      "abstained": false,
+      "task_success": true,
+      "retrieval_latency_ms": 20,
+      "generation_latency_ms": 400,
+      "latency_ms": 450,
+      "cost_usd": 0.002,
+      "total_tokens": 800
+    },
+    {
+      "id": "q2",
+      "expected_chunk_ids": [
+        "c4"
+      ],
+      "expected_evidence": [
+        "Remote work is allowed 3 days a week."
+      ],
+      "retrieved_ids": [
+        "c4",
+        "c3",
+        "c1"
+      ],
+      "reranked_ids": [
+        "c4",
+        "c1",
+        "c3"
+      ],
+      "context_ids": [
+        "c4",
+        "c1"
+      ],
+      "answer": "Remote work is allowed 3 days a week.",
+      "expected_answer": "Remote work is allowed 3 days a week.",
+      "required_facts": [
+        "days"
+      ],
+      "citations": [
+        "c4"
+      ],
+      "expected_citations": [
+        "c4"
+      ],
+      "verified_claims": [
+        {
+          "text": "Remote work is allowed 3 days a week.",
+          "supported": true
+        }
+      ],
+      "answerable": true,
+      "abstained": false,
+      "task_success": true,
+      "retrieval_latency_ms": 40,
+      "generation_latency_ms": 800,
+      "latency_ms": 900,
+      "cost_usd": 0.002,
+      "total_tokens": 800
+    }
+  ],
+  "expected_chunks": [
+    {
+      "start": 0,
+      "end": 39
+    },
+    {
+      "start": 39,
+      "end": 76
+    },
+    {
+      "start": 76,
+      "end": 107
+    },
+    {
+      "start": 107,
+      "end": 144
+    }
+  ],
+  "expected_evidence": [
+    "25 days of annual leave",
+    "allowed 3 days a week"
+  ],
+  "required_metadata": [
+    "source",
+    "page"
+  ],
+  "size_limits": [
+    3,
+    20
+  ],
+  "max_context_tokens": 30,
+  "embeddings": {
+    "vectors": {
+      "c1": [
+        0.95,
+        0.05
+      ],
+      "c2": [
+        0.7,
+        0.3
+      ],
+      "c3": [
+        0.5,
+        0.5
+      ],
+      "c4": [
+        0.1,
+        0.9
+      ]
+    },
+    "query_vectors": {
+      "q1": [
+        1.0,
+        0.0
+      ],
+      "q2": [
+        0.0,
+        1.0
+      ]
+    },
+    "relevant_ids": {
+      "q1": [
+        "c1"
+      ],
+      "q2": [
+        "c4"
+      ]
+    },
+    "indexed_ids": [
+      "c1",
+      "c2",
+      "c3",
+      "c4"
+    ],
+    "index_results": {
+      "q1": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "q2": [
+        "c4",
+        "c3",
+        "c2"
+      ]
+    }
+  }
+}

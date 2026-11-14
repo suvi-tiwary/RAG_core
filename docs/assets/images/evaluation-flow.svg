@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" width="960" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">End-to-end evaluation</title>
+  <desc id="desc">Your files are indexed once per chunker. Every RAG type is built on each index, giving one setup per RAG type and chunker. Every test question is answered with run(), the chunks given to the LLM are scored against the required evidence, and a report compares the setups. The report shows a real run of rag-titan evaluate with gemma3:4b on the sample policies.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; stroke: #e2e8f0; }
+      .title { font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; }
+      .sub { font: 12.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #475569; }
+      .label { font: 600 14px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #0f172a; text-anchor: middle; }
+      .ex { font: 11.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; text-anchor: middle; }
+      .edge { font: 700 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .head { font: 700 11px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #64748b; letter-spacing: .06em; }
+      .note { font: 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #475569; }
+      .mono { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #0f172a; white-space: pre; }
+      .monohead { font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #64748b; white-space: pre; }
+      .warn { fill: #b45309; }
+      .neutral { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; }
+      .search { fill: #ecfeff; stroke: #06b6d4; stroke-width: 1.5; }
+      .llm { fill: #fffbeb; stroke: #f59e0b; stroke-width: 1.5; }
+      .out { fill: #f0fdf4; stroke: #22c55e; stroke-width: 1.5; }
+      .card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; }
+      .rowhl { fill: #fef3c7; }
+      .badge { fill: #0f172a; }
+      .badgenum { font: 700 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; text-anchor: middle; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 2; stroke-dasharray: 6 5; animation: dash 0.9s linear infinite; }
+      .hl { fill: none; stroke: #f97316; stroke-width: 3; opacity: 0; animation: glow 9s infinite; }
+      @keyframes dash { to { stroke-dashoffset: -11; } }
+      @keyframes glow { 0% { opacity: 0; } 2% { opacity: 1; } 13% { opacity: 1; } 16% { opacity: 0; } 100% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .flow, .hl { animation: none; } }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="959" height="759" rx="16"/>
+  <text class="title" x="30" y="44">End-to-end evaluation: any ingestion × any RAG type</text>
+  <text class="sub" x="30" y="68">rag-titan evaluate --rag-type simple adaptive --chunker word paragraph</text>
+
+  <!-- legend -->
+  <rect class="search" x="730" y="86" width="14" height="14" rx="4"/>
+  <text class="note" x="752" y="98">index / search</text>
+  <rect class="llm" x="730" y="108" width="14" height="14" rx="4"/>
+  <text class="note" x="752" y="120">RAG type (uses the LLM)</text>
+  <rect class="out" x="730" y="130" width="14" height="14" rx="4"/>
+  <text class="note" x="752" y="142">scores and report</text>
+
+  <!-- 1. inputs -->
+  <rect class="neutral" x="30" y="108" width="260" height="50" rx="10"/>
+  <text class="label" x="160" y="129">sample_docs/*.md</text>
+  <text class="ex" x="160" y="147">leave · remote work · expenses</text>
+
+  <!-- 2. one index per chunker -->
+  <path class="flow" d="M110 160 C110 186 210 180 210 200" marker-end="url(#arrow)"/>
+  <path class="flow" d="M210 160 C210 186 650 176 650 200" marker-end="url(#arrow)"/>
+  <rect class="search" x="90" y="204" width="240" height="56" rx="10"/>
+  <text class="label" x="210" y="228">Index · word chunks</text>
+  <text class="ex" x="210" y="247">chunk → embed → store</text>
+  <rect class="search" x="530" y="204" width="240" height="56" rx="10"/>
+  <text class="label" x="650" y="228">Index · paragraph chunks</text>
+  <text class="ex" x="650" y="247">chunk → embed → store</text>
+  <text class="note" x="430" y="222" text-anchor="middle">one index per chunker,</text>
+  <text class="note" x="430" y="238" text-anchor="middle">embedded once and shared</text>
+  <text class="note" x="430" y="254" text-anchor="middle">by every RAG type</text>
+
+  <!-- 3. setups: RAG type x chunker -->
+  <path class="flow" d="M170 262 C170 284 130 280 130 302" marker-end="url(#arrow)"/>
+  <path class="flow" d="M250 262 C250 284 355 280 355 302" marker-end="url(#arrow)"/>
+  <path class="flow" d="M610 262 C610 284 605 280 605 302" marker-end="url(#arrow)"/>
+  <path class="flow" d="M690 262 C690 284 830 280 830 302" marker-end="url(#arrow)"/>
+  <rect class="llm" x="30" y="306" width="200" height="66" rx="10"/>
+  <text class="label" x="130" y="329">simple + word</text>
+  <text class="ex" x="130" y="347">retrieve · rerank</text>
+  <text class="ex" x="130" y="363">generate</text>
+  <rect class="llm" x="255" y="306" width="200" height="66" rx="10"/>
+  <text class="label" x="355" y="329">adaptive + word</text>
+  <text class="ex" x="355" y="347">route · search · check</text>
+  <text class="ex" x="355" y="363">rewrite &amp; retry</text>
+  <rect class="llm" x="505" y="306" width="200" height="66" rx="10"/>
+  <text class="label" x="605" y="329">simple + paragraph</text>
+  <text class="ex" x="605" y="347">retrieve · rerank</text>
+  <text class="ex" x="605" y="363">generate</text>
+  <rect class="llm" x="730" y="306" width="200" height="66" rx="10"/>
+  <text class="label" x="830" y="329">adaptive + paragraph</text>
+  <text class="ex" x="830" y="347">route · search · check</text>
+  <text class="ex" x="830" y="363">rewrite &amp; retry</text>
+
+  <!-- 4. run every question -->
+  <path class="flow" d="M130 374 C130 400 420 392 420 416" marker-end="url(#arrow)"/>
+  <path class="flow" d="M355 374 C355 396 450 396 450 416" marker-end="url(#arrow)"/>
+  <path class="flow" d="M605 374 C605 396 510 396 510 416" marker-end="url(#arrow)"/>
+  <path class="flow" d="M830 374 C830 400 540 392 540 416" marker-end="url(#arrow)"/>
+  <rect class="neutral" x="30" y="420" width="200" height="56" rx="10"/>
+  <text class="label" x="130" y="444">questions.json</text>
+  <text class="ex" x="130" y="463">6 questions + evidence</text>
+  <path class="flow" d="M232 448 H326" marker-end="url(#arrow)"/>
+  <rect class="llm" x="330" y="420" width="300" height="56" rx="10"/>
+  <text class="label" x="480" y="444">rag.run(question)</text>
+  <text class="ex" x="480" y="463">answer · sources · steps</text>
+  <path class="flow" d="M632 448 H726" marker-end="url(#arrow)"/>
+  <rect class="neutral" x="730" y="420" width="200" height="56" rx="10"/>
+  <text class="label" x="830" y="444">steps kept per row</text>
+  <text class="ex" x="830" y="463">→ flow diagrams</text>
+
+  <!-- 5. score -->
+  <path class="flow" d="M480 478 V500" marker-end="url(#arrow)"/>
+  <rect class="out" x="250" y="504" width="460" height="56" rx="10"/>
+  <text class="label" x="480" y="528">Score the chunks given to the LLM</text>
+  <text class="ex" x="480" y="547">Recall · MRR · nDCG · Answered · Steps · p50/p95</text>
+
+  <!-- 6. report (real run) -->
+  <path class="flow" d="M480 562 V582" marker-end="url(#arrow)"/>
+  <rect class="card" x="30" y="586" width="900" height="158" rx="10"/>
+  <text class="head" x="56" y="606">REPORT · REAL RUN WITH GEMMA3:4B ON THE SAMPLE POLICIES</text>
+  <text class="monohead" x="46" y="630">setup                  Recall    MRR   nDCG  Answered  Steps  p50 s  p95 s</text>
+  <text class="mono" x="46" y="650">simple + word           1.000  1.000  1.000      100%    3.0   0.92   1.26</text>
+  <text class="mono" x="46" y="670">adaptive + word         1.000  1.000  1.000      100%    5.0   1.67   2.02</text>
+  <rect class="rowhl" x="40" y="676" width="880" height="20" rx="4"/>
+  <text class="mono" x="46" y="690">simple + paragraph      0.917  1.000  0.936      100%    3.0   0.64   0.81</text>
+  <text class="mono" x="46" y="710">adaptive + paragraph    1.000  1.000  0.987      100%    6.3   0.96   2.91</text>
+  <text class="note warn" x="46" y="733">simple + paragraph, q_006: only remote_work.md reached the LLM, expenses.md was missing (recall 0.50)</text>
+
+  <!-- step numbers -->
+  <circle class="badge" cx="34" cy="112" r="11"/><text class="badgenum" x="34" y="116">1</text>
+  <circle class="badge" cx="94" cy="208" r="11"/><text class="badgenum" x="94" y="212">2</text>
+  <circle class="badge" cx="34" cy="310" r="11"/><text class="badgenum" x="34" y="314">3</text>
+  <circle class="badge" cx="34" cy="424" r="11"/><text class="badgenum" x="34" y="428">4</text>
+  <circle class="badge" cx="254" cy="508" r="11"/><text class="badgenum" x="254" y="512">5</text>
+  <circle class="badge" cx="34" cy="590" r="11"/><text class="badgenum" x="34" y="594">6</text>
+
+  <!-- highlight each stage in order -->
+  <rect class="hl" x="30" y="108" width="260" height="50" rx="10" style="animation-delay:0s"/>
+  <rect class="hl" x="90" y="204" width="240" height="56" rx="10" style="animation-delay:1.3s"/>
+  <rect class="hl" x="530" y="204" width="240" height="56" rx="10" style="animation-delay:1.3s"/>
+  <rect class="hl" x="30" y="306" width="200" height="66" rx="10" style="animation-delay:2.6s"/>
+  <rect class="hl" x="255" y="306" width="200" height="66" rx="10" style="animation-delay:2.6s"/>
+  <rect class="hl" x="505" y="306" width="200" height="66" rx="10" style="animation-delay:2.6s"/>
+  <rect class="hl" x="730" y="306" width="200" height="66" rx="10" style="animation-delay:2.6s"/>
+  <rect class="hl" x="30" y="420" width="200" height="56" rx="10" style="animation-delay:3.9s"/>
+  <rect class="hl" x="330" y="420" width="300" height="56" rx="10" style="animation-delay:3.9s"/>
+  <rect class="hl" x="250" y="504" width="460" height="56" rx="10" style="animation-delay:5.2s"/>
+  <rect class="hl" x="30" y="586" width="900" height="158" rx="10" style="animation-delay:6.5s"/>
+</svg>

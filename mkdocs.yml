@@ -1,0 +1,108 @@
+site_name: rag-titan
+site_description: A Swiss Army knife for RAG, simple and beginner friendly.
+site_url: https://aion7891.github.io/rag-titan
+repo_url: https://github.com/aion7891/rag-titan
+repo_name: aion7891/rag-titan
+
+theme:
+  name: material
+  logo: assets/images/logo.svg
+  favicon: assets/images/logo.svg
+  features:
+    # no navigation.sections: groups stay collapsible dropdowns in the sidebar
+    - navigation.indexes   # a group whose first page is index.md opens that page on click
+    - navigation.top       # "back to top" button on long pages
+    - content.code.copy
+  palette:
+    - scheme: default
+      toggle: { icon: material/weather-night, name: Dark mode }
+    - scheme: slate
+      toggle: { icon: material/weather-sunny, name: Light mode }
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            docstring_options:
+              warn_missing_types: false
+            show_source: true
+
+markdown_extensions:
+  - admonition
+  - attr_list   # buttons: [text](link){ .md-button }
+  - pymdownx.details   # collapsible blocks: ??? note "title"
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist
+  - tables
+
+# files of the cookbook starter kit that are not pages of the site
+exclude_docs: |
+  assets/cookbook/handbook.md
+  assets/cookbook/your-rag/documents/
+  assets/cookbook/your-rag/expected/scorecard.md
+
+nav:
+  - Home: index.md
+  - Get started:
+      - Install and first answer: getting-started.md
+      - Configuration: configuration.md
+      - Command line: cli.md
+  - Evaluate your RAG:
+      - Start here: cookbook/index.md
+      - The complete guide: cookbook/complete-guide.md
+      - Your first evaluation: cookbook/first-evaluation.md
+      - Diagnose a bad answer: cookbook/diagnose.md
+      - Catch regressions: cookbook/regressions.md
+      - Evaluate your own RAG: cookbook/any-rag.md
+      - Evaluate a live pipeline: cookbook/live-pipeline.md
+      - Build a golden set: cookbook/golden-set.md
+  - Evaluation reference:
+      - Every stage: stage-evaluation.md
+      - Metrics: evaluation-metrics.md
+      - Compare chunkers and RAG types: evaluation.md
+  - Build a RAG:
+      - RAG types: rag-types.md
+      - Building blocks: building-blocks.md
+      - Chunking methods: chunking.md
+      - Agents: agents.md
+  - Playgrounds:
+      - RAG playground: rag-playground.md
+      - Chunk playground: playground.md
+  - Advanced:
+      - Extending rag-titan: extending.md
+      - API reference:
+          - RAGTitan and factory: api/core.md
+          - RAG types: api/rag-types.md
+          - Building blocks: api/building-blocks.md
+      - Roadmap: roadmap.md
+
+hooks:
+  - hooks/cache_bust.py   # adds ?v=<version> to our CSS/JS so browsers get new copies
+  - hooks/playground_bundle.py   # zips src/rag_titan into the site for the RAG playground
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/rag-flow.css
+  - assets/stylesheets/cookbook.css
+
+# chunking page: formulas (pymdownx.arithmatex + MathJax) and the chunk playground
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - assets/javascripts/chunk-core.js
+  - assets/javascripts/chunk-playground.js
+  - assets/javascripts/rag-steps.js
+  - assets/javascripts/rag-flow.js
+  - assets/javascripts/rag-cards.js
+  - assets/javascripts/rag-playground.js
+  - assets/javascripts/cookbook-commands.js
+  - assets/javascripts/cookbook-lab.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js

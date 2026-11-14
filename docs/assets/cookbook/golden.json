@@ -1,0 +1,28 @@
+[
+  {
+    "id": "q1",
+    "question": "How many days of annual leave do employees get?",
+    "expected_answer": "Employees get 25 days of annual leave.",
+    "expected_evidence": [
+      "Employees get 25 days of annual leave."
+    ],
+    "required_facts": [
+      "25"
+    ],
+    "answerable": true,
+    "validated": true
+  },
+  {
+    "id": "q2",
+    "question": "How many days a week can employees work remotely?",
+    "expected_answer": "Remote work is allowed 3 days a week.",
+    "expected_evidence": [
+      "Remote work is allowed 3 days a week."
+    ],
+    "required_facts": [
+      "3"
+    ],
+    "answerable": true,
+    "validated": true
+  }
+]

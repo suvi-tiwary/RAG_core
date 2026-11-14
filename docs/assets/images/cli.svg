@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 394" width="960" height="394" role="img" aria-labelledby="title desc">
+  <title id="title">rag-titan command line</title>
+  <desc id="desc">The rag-titan ask command answers one question. The chat command indexes files and answers questions in a loop until you type exit.</desc>
+  <defs>
+    <style>
+      .t { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; }
+      .bar { font: 600 12px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #94a3b8; text-anchor: middle; }
+      @keyframes l0 { 0%, 2.0% { opacity: 0; } 3.5%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l0 { animation: l0 14s infinite; }
+      @keyframes l1 { 0%, 9.3% { opacity: 0; } 10.8%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l1 { animation: l1 14s infinite; }
+      @keyframes l2 { 0%, 16.5% { opacity: 0; } 18.0%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l2 { animation: l2 14s infinite; }
+      @keyframes l3 { 0%, 23.8% { opacity: 0; } 25.3%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l3 { animation: l3 14s infinite; }
+      @keyframes l4 { 0%, 31.1% { opacity: 0; } 32.6%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l4 { animation: l4 14s infinite; }
+      @keyframes l5 { 0%, 38.4% { opacity: 0; } 39.9%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l5 { animation: l5 14s infinite; }
+      @keyframes l6 { 0%, 45.6% { opacity: 0; } 47.1%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l6 { animation: l6 14s infinite; }
+      @keyframes l7 { 0%, 52.9% { opacity: 0; } 54.4%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l7 { animation: l7 14s infinite; }
+      @keyframes l8 { 0%, 60.2% { opacity: 0; } 61.7%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l8 { animation: l8 14s infinite; }
+      @keyframes l9 { 0%, 67.5% { opacity: 0; } 69.0%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l9 { animation: l9 14s infinite; }
+      @keyframes l10 { 0%, 74.7% { opacity: 0; } 76.2%, 94% { opacity: 1; } 100% { opacity: 0; } }
+      .l10 { animation: l10 14s infinite; }
+      @media (prefers-reduced-motion: reduce) { .t { animation: none !important; opacity: 1; } }
+    </style>
+  </defs>
+  <rect x="0.5" y="0.5" width="959" height="393" rx="14" fill="#0f172a" stroke="#1e293b"/>
+  <rect x="0.5" y="0.5" width="959" height="40" rx="14" fill="#1e293b"/>
+  <rect x="0.5" y="26" width="959" height="15" fill="#1e293b"/>
+  <circle cx="26" cy="21" r="6" fill="#f87171"/>
+  <circle cx="46" cy="21" r="6" fill="#fbbf24"/>
+  <circle cx="66" cy="21" r="6" fill="#4ade80"/>
+  <text class="bar" x="480" y="25">rag-titan — terminal</text>
+  <text class="t l0" x="44" y="92" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>rag-titan ask --files handbook.pdf --question &quot;How many leave days?&quot;</text>
+  <text class="t l1" x="44" y="116" fill="#94a3b8">Indexed 12 chunks from 1 file(s).</text>
+  <text class="t l2" x="44" y="140" fill="#86efac">You get 20 paid leave days every year [chunk_0].</text>
+  <text class="t l3" x="44" y="178" fill="#e2e8f0"><tspan fill="#f472b6">$ </tspan>rag-titan chat --files handbook.pdf policy.docx --rag-type adaptive</text>
+  <text class="t l4" x="44" y="202" fill="#94a3b8">Indexed 19 chunks from 2 file(s).</text>
+  <text class="t l5" x="44" y="226" fill="#94a3b8">Type your question, or 'exit' to quit.</text>
+  <text class="t l6" x="44" y="250" fill="#7dd3fc">You: Hi!</text>
+  <text class="t l7" x="44" y="274" fill="#86efac">RAG: Hello! How can I help you today?</text>
+  <text class="t l8" x="44" y="298" fill="#7dd3fc">You: Compare leave and remote work rules</text>
+  <text class="t l9" x="44" y="322" fill="#86efac">RAG: 20 leave days a year [chunk_0]; remote work 2 days a week [chunk_9].</text>
+  <text class="t l10" x="44" y="346" fill="#7dd3fc">You: exit</text>
+</svg>

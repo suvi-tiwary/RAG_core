@@ -1,0 +1,89 @@
+/* RAG flow diagrams (rag-flow.js) and step details (rag-steps.js). Same colours as the docs SVGs. */
+:root {
+  --rf-text: var(--md-default-fg-color, #0f172a);
+  --rf-muted: var(--md-default-fg-color--light, #64748b);
+  --rf-edge: #94a3b8;
+  --rf-taken: #f97316;
+  --rf-search-bg: #ecfeff; --rf-search: #06b6d4;
+  --rf-llm-bg: #fffbeb;    --rf-llm: #f59e0b;
+  --rf-output-bg: #f0fdf4; --rf-output: #22c55e;
+  --rf-loop: #d97706;
+}
+[data-md-color-scheme="slate"] {
+  /* set here, not via --md-* at :root: there those still hold the light theme's values */
+  --rf-text: #e2e8f0;
+  --rf-muted: #94a3b8;
+  --rf-edge: #64748b;
+  --rf-search-bg: #083344; --rf-search: #22d3ee;
+  --rf-llm-bg: #3b2a06;    --rf-llm: #fbbf24;
+  --rf-output-bg: #052e16; --rf-output: #4ade80;
+  --rf-loop: #f59e0b;
+}
+
+.rf-diagram { max-width: 100%; height: auto; display: block; }
+.rf-edge { fill: none; stroke: var(--rf-edge); stroke-width: 2; stroke-dasharray: 5 5; }
+.rf-loop { stroke: var(--rf-loop); }
+.rf-head-plain { fill: var(--rf-edge); }
+.rf-head-loop { fill: var(--rf-loop); }
+.rf-head-taken { fill: var(--rf-taken); }
+.rf-edge.rf-taken { stroke: var(--rf-taken); stroke-width: 3; stroke-dasharray: none; }
+
+.rf-node { cursor: pointer; outline: none; }
+.rf-node rect { stroke-width: 1.5; transition: stroke-width 0.2s, opacity 0.2s; opacity: 0.55; }
+.rf-search rect { fill: var(--rf-search-bg); stroke: var(--rf-search); }
+.rf-llm rect { fill: var(--rf-llm-bg); stroke: var(--rf-llm); }
+.rf-output rect { fill: var(--rf-output-bg); stroke: var(--rf-output); }
+.rf-node.rf-visited rect { opacity: 1; }
+.rf-node.rf-current rect { stroke: var(--rf-taken); stroke-width: 3.5; }
+.rf-node:hover rect, .rf-node:focus rect { stroke-width: 3; opacity: 1; }
+.rf-label { font: 600 13px system-ui, sans-serif; fill: var(--rf-text); text-anchor: middle; }
+.rf-badge { font: 700 10px ui-monospace, monospace; fill: var(--rf-taken); text-anchor: end; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rf-node rect { transition: none; }
+}
+
+/* the details of the steps behind a clicked node */
+.rf-details { font-size: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.rf-step { border-left: 4px solid var(--rf-taken); border-radius: 6px; padding: 0.3rem 0.6rem;
+           background: var(--md-code-bg-color, #f8fafc); }
+.rf-step-head { font-weight: 700; }
+.rf-step-head span { font-weight: 400; color: var(--rf-muted); }
+.rf-io { font: 0.72rem/1.5 var(--md-code-font-family, ui-monospace, monospace);
+         white-space: pre-wrap; word-break: break-word; margin: 0.15rem 0 0; }
+.rf-io b { font-family: system-ui, sans-serif; }
+
+/* the RAG playground page (rag-playground.js) */
+.rp-status { font-size: 0.75rem; color: var(--rf-muted); }
+.rp-label { display: block; font-size: 0.75rem; font-weight: 700; margin-top: 0.6rem; }
+.rp-question { font: inherit; font-size: 0.8rem; width: 100%; max-width: 40rem; padding: 0.25rem;
+               color: var(--rf-text); background: var(--md-code-bg-color, #f8fafc);
+               border: 1px solid var(--md-default-fg-color--lightest, #cbd5e1); border-radius: 6px; }
+.rp-controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; margin: 0.6rem 0; }
+.rp-choices { border: 1px solid var(--md-default-fg-color--lightest, #cbd5e1); border-radius: 6px;
+              font-size: 0.75rem; padding: 0.2rem 0.8rem 0.5rem; }
+.rp-choices legend { font-weight: 700; padding: 0 0.3rem; }
+.rp-choice { display: block; }
+.rp-choice span { color: var(--rf-muted); }
+.rp-documents { font-size: 0.75rem; margin: 0.6rem 0; }
+.rp-documents pre { white-space: pre-wrap; font-size: 0.7rem; }
+.rp-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+              gap: 1rem; margin-top: 1rem; }
+.rp-card { border: 1px solid var(--md-default-fg-color--lightest, #cbd5e1); border-radius: 8px;
+           padding: 0.6rem; min-width: 0; }
+.rp-card h3 { margin: 0 0 0.4rem; font-size: 0.85rem; }
+.rp-answer { font-size: 0.8rem; font-weight: 600; margin: 0.5rem 0 0.2rem; }
+.rp-answer.rp-none { color: var(--rf-loop); }
+.rp-stats { font-size: 0.7rem; color: var(--rf-muted); margin: 0.2rem 0 0.5rem; }
+.rp-details { max-height: 22rem; overflow-y: auto; }
+.rp-report { font-size: 0.75rem; }
+.rp-report th, .rp-report td { text-align: left; padding-right: 1.2rem; }
+.rp-weak { font-size: 0.72rem; }
+.rp-input { font: inherit; font-size: 0.8rem; width: 100%; max-width: 40rem; padding: 0.25rem;
+            color: var(--rf-text); background: var(--md-code-bg-color, #f8fafc); box-sizing: border-box;
+            border: 1px solid var(--md-default-fg-color--lightest, #cbd5e1); border-radius: 6px; }
+.rp-live { border-left: 4px solid var(--rf-llm); padding: 0.2rem 0 0.4rem 0.8rem; margin: 0.4rem 0; }
+.rp-live .md-button { margin-top: 0.3rem; }
+.rp-own { min-height: 6rem; font-family: var(--md-code-font-family, monospace); }
+.rp-help { font-size: 0.72rem; color: var(--rf-muted); }
+#rag-playground-app [hidden] { display: none !important; }   /* the theme's button style would win */

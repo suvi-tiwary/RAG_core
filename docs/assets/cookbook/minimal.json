@@ -1,0 +1,24 @@
+{
+  "chunks": [
+    {
+      "id": "c1",
+      "text": "Employees get 25 days of annual leave."
+    }
+  ],
+  "queries": [
+    {
+      "id": "q1",
+      "expected_chunk_ids": [
+        "c1"
+      ],
+      "retrieved_ids": [
+        "c1"
+      ],
+      "context_ids": [
+        "c1"
+      ],
+      "answer": "Employees get 25 days of annual leave.",
+      "expected_answer": "Employees get 25 days of annual leave."
+    }
+  ]
+}

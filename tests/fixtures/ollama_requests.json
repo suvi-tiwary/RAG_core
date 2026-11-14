@@ -1,0 +1,530 @@
+{
+  "cases": [
+    {
+      "name": "chat_plain",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:11434/api/chat",
+          "authorization": null,
+          "body": {
+            "model": "gemma3:4b",
+            "stream": false,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Be short."
+              },
+              {
+                "role": "user",
+                "content": "How many leave days?"
+              }
+            ],
+            "tools": []
+          }
+        }
+      ],
+      "result": {
+        "content": "20 days",
+        "tool_calls": []
+      }
+    },
+    {
+      "name": "chat_think",
+      "requests": [
+        {
+          "url": "http://example.com:9999/api/chat",
+          "authorization": null,
+          "body": {
+            "model": "qwen3:4b",
+            "stream": false,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Be short."
+              },
+              {
+                "role": "user",
+                "content": "How many leave days?"
+              }
+            ],
+            "tools": [],
+            "think": true
+          }
+        }
+      ],
+      "result": {
+        "content": "20 days",
+        "tool_calls": []
+      }
+    },
+    {
+      "name": "chat_tools",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:11434/api/chat",
+          "authorization": null,
+          "body": {
+            "model": "gemma3:4b",
+            "stream": false,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Be short."
+              },
+              {
+                "role": "user",
+                "content": "How many leave days?"
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "add",
+                  "description": "Add two numbers: a + b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "first number"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "second number"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "subtract",
+                  "description": "Subtract two numbers: a - b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "number to subtract from"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "number to subtract"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "multiply",
+                  "description": "Multiply two numbers: a * b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "first number"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "second number"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "divide",
+                  "description": "Divide two numbers: a / b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "number to divide"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "number to divide by"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "result": {
+        "content": "",
+        "tool_calls": [
+          {
+            "name": "add",
+            "arguments": {
+              "a": 2,
+              "b": "3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chat_tool_followup",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:11434/api/chat",
+          "authorization": null,
+          "body": {
+            "model": "gemma3:4b",
+            "stream": false,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Be short."
+              },
+              {
+                "role": "user",
+                "content": "How many leave days?"
+              },
+              {
+                "role": "assistant",
+                "tool_calls": [
+                  {
+                    "function": {
+                      "name": "add",
+                      "arguments": {
+                        "a": 2,
+                        "b": "3"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "role": "tool",
+                "content": "5.0",
+                "tool_name": "add"
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "add",
+                  "description": "Add two numbers: a + b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "first number"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "second number"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "subtract",
+                  "description": "Subtract two numbers: a - b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "number to subtract from"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "number to subtract"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "multiply",
+                  "description": "Multiply two numbers: a * b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "first number"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "second number"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "divide",
+                  "description": "Divide two numbers: a / b",
+                  "parameters": {
+                    "type": "object",
+                    "required": [
+                      "a",
+                      "b"
+                    ],
+                    "properties": {
+                      "a": {
+                        "type": "string",
+                        "description": "number to divide"
+                      },
+                      "b": {
+                        "type": "string",
+                        "description": "number to divide by"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "result": {
+        "content": "20 days",
+        "tool_calls": []
+      }
+    },
+    {
+      "name": "embed_batches",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:11434/api/embed",
+          "authorization": null,
+          "body": {
+            "model": "nomic-embed-text",
+            "input": [
+              "a",
+              "b"
+            ]
+          }
+        },
+        {
+          "url": "http://127.0.0.1:11434/api/embed",
+          "authorization": null,
+          "body": {
+            "model": "nomic-embed-text",
+            "input": [
+              "c"
+            ]
+          }
+        }
+      ],
+      "result": [
+        [
+          0.5,
+          0.0
+        ],
+        [
+          1.5,
+          -1.0
+        ],
+        [
+          0.5,
+          0.0
+        ]
+      ]
+    },
+    {
+      "name": "chat_cloud_key",
+      "requests": [
+        {
+          "url": "https://ollama.com/api/chat",
+          "authorization": "Bearer secret-key",
+          "body": {
+            "model": "gpt-oss:20b-cloud",
+            "stream": false,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Be short."
+              },
+              {
+                "role": "user",
+                "content": "How many leave days?"
+              }
+            ],
+            "tools": []
+          }
+        }
+      ],
+      "result": {
+        "content": "20 days",
+        "tool_calls": []
+      }
+    }
+  ],
+  "tool_schemas": [
+    {
+      "type": "function",
+      "function": {
+        "name": "add",
+        "description": "Add two numbers: a + b",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "a",
+            "b"
+          ],
+          "properties": {
+            "a": {
+              "type": "string",
+              "description": "first number"
+            },
+            "b": {
+              "type": "string",
+              "description": "second number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "subtract",
+        "description": "Subtract two numbers: a - b",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "a",
+            "b"
+          ],
+          "properties": {
+            "a": {
+              "type": "string",
+              "description": "number to subtract from"
+            },
+            "b": {
+              "type": "string",
+              "description": "number to subtract"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "multiply",
+        "description": "Multiply two numbers: a * b",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "a",
+            "b"
+          ],
+          "properties": {
+            "a": {
+              "type": "string",
+              "description": "first number"
+            },
+            "b": {
+              "type": "string",
+              "description": "second number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "divide",
+        "description": "Divide two numbers: a / b",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "a",
+            "b"
+          ],
+          "properties": {
+            "a": {
+              "type": "string",
+              "description": "number to divide"
+            },
+            "b": {
+              "type": "string",
+              "description": "number to divide by"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "hosts": {
+    "": "http://127.0.0.1:11434",
+    "1.2.3.4": "http://1.2.3.4:11434",
+    ":56789": "http://127.0.0.1:56789",
+    "1.2.3.4:56789": "http://1.2.3.4:56789",
+    "http://1.2.3.4": "http://1.2.3.4:80",
+    "https://1.2.3.4": "https://1.2.3.4:443",
+    "https://1.2.3.4:56789": "https://1.2.3.4:56789",
+    "example.com": "http://example.com:11434",
+    "example.com:56789": "http://example.com:56789",
+    "http://example.com": "http://example.com:80",
+    "https://example.com": "https://example.com:443",
+    "https://example.com:56789": "https://example.com:56789",
+    "example.com/": "http://example.com:11434",
+    "example.com:56789/": "http://example.com:56789",
+    "example.com/path": "http://example.com:11434/path",
+    "example.com:56789/path": "http://example.com:56789/path",
+    "https://example.com:56789/path": "https://example.com:56789/path",
+    "example.com:56789/path/": "http://example.com:56789/path",
+    "[0001:002:003:0004::1]": "http://[0001:002:003:0004::1]:11434",
+    "[0001:002:003:0004::1]:56789": "http://[0001:002:003:0004::1]:56789",
+    "http://[0001:002:003:0004::1]": "http://[0001:002:003:0004::1]:80",
+    "https://[0001:002:003:0004::1]": "https://[0001:002:003:0004::1]:443",
+    "http://localhost:11434": "http://localhost:11434",
+    "https://ollama.com": "https://ollama.com:443"
+  }
+}
